@@ -106,15 +106,16 @@ struct IndicatorView: View {
     }
 }
 
-// Random number generator -- not used in assignment 1
-//func NonRepetitiveRandomPicker(result: Int) -> [Int]{
-//    var bottom : Int
-//    let choice : [Int]
-//    if (result - 5 <= 0){
-//        bottom = result - 1
-//    }else{
-//        bottom = 5
-//    }
-//    return [0]
-//}
-
+struct JugdgeView: View{
+    let result : Int
+    var body: some View{
+        VStack{
+            if(result == 1){
+                Text("Correct!")
+            }else{
+                Text("Wrong!")
+            }
+            Button("Next question"){}
+        }
+    }
+}
