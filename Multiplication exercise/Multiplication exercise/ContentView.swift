@@ -116,7 +116,7 @@ struct IndicatorView: View {
     }
 }
 
-//Not used in HW1
+//Not used in Homework1
 struct JudgeView: View{
     let result : Int
     var body: some View{
