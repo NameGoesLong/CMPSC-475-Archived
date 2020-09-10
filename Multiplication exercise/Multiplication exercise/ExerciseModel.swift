@@ -19,14 +19,14 @@ struct ExerciseModel {
         currentPhase = (currentPhase + 1) % (totalPhase)
     }
     
-    var isSummaryPage : Bool {currentPhase == 0}
-    
     var problemSet : [MultiplicationProblemModel]
     var currentProblem : MultiplicationProblemModel {problemSet[current]}
     
     var correctness: Int = 0
     
-    var resultButtonText : String {currentPhase == 0 ? "Reset" : "Next Question"}
+    //Change the output of the view accodring to the page it should show
+    var isSummaryPage : Bool {currentPhase == 0}
+    var resultButtonText : String {isSummaryPage ? "Reset" : "Next Question"}
     var analysis: String {
         if isSummaryPage{
             return "You have finished all the problem(s)."
@@ -35,6 +35,7 @@ struct ExerciseModel {
         }
     }
     
+    //initialize the problem set for another round
     init() {
         problemSet = [MultiplicationProblemModel]()
         for _ in(0..<QuestionRounds) {
@@ -43,15 +44,15 @@ struct ExerciseModel {
         current = 0
     }
     
-    mutating func resetProblemSet(){self = ExerciseModel()}
+    mutating func resetProblemSet(){self = ExerciseModel()}     //This is the easiest wat of resetting all the data
     
     mutating func getNextProblem(){
         if currentPhase == 0{
-            resetProblemSet()
+            resetProblemSet()   //call init() if the program goes to another round
         }else{
             incrementPhaseCount()
         }
-        current = Int(self.currentPhase / 2)
+        current = Int(self.currentPhase / 2)        //Calculate the problem number only when we are trying to get the next problem
     }
     
     

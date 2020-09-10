@@ -12,8 +12,9 @@ enum Correctness{
     case wrong, correct, pending
 }
 
-
+//This is the model of a single multiplication problem
 struct MultiplicationProblemModel{
+    private let selectionNumber = 4
     var multiplicand : Int
     var multiplier : Int
     var result : Int
@@ -27,13 +28,14 @@ struct MultiplicationProblemModel{
         correctness = .pending
     }
     
+    //Generate selection and return them in ascending order
     private func generateSelections(_ Answer: Int) ->[Int]{
         let bottom = (Answer - 5) > 1 ? Answer - 5 : 1
         var selectionRange = Set((bottom) ... (Answer + 5))
         var temp: [Int] = [result]
         
         selectionRange.remove(result)
-        for _ in (1..<4) {
+        for _ in (1..<selectionNumber) {
             let e = selectionRange.randomElement() ?? 1
             temp.append(e)
             selectionRange.remove(e)
@@ -42,6 +44,7 @@ struct MultiplicationProblemModel{
         return temp
     }
     
+    //Helper function to convert the result of a problem into icons
     func computeCorrectness() ->String{
         switch correctness{
         case .correct: return "✔️"
