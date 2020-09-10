@@ -22,7 +22,6 @@
 		B2F45B4A2506A71A00CCB817 /* ChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B492506A71A00CCB817 /* ChoiceView.swift */; };
 		B2F45B4E2506AC6D00CCB817 /* ExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B4D2506AC6D00CCB817 /* ExerciseViewModel.swift */; };
 		B2F45B502506AD9800CCB817 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B4F2506AD9800CCB817 /* ExerciseModel.swift */; };
-		B2F45B52250704C200CCB817 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B51250704C200CCB817 /* ViewRouter.swift */; };
 		B2F45B542507088000CCB817 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B532507088000CCB817 /* ResultView.swift */; };
 		B2F45B562509B06000CCB817 /* MultiplicationProblemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B552509B06000CCB817 /* MultiplicationProblemModel.swift */; };
 /* End PBXBuildFile section */
@@ -57,7 +56,6 @@
 		B2F45B492506A71A00CCB817 /* ChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceView.swift; sourceTree = "<group>"; };
 		B2F45B4D2506AC6D00CCB817 /* ExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewModel.swift; sourceTree = "<group>"; };
 		B2F45B4F2506AD9800CCB817 /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
-		B2F45B51250704C200CCB817 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		B2F45B532507088000CCB817 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		B2F45B552509B06000CCB817 /* MultiplicationProblemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplicationProblemModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,17 +99,15 @@
 		B2F45B1924FD7FAE00CCB817 /* Multiplication exercise */ = {
 			isa = PBXGroup;
 			children = (
+				B2F45B58250A835300CCB817 /* Model */,
+				B2F45B57250A833200CCB817 /* ViewModel */,
 				B2F45B3C2506A3A500CCB817 /* Views */,
 				B2F45B1A24FD7FAE00CCB817 /* AppDelegate.swift */,
-				B2F45B4D2506AC6D00CCB817 /* ExerciseViewModel.swift */,
-				B2F45B4F2506AD9800CCB817 /* ExerciseModel.swift */,
-				B2F45B552509B06000CCB817 /* MultiplicationProblemModel.swift */,
 				B2F45B1C24FD7FAE00CCB817 /* SceneDelegate.swift */,
 				B2F45B2024FD7FAF00CCB817 /* Assets.xcassets */,
 				B2F45B2524FD7FAF00CCB817 /* LaunchScreen.storyboard */,
 				B2F45B2824FD7FAF00CCB817 /* Info.plist */,
 				B2F45B2224FD7FAF00CCB817 /* Preview Content */,
-				B2F45B51250704C200CCB817 /* ViewRouter.swift */,
 			);
 			path = "Multiplication exercise";
 			sourceTree = "<group>";
@@ -146,6 +142,23 @@
 				B2F45B532507088000CCB817 /* ResultView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B2F45B57250A833200CCB817 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B2F45B4D2506AC6D00CCB817 /* ExerciseViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B2F45B58250A835300CCB817 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B2F45B4F2506AD9800CCB817 /* ExerciseModel.swift */,
+				B2F45B552509B06000CCB817 /* MultiplicationProblemModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,7 +265,6 @@
 				B2F45B1B24FD7FAE00CCB817 /* AppDelegate.swift in Sources */,
 				B2F45B4E2506AC6D00CCB817 /* ExerciseViewModel.swift in Sources */,
 				B2F45B4A2506A71A00CCB817 /* ChoiceView.swift in Sources */,
-				B2F45B52250704C200CCB817 /* ViewRouter.swift in Sources */,
 				B2F45B422506A59100CCB817 /* MainView.swift in Sources */,
 				B2F45B542507088000CCB817 /* ResultView.swift in Sources */,
 				B2F45B1D24FD7FAE00CCB817 /* SceneDelegate.swift in Sources */,
