@@ -14,6 +14,17 @@
 		B2F45B2424FD7FAF00CCB817 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2F45B2324FD7FAF00CCB817 /* Preview Assets.xcassets */; };
 		B2F45B2724FD7FAF00CCB817 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2F45B2524FD7FAF00CCB817 /* LaunchScreen.storyboard */; };
 		B2F45B3224FD7FAF00CCB817 /* Multiplication_exerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B3124FD7FAF00CCB817 /* Multiplication_exerciseTests.swift */; };
+		B2F45B3E2506A46D00CCB817 /* GameRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B3D2506A46D00CCB817 /* GameRootView.swift */; };
+		B2F45B402506A54B00CCB817 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B3F2506A54B00CCB817 /* TitleView.swift */; };
+		B2F45B422506A59100CCB817 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B412506A59100CCB817 /* MainView.swift */; };
+		B2F45B462506A63400CCB817 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B452506A63300CCB817 /* ScoreView.swift */; };
+		B2F45B482506A6B100CCB817 /* QuestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B472506A6B100CCB817 /* QuestView.swift */; };
+		B2F45B4A2506A71A00CCB817 /* ChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B492506A71A00CCB817 /* ChoiceView.swift */; };
+		B2F45B4E2506AC6D00CCB817 /* ExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B4D2506AC6D00CCB817 /* ExerciseViewModel.swift */; };
+		B2F45B502506AD9800CCB817 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B4F2506AD9800CCB817 /* ExerciseModel.swift */; };
+		B2F45B52250704C200CCB817 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B51250704C200CCB817 /* ViewRouter.swift */; };
+		B2F45B542507088000CCB817 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B532507088000CCB817 /* ResultView.swift */; };
+		B2F45B562509B06000CCB817 /* MultiplicationProblemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B552509B06000CCB817 /* MultiplicationProblemModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +49,17 @@
 		B2F45B2D24FD7FAF00CCB817 /* Multiplication exerciseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Multiplication exerciseTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2F45B3124FD7FAF00CCB817 /* Multiplication_exerciseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multiplication_exerciseTests.swift; sourceTree = "<group>"; };
 		B2F45B3324FD7FAF00CCB817 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2F45B3D2506A46D00CCB817 /* GameRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRootView.swift; sourceTree = "<group>"; };
+		B2F45B3F2506A54B00CCB817 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		B2F45B412506A59100CCB817 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		B2F45B452506A63300CCB817 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
+		B2F45B472506A6B100CCB817 /* QuestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestView.swift; sourceTree = "<group>"; };
+		B2F45B492506A71A00CCB817 /* ChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceView.swift; sourceTree = "<group>"; };
+		B2F45B4D2506AC6D00CCB817 /* ExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewModel.swift; sourceTree = "<group>"; };
+		B2F45B4F2506AD9800CCB817 /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
+		B2F45B51250704C200CCB817 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
+		B2F45B532507088000CCB817 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		B2F45B552509B06000CCB817 /* MultiplicationProblemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplicationProblemModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,13 +101,17 @@
 		B2F45B1924FD7FAE00CCB817 /* Multiplication exercise */ = {
 			isa = PBXGroup;
 			children = (
+				B2F45B3C2506A3A500CCB817 /* Views */,
 				B2F45B1A24FD7FAE00CCB817 /* AppDelegate.swift */,
+				B2F45B4D2506AC6D00CCB817 /* ExerciseViewModel.swift */,
+				B2F45B4F2506AD9800CCB817 /* ExerciseModel.swift */,
+				B2F45B552509B06000CCB817 /* MultiplicationProblemModel.swift */,
 				B2F45B1C24FD7FAE00CCB817 /* SceneDelegate.swift */,
-				B2F45B1E24FD7FAE00CCB817 /* ContentView.swift */,
 				B2F45B2024FD7FAF00CCB817 /* Assets.xcassets */,
 				B2F45B2524FD7FAF00CCB817 /* LaunchScreen.storyboard */,
 				B2F45B2824FD7FAF00CCB817 /* Info.plist */,
 				B2F45B2224FD7FAF00CCB817 /* Preview Content */,
+				B2F45B51250704C200CCB817 /* ViewRouter.swift */,
 			);
 			path = "Multiplication exercise";
 			sourceTree = "<group>";
@@ -105,6 +131,21 @@
 				B2F45B3324FD7FAF00CCB817 /* Info.plist */,
 			);
 			path = "Multiplication exerciseTests";
+			sourceTree = "<group>";
+		};
+		B2F45B3C2506A3A500CCB817 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B2F45B1E24FD7FAE00CCB817 /* ContentView.swift */,
+				B2F45B3D2506A46D00CCB817 /* GameRootView.swift */,
+				B2F45B3F2506A54B00CCB817 /* TitleView.swift */,
+				B2F45B412506A59100CCB817 /* MainView.swift */,
+				B2F45B452506A63300CCB817 /* ScoreView.swift */,
+				B2F45B472506A6B100CCB817 /* QuestView.swift */,
+				B2F45B492506A71A00CCB817 /* ChoiceView.swift */,
+				B2F45B532507088000CCB817 /* ResultView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,8 +250,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2F45B1B24FD7FAE00CCB817 /* AppDelegate.swift in Sources */,
+				B2F45B4E2506AC6D00CCB817 /* ExerciseViewModel.swift in Sources */,
+				B2F45B4A2506A71A00CCB817 /* ChoiceView.swift in Sources */,
+				B2F45B52250704C200CCB817 /* ViewRouter.swift in Sources */,
+				B2F45B422506A59100CCB817 /* MainView.swift in Sources */,
+				B2F45B542507088000CCB817 /* ResultView.swift in Sources */,
 				B2F45B1D24FD7FAE00CCB817 /* SceneDelegate.swift in Sources */,
+				B2F45B502506AD9800CCB817 /* ExerciseModel.swift in Sources */,
+				B2F45B3E2506A46D00CCB817 /* GameRootView.swift in Sources */,
+				B2F45B462506A63400CCB817 /* ScoreView.swift in Sources */,
 				B2F45B1F24FD7FAE00CCB817 /* ContentView.swift in Sources */,
+				B2F45B402506A54B00CCB817 /* TitleView.swift in Sources */,
+				B2F45B482506A6B100CCB817 /* QuestView.swift in Sources */,
+				B2F45B562509B06000CCB817 /* MultiplicationProblemModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
