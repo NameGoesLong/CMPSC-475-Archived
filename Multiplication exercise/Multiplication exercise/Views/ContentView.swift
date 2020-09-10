@@ -17,9 +17,9 @@ struct ContentView: View {
                 Color.gray.edgesIgnoringSafeArea(.all)
                 
                 VStack(alignment: .trailing, spacing: 100){
-                    Text("SwiftUI Multiplication").font(.system(size: 45, weight: .bold, design: .rounded)).multilineTextAlignment(.trailing)
+                    Text("SwiftUI Multiplication").font(.system(size: 45, weight: .bold, design: .rounded)).multilineTextAlignment(.trailing).padding(20.0).background(RoundedRectangle(cornerRadius: 50).fill(Color.blue).opacity(0.2))
                     NavigationLink(destination: GameRootView()){
-                        Text("START").font(.system(size: 25, weight: .bold, design: .rounded)).background(Capsule().stroke(lineWidth: 2)) 
+                        Text("START").font(.system(size: 25, weight: .bold, design: .rounded)).padding(10.0).background(Capsule().stroke(lineWidth: 2))
                     }
                 }
             }

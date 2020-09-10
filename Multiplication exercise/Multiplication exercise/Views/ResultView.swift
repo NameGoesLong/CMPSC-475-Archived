@@ -16,7 +16,7 @@ struct ResultView: View{
     }
     var body: some View{
         VStack{
-            Text(exerciseViewModel.currentCorrectness).font(.headline).fontWeight(.bold).foregroundColor(currentCorrectnessColorBinding).multilineTextAlignment(.center).padding(.all).opacity(exerciseViewModel.isSummaryPage ? 0.0 : 1.0)
+            Text(exerciseViewModel.currentCorrectness).font(.system(size: 45, weight: .bold)).fontWeight(.bold).foregroundColor(currentCorrectnessColorBinding).multilineTextAlignment(.center).padding(.all).opacity(exerciseViewModel.isSummaryPage ? 0.0 : 1.0)
             Text(exerciseViewModel.analysis)
                 .padding(.all)
             Button(exerciseViewModel.resultButtonText){
