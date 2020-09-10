@@ -14,13 +14,14 @@ class ExerciseViewModel: ObservableObject {
     
     var multiplicand : String {String(exerciseModel.currentProblem.multiplicand)}
     var multiplier : String {String(exerciseModel.currentProblem.multiplier)}
-    //var result : String {String(exerciseModel.currentProblem.result)}
     var selection : [Int] {exerciseModel.currentProblem.selection}
     var currentPage: Bool {exerciseModel.isQuestPage}
+    var currentQuestionNumber : Int {exerciseModel.current + 1}
     var resultButtonText : String {exerciseModel.resultButtonText}
     var currentCorrectness: String {String(describing: exerciseModel.currentProblem.correctness)}
     var totalCorrectness: Int {exerciseModel.correctness}
     var analysis : String {exerciseModel.analysis}
+    var isSummaryPage : Bool {exerciseModel.isSummaryPage}
     
     var ScoreList : [String]{exerciseModel.problemSet.map{$0.computeCorrectness()}}
     

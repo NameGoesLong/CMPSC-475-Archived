@@ -19,7 +19,7 @@ struct GameRootView: View{
         MainView()
             .padding(.vertical).environmentObject(ExerciseViewModel())
         Spacer()
-        }.frame( maxWidth: .infinity, maxHeight: .infinity).background(Color.yellow.opacity(0.4)).foregroundColor(Color.pink.opacity(0.6)).navigationBarBackButtonHidden(true)
+    }.frame( maxWidth: .infinity, maxHeight: .infinity).background(Color(red: 29/255.0, green: 53/255.0, blue: 87/255.0, opacity: 0.7)).foregroundColor(Color.orange).navigationBarBackButtonHidden(true)
         .navigationBarTitle("")
         .navigationBarHidden(true)
     }

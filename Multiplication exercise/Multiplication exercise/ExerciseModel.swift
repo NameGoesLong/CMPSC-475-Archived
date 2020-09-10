@@ -8,20 +8,18 @@
 
 import Foundation
 
-enum State{
-    case summary, question, answer
-}
-
 struct ExerciseModel {
     private let QuestionRounds = 5
     private var totalPhase :Int {1 + QuestionRounds * 2}
     
     private var currentPhase = 1
-    private var current : Int
+    var current : Int
     var isQuestPage : Bool {currentPhase % 2 == 1}
     mutating func incrementPhaseCount() {
         currentPhase = (currentPhase + 1) % (totalPhase)
     }
+    
+    var isSummaryPage : Bool {currentPhase == 0}
     
     var problemSet : [MultiplicationProblemModel]
     var currentProblem : MultiplicationProblemModel {problemSet[current]}
@@ -29,7 +27,13 @@ struct ExerciseModel {
     var correctness: Int = 0
     
     var resultButtonText : String {currentPhase == 0 ? "Reset" : "Next Question"}
-    var analysis: String {"The correct answer is :" + String(currentProblem.result)}
+    var analysis: String {
+        if isSummaryPage{
+            return "You have finished all the problem(s)."
+        }else{
+            return "The correct answer is :" + String(currentProblem.result)
+        }
+    }
     
     init() {
         problemSet = [MultiplicationProblemModel]()

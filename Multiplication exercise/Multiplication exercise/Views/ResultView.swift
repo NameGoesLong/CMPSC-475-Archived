@@ -16,11 +16,13 @@ struct ResultView: View{
     }
     var body: some View{
         VStack{
-            Text(exerciseViewModel.currentCorrectness).font(.headline).fontWeight(.bold).foregroundColor(currentCorrectnessColorBinding).multilineTextAlignment(.center)
+            Text(exerciseViewModel.currentCorrectness).font(.headline).fontWeight(.bold).foregroundColor(currentCorrectnessColorBinding).multilineTextAlignment(.center).padding(.all).opacity(exerciseViewModel.isSummaryPage ? 0.0 : 1.0)
             Text(exerciseViewModel.analysis)
+                .padding(.all)
             Button(exerciseViewModel.resultButtonText){
                 self.exerciseViewModel.nextProblem()
-            }
+            } .foregroundColor(Color.white)
+                .padding(.all).background(RoundedRectangle(cornerRadius: 10, style: .continuous))
         }
         
     }

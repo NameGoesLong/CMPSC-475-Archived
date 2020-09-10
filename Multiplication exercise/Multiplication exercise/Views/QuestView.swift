@@ -11,11 +11,10 @@ import SwiftUI
 //View for showing the question
 struct QuestView: View {
     @EnvironmentObject var exerciseViewModel : ExerciseViewModel
-    var problemId : Int = 3
     
     var body: some View{
         VStack{
-            Text("Problem \(problemId)")
+            Text("Problem \(exerciseViewModel.currentQuestionNumber)")
             VStack(alignment: .trailing){
                 Text(exerciseViewModel.multiplier)
                 Text("X \(exerciseViewModel.multiplicand)")

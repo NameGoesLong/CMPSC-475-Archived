@@ -14,7 +14,9 @@ struct ChoiceView: View{
     var body: some View{
         HStack{
             ForEach(exerciseViewModel.selection, id: \.self){ choice in
-                Button("\(choice)"){self.exerciseViewModel.getSelectedAnswer(choice)}.padding(.all, 10.0).background(RoundedRectangle(cornerRadius: 15).fill(Color.blue).opacity(0.5)).foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
+                Button("\(choice)"){self.exerciseViewModel.getSelectedAnswer(choice)}
+                    .frame(width: 32.0)
+                    .padding().background(RoundedRectangle(cornerRadius: 10, style: .continuous).fill(Color.gray).opacity(0.2))
             }
             .padding(.top)
         }
