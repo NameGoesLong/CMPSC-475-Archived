@@ -20,10 +20,12 @@
 		B2F45B462506A63400CCB817 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B452506A63300CCB817 /* ScoreView.swift */; };
 		B2F45B482506A6B100CCB817 /* QuestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B472506A6B100CCB817 /* QuestView.swift */; };
 		B2F45B4A2506A71A00CCB817 /* ChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B492506A71A00CCB817 /* ChoiceView.swift */; };
-		B2F45B4E2506AC6D00CCB817 /* ExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B4D2506AC6D00CCB817 /* ExerciseViewModel.swift */; };
 		B2F45B502506AD9800CCB817 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B4F2506AD9800CCB817 /* ExerciseModel.swift */; };
 		B2F45B542507088000CCB817 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B532507088000CCB817 /* ResultView.swift */; };
 		B2F45B562509B06000CCB817 /* MultiplicationProblemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B552509B06000CCB817 /* MultiplicationProblemModel.swift */; };
+		B2F45B5A250EDC4000CCB817 /* PreferenceButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B59250EDC4000CCB817 /* PreferenceButtonView.swift */; };
+		B2F45B5C250EEFB000CCB817 /* PreferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B5B250EEFB000CCB817 /* PreferenceView.swift */; };
+		B2F45B5E250FEF0800CCB817 /* PreferenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B5D250FEF0700CCB817 /* PreferenceModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,10 +56,12 @@
 		B2F45B452506A63300CCB817 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		B2F45B472506A6B100CCB817 /* QuestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestView.swift; sourceTree = "<group>"; };
 		B2F45B492506A71A00CCB817 /* ChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceView.swift; sourceTree = "<group>"; };
-		B2F45B4D2506AC6D00CCB817 /* ExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewModel.swift; sourceTree = "<group>"; };
 		B2F45B4F2506AD9800CCB817 /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
 		B2F45B532507088000CCB817 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		B2F45B552509B06000CCB817 /* MultiplicationProblemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplicationProblemModel.swift; sourceTree = "<group>"; };
+		B2F45B59250EDC4000CCB817 /* PreferenceButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceButtonView.swift; sourceTree = "<group>"; };
+		B2F45B5B250EEFB000CCB817 /* PreferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceView.swift; sourceTree = "<group>"; };
+		B2F45B5D250FEF0700CCB817 /* PreferenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +104,6 @@
 			isa = PBXGroup;
 			children = (
 				B2F45B58250A835300CCB817 /* Model */,
-				B2F45B57250A833200CCB817 /* ViewModel */,
 				B2F45B3C2506A3A500CCB817 /* Views */,
 				B2F45B1A24FD7FAE00CCB817 /* AppDelegate.swift */,
 				B2F45B1C24FD7FAE00CCB817 /* SceneDelegate.swift */,
@@ -140,16 +143,10 @@
 				B2F45B472506A6B100CCB817 /* QuestView.swift */,
 				B2F45B492506A71A00CCB817 /* ChoiceView.swift */,
 				B2F45B532507088000CCB817 /* ResultView.swift */,
+				B2F45B59250EDC4000CCB817 /* PreferenceButtonView.swift */,
+				B2F45B5B250EEFB000CCB817 /* PreferenceView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		B2F45B57250A833200CCB817 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				B2F45B4D2506AC6D00CCB817 /* ExerciseViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B2F45B58250A835300CCB817 /* Model */ = {
@@ -157,6 +154,7 @@
 			children = (
 				B2F45B4F2506AD9800CCB817 /* ExerciseModel.swift */,
 				B2F45B552509B06000CCB817 /* MultiplicationProblemModel.swift */,
+				B2F45B5D250FEF0700CCB817 /* PreferenceModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -263,11 +261,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2F45B1B24FD7FAE00CCB817 /* AppDelegate.swift in Sources */,
-				B2F45B4E2506AC6D00CCB817 /* ExerciseViewModel.swift in Sources */,
 				B2F45B4A2506A71A00CCB817 /* ChoiceView.swift in Sources */,
 				B2F45B422506A59100CCB817 /* MainView.swift in Sources */,
+				B2F45B5C250EEFB000CCB817 /* PreferenceView.swift in Sources */,
 				B2F45B542507088000CCB817 /* ResultView.swift in Sources */,
+				B2F45B5A250EDC4000CCB817 /* PreferenceButtonView.swift in Sources */,
 				B2F45B1D24FD7FAE00CCB817 /* SceneDelegate.swift in Sources */,
+				B2F45B5E250FEF0800CCB817 /* PreferenceModel.swift in Sources */,
 				B2F45B502506AD9800CCB817 /* ExerciseModel.swift in Sources */,
 				B2F45B3E2506A46D00CCB817 /* GameRootView.swift in Sources */,
 				B2F45B462506A63400CCB817 /* ScoreView.swift in Sources */,

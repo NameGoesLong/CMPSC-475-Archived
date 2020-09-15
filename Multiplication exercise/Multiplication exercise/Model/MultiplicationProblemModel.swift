@@ -21,10 +21,34 @@ struct MultiplicationProblemModel{
     var selection : [Int] {generateSelections(result)}
     var correctness : Correctness
     
-    init() {
-        multiplicand = Int.random(in: 1...15)
-        multiplier = Int.random(in: 1...15)
-        result = multiplicand * multiplier
+    init(_ operation: Operation, _ difficulty: Difficulty) {
+        if operation == .addition{
+            switch difficulty {
+            case .easy:
+                multiplicand = Int.random(in: 1...10)
+                multiplier = Int.random(in: 1...10)
+            case .normal:
+                multiplicand = Int.random(in: 7...99)
+                multiplier = Int.random(in: 7...99)
+            case .difficult:
+                multiplicand = Int.random(in: 50...999)
+                multiplier = Int.random(in: 50...999)
+            }
+            result = multiplicand + multiplier
+        }else{
+            switch difficulty {
+            case .easy:
+                multiplicand = Int.random(in: 1...10)
+                multiplier = Int.random(in: 1...10)
+            case .normal:
+                multiplicand = Int.random(in: 7...15)
+                multiplier = Int.random(in: 7...15)
+            case .difficult:
+                multiplicand = Int.random(in: 12...30)
+                multiplier = Int.random(in: 12...30)
+            }
+            result = multiplicand * multiplier
+        }
         correctness = .pending
     }
     

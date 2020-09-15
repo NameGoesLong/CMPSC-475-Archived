@@ -10,17 +10,18 @@ import SwiftUI
 
 //View for showing the question
 struct QuestView: View {
-    @EnvironmentObject var exerciseViewModel : ExerciseViewModel
+    @Binding var exerciseModel : ExerciseModel
+    @Binding var isQuestPage :Bool
     
     var body: some View{
         VStack{
-            Text("Problem \(exerciseViewModel.currentQuestionNumber)")
+            Text("Problem \(exerciseModel.currentQuestionNumber)")
             VStack(alignment: .trailing){
-                Text(exerciseViewModel.multiplier)
-                Text("X \(exerciseViewModel.multiplicand)")
+                Text(exerciseModel.current_multiplicand)
+                Text("\(exerciseModel.exercise_operator) \(exerciseModel.current_multiplier)")
             }.padding(.top).font(.largeTitle)
             Rectangle().frame(width: 100.0, height: 7.0)
-            ChoiceView().environmentObject(exerciseViewModel)
+            ChoiceView(exerciseModel: $exerciseModel, isQuestPage: $isQuestPage)
         }
     }
 }

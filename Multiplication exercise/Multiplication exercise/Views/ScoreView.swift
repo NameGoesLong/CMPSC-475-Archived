@@ -9,16 +9,16 @@
 import SwiftUI
 
 struct ScoreView: View {
-    @EnvironmentObject var exerciseViewModel : ExerciseViewModel
+    @Binding var exerciseModel : ExerciseModel
     var body: some View{
         VStack{
             HStack{
-                ForEach(exerciseViewModel.ScoreList, id: \.self){i in
+                ForEach(exerciseModel.ScoreList, id: \.self){i in
                     Text(i)
                 }.padding(2.0).background(Circle().fill(Color.gray).opacity(0.4))
             }
             .padding(.vertical)
-            Text("\(exerciseViewModel.totalCorrectness)/5")
+            Text("\(exerciseModel.correctness)/\(exerciseModel.QuestionRounds)")
                 .padding(.vertical)
             
         }

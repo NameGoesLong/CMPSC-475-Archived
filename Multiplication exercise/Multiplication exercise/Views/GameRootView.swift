@@ -11,13 +11,15 @@ import SwiftUI
 
 struct GameRootView: View{
     //@EnvironmentObject var exerciseViewModel : ExerciseViewModel
+    @State private var exerciseModel  = ExerciseModel()
     var body: some View {
     VStack(alignment: .center){
         Spacer()
         TitleView()
+        PreferenceButtonView(exerciseModel: $exerciseModel)
         Spacer()
-        MainView()
-            .padding(.vertical).environmentObject(ExerciseViewModel())
+        MainView(exerciseModel: $exerciseModel)
+            .padding(.vertical)
         Spacer()
     }.frame( maxWidth: .infinity, maxHeight: .infinity).background(Color(red: 29/255.0, green: 53/255.0, blue: 87/255.0, opacity: 0.7)).foregroundColor(Color.orange).navigationBarBackButtonHidden(true)
         .navigationBarTitle("")

@@ -10,15 +10,16 @@ import SwiftUI
 
 
 struct MainView: View {
-    @EnvironmentObject var exerciseViewModel : ExerciseViewModel
+    @Binding var exerciseModel : ExerciseModel
+    @State private var isQuestPage = true
     
     var body: some View{
         VStack{
-            ScoreView()
-                .padding(.vertical).environmentObject(exerciseViewModel)
+            ScoreView(exerciseModel: $exerciseModel)
+                .padding(.vertical)
             ZStack{
-                QuestView().padding(.top).environmentObject(exerciseViewModel).opacity(exerciseViewModel.currentPage ? 1.0 : 0.0).disabled(exerciseViewModel.currentPage ? false : true)
-                ResultView().environmentObject(exerciseViewModel).opacity(exerciseViewModel.currentPage ? 0.0 : 1.0).disabled(exerciseViewModel.currentPage ? true : false)
+                QuestView(exerciseModel: $exerciseModel, isQuestPage: $isQuestPage).padding(.top).opacity(isQuestPage ? 1.0 : 0.0).disabled(isQuestPage ? false : true)
+                ResultView(exerciseModel: $exerciseModel, isQuestPage: $isQuestPage).opacity(isQuestPage ? 0.0 : 1.0).disabled(isQuestPage ? true : false)
             }
             
         }
