@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Multiplication_exercise
+//@testable import Multiplication_exercise
 
 class Multiplication_exerciseTests: XCTestCase {
 
