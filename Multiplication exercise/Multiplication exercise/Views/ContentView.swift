@@ -16,9 +16,9 @@ struct ContentView: View {
                 Color.gray.edgesIgnoringSafeArea(.all)
                 
                 VStack(alignment: .trailing, spacing: 100){
-                    Text(ViewConstants.title).font(.system(size: 45, weight: .bold, design: .rounded)).multilineTextAlignment(.trailing).padding(20.0).background(RoundedRectangle(cornerRadius: 50).fill(Color.blue).opacity(0.2))
+                    Text(ViewConstants.title).font(.system(size: 45, weight: .bold, design: .rounded)).multilineTextAlignment(.center).padding(20.0).background(RoundedRectangle(cornerRadius: 50).fill(Color.blue).opacity(0.2))
                     NavigationLink(destination: GameRootView()){
-                        Text("START").font(.system(size: 25, weight: .bold, design: .rounded)).padding(10.0).background(Capsule().stroke(lineWidth: 2))
+                        Text(ViewConstants.startButtonText).font(.system(size: 25, weight: .bold, design: .rounded)).padding(10.0).background(Capsule().stroke(lineWidth: 2))
                     }
                 }
             }

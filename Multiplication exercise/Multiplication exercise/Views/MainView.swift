@@ -14,7 +14,7 @@ struct MainView: View {
     
     var body: some View{
         VStack{
-            ScoreView(exerciseModel: $exerciseModel)
+            ScoreView(exerciseModel: exerciseModel)
                 .padding(.vertical)
             ZStack{
                 QuestView(exerciseModel: $exerciseModel).padding(.top).opacity(exerciseModel.exerciseViewState == .question ? 1.0 : 0.0).disabled(exerciseModel.exerciseViewState == .question ? false : true)

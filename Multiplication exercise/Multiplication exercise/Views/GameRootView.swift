@@ -31,18 +31,3 @@ struct GameRootView: View{
     }
 }
 
-
-//Not used in Homework1
-struct JudgeView: View{
-    let result : Int
-    var body: some View{
-        VStack{
-            if(result == 1){
-                Text("Correct!")
-            }else{
-                Text("Wrong!")
-            }
-            Button("Next question"){}
-        }
-    }
-}

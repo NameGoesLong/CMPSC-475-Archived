@@ -15,6 +15,7 @@ struct ViewConstants {
     static let summary: String = "You have finished all the problem(s)."
     static let resultButtonText : String = "Next Question"
     static let summaryButtonText : String = "Reset"
+    static let startButtonText : String = "START"
     
     //Color constants
     static let backgroundColor = Color.init(red: 29/255.0, green: 53/255.0, blue: 87/255.0, opacity: 0.7)

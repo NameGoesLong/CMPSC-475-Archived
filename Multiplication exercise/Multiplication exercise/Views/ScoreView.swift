@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ScoreView: View {
-    @Binding var exerciseModel : ExerciseModel
+    let exerciseModel : ExerciseModel
     var body: some View{
         VStack{
             HStack{
