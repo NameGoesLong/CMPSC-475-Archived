@@ -11,7 +11,7 @@ import SwiftUI
 //View for showing the question
 struct QuestView: View {
     @Binding var exerciseModel : ExerciseModel
-    @Binding var isQuestPage :Bool
+    //@Binding var isQuestPage :Bool
     
     var body: some View{
         VStack{
@@ -21,7 +21,7 @@ struct QuestView: View {
                 Text("\(exerciseModel.exercise_operator) \(exerciseModel.current_multiplier)")
             }.padding(.top).font(.largeTitle)
             Rectangle().frame(width: 100.0, height: 7.0)
-            ChoiceView(exerciseModel: $exerciseModel, isQuestPage: $isQuestPage)
+            ChoiceView(exerciseModel: $exerciseModel)
         }
     }
 }

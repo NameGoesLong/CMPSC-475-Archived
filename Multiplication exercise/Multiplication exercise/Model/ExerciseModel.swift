@@ -8,21 +8,32 @@
 
 import Foundation
 
+enum ExerciseViewState{
+    case question, result, summary
+}
+
 struct ExerciseModel {
     var QuestionRounds : Int
-    private var totalPhase :Int {1 + QuestionRounds * 2}
-    
     private var currentPhase = 1
     var current : Int
-    //var isQuestPage : Bool {currentPhase % 2 == 1}
-    var currentQuestionNumber : Int {current + 1}
-    mutating func incrementPhaseCount() {
-        currentPhase = (currentPhase + 1) % (totalPhase)
-    }
+    var currentQuestionNumber : Int {currentProblem.id}
+
     
     var preference_item : PreferenceModel = PreferenceModel(){
         didSet{
             resetProblemSet()
+        }
+    }
+    
+    var exerciseViewState : ExerciseViewState {
+        if isSummaryPage{
+            return .summary
+        }else{
+            if currentProblem.correctness == .pending{
+                return .question
+            }else{
+                return .result
+            }
         }
     }
     
@@ -32,19 +43,19 @@ struct ExerciseModel {
     var current_multiplier : String {String(currentProblem.multiplier)}
     var selection : [Int] {currentProblem.selection}
     var exercise_operator : String {
-    if preference_item.operation == .addition{
-        return "+"
-    }else{
-        return "X"
-    }
+        if preference_item.operation == .addition{
+            return "+"
+        }else{
+            return "X"
+        }
     }
     
-    var correctness: Int
+    var correctCount: Int {ScoreList.count(for: "✔️")}
     var currentCorrectness: String {String(describing: currentProblem.correctness)}
     var ScoreList : [String]{problemSet.map{$0.computeCorrectness()}}
     
-    //Change the output of the view accodring to the page it should show
-    var isSummaryPage : Bool {currentPhase == 0}
+    //Change the output of the view according to the page it should show
+    var isSummaryPage : Bool
     var resultButtonText : String {isSummaryPage ? "Reset" : "Next Question"}
     var analysis: String {
         if isSummaryPage{
@@ -58,39 +69,34 @@ struct ExerciseModel {
     init() {
         problemSet = [MultiplicationProblemModel]()
         QuestionRounds = preference_item.QuestionRounds
-        for _ in(0..<QuestionRounds) {
-            problemSet.append(MultiplicationProblemModel(preference_item.operation, preference_item.difficulty))
+        for i in(0..<QuestionRounds) {
+            problemSet.append(MultiplicationProblemModel(i + 1, preference_item.operation, preference_item.difficulty))
         }
+        isSummaryPage = false
         current = 0
-        correctness = 0
     }
     
-    //mutating func resetProblemSet(){self = ExerciseModel()}     //This is the easiest wat of resetting all the data
     mutating func resetProblemSet(){
         problemSet = [MultiplicationProblemModel]()
         QuestionRounds = preference_item.QuestionRounds
-        for _ in(0..<QuestionRounds) {
-            problemSet.append(MultiplicationProblemModel(preference_item.operation, preference_item.difficulty))
+        for i in(0..<QuestionRounds) {
+            problemSet.append(MultiplicationProblemModel(i + 1, preference_item.operation, preference_item.difficulty))
         }
         current = 0
-        correctness = 0
         currentPhase = 1
+        isSummaryPage = false
     }
     
     mutating func getNextProblem(){
-        if currentPhase == 0{
-            resetProblemSet()   //call init() if the program goes to another round
-        }else{
-            incrementPhaseCount()
+        if current == QuestionRounds - 1 && currentProblem.correctness != .pending{
+            isSummaryPage.toggle()
         }
-        current = Int(self.currentPhase / 2)        //Calculate the problem number only when we are trying to get the next problem
+        current = (current + 1) % QuestionRounds        //Calculate the problem number only when we are trying to get the next problem
     }
     
     
     mutating func checkCorrectness(_ Answer: Int){
-        incrementPhaseCount()
         if Answer == currentProblem.result{
-            correctness = correctness + 1
             problemSet[current].correctness = .correct
         }else{
             problemSet[current].correctness = .wrong

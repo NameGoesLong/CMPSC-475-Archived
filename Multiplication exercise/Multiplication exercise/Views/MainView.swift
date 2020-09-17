@@ -11,17 +11,17 @@ import SwiftUI
 
 struct MainView: View {
     @Binding var exerciseModel : ExerciseModel
-    @State private var isQuestPage = true
+    //@State private var isQuestPage = true
     
     var body: some View{
         VStack{
             ScoreView(exerciseModel: $exerciseModel)
                 .padding(.vertical)
             ZStack{
-                QuestView(exerciseModel: $exerciseModel, isQuestPage: $isQuestPage).padding(.top).opacity(isQuestPage ? 1.0 : 0.0).disabled(isQuestPage ? false : true)
-                ResultView(exerciseModel: $exerciseModel, isQuestPage: $isQuestPage).opacity(isQuestPage ? 0.0 : 1.0).disabled(isQuestPage ? true : false)
+                QuestView(exerciseModel: $exerciseModel).padding(.top).opacity(exerciseModel.exerciseViewState == .question ? 1.0 : 0.0).disabled(exerciseModel.exerciseViewState == .question ? false : true)
+                ResultView(exerciseModel: $exerciseModel).opacity(exerciseModel.exerciseViewState == .result ? 1.0 : 0.0).disabled(exerciseModel.exerciseViewState == .result ? false : true)
+                SummaryView(exerciseModel: $exerciseModel).opacity(exerciseModel.exerciseViewState == .summary ? 1.0 : 0.0).disabled(exerciseModel.exerciseViewState == .summary ? false : true)
             }
-            
         }
     }
 }

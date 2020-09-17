@@ -11,8 +11,6 @@ import SwiftUI
 struct PreferenceButtonView : View {
     @State private var isShowingPreference = false
     @Binding var exerciseModel : ExerciseModel
-//    var themes : Themes
-//    @Binding var selectedThemeIndex : Int
     
     var body: some View {
    

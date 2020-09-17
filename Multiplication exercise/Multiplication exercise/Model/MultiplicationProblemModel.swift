@@ -15,13 +15,15 @@ enum Correctness{
 //This is the model of a single multiplication problem
 struct MultiplicationProblemModel{
     private let selectionNumber = 4
+    var id : Int
     var multiplicand : Int
     var multiplier : Int
     var result : Int
     var selection : [Int] {generateSelections(result)}
     var correctness : Correctness
     
-    init(_ operation: Operation, _ difficulty: Difficulty) {
+    init(_ id: Int, _ operation: Operation, _ difficulty: Difficulty) {
+        self.id = id
         if operation == .addition{
             switch difficulty {
             case .easy:

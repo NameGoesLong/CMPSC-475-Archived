@@ -18,7 +18,7 @@ struct ScoreView: View {
                 }.padding(2.0).background(Circle().fill(Color.gray).opacity(0.4))
             }
             .padding(.vertical)
-            Text("\(exerciseModel.correctness)/\(exerciseModel.QuestionRounds)")
+            Text("\(exerciseModel.correctCount)/\(exerciseModel.QuestionRounds)")
                 .padding(.vertical)
             
         }
