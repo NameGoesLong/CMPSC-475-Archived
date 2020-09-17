@@ -13,20 +13,20 @@ enum ExerciseViewState{
 }
 
 struct ExerciseModel {
+    // Model data
     var QuestionRounds : Int
-    private var currentPhase = 1
     var current : Int
-    var currentQuestionNumber : Int {currentProblem.id}
+    var isRedirectingToSummaryPage : Bool
+    var problemSet : [ArthimeticProblemModel]
 
-    
-    var preference_item : PreferenceModel = PreferenceModel(){
+    var exercisePreferenceSetting : PreferenceModel = PreferenceModel(){
         didSet{
             resetProblemSet()
         }
     }
     
     var exerciseViewState : ExerciseViewState {
-        if isSummaryPage{
+        if isRedirectingToSummaryPage{
             return .summary
         }else{
             if currentProblem.correctness == .pending{
@@ -37,61 +37,50 @@ struct ExerciseModel {
         }
     }
     
-    var problemSet : [MultiplicationProblemModel]
-    var currentProblem : MultiplicationProblemModel {problemSet[current]}
-    var current_multiplicand : String {String(currentProblem.multiplicand)}
-    var current_multiplier : String {String(currentProblem.multiplier)}
-    var selection : [Int] {currentProblem.selection}
-    var exercise_operator : String {
-        if preference_item.operation == .addition{
-            return "+"
-        }else{
-            return "X"
-        }
-    }
     
-    var correctCount: Int {ScoreList.count(for: "✔️")}
+    // Helper variables for Views
+    var problemSetOperation : String {exercisePreferenceSetting.operation.rawValue}
+    var problemSetDifficulty : String {exercisePreferenceSetting.difficulty.rawValue}
+    var currentProblem : ArthimeticProblemModel {problemSet[current]}
+    var currentQuestionNumber : Int {currentProblem.id}
+    var currentFirstVariable : String {String(currentProblem.firstVariable)}
+    var currentSecondVariable : String {String(currentProblem.secondVariable)}
+    var currentProblemSelections : [Int] {currentProblem.selection}
+    var currentExerciseOperator : String {return exercisePreferenceSetting.operation == .addition ? "+" : "X"}
+    
+    var correctCount: Int {scoreList.count(for: "✔️")}
     var currentCorrectness: String {String(describing: currentProblem.correctness)}
-    var ScoreList : [String]{problemSet.map{$0.computeCorrectness()}}
+    var scoreList : [String]{problemSet.map{$0.computeCorrectness()}}
     
-    //Change the output of the view according to the page it should show
-    var isSummaryPage : Bool
-    var resultButtonText : String {isSummaryPage ? "Reset" : "Next Question"}
-    var analysis: String {
-        if isSummaryPage{
-            return "You have finished all the problem(s)."
-        }else{
-            return "The correct answer is :" + String(currentProblem.result)
-        }
-    }
+    var currentProblemAnalysis: String {"The correct answer is :" + String(currentProblem.result)}
     
-    //initialize the problem set for another round
+    
     init() {
-        problemSet = [MultiplicationProblemModel]()
-        QuestionRounds = preference_item.QuestionRounds
+        problemSet = [ArthimeticProblemModel]()
+        QuestionRounds = exercisePreferenceSetting.QuestionRounds
         for i in(0..<QuestionRounds) {
-            problemSet.append(MultiplicationProblemModel(i + 1, preference_item.operation, preference_item.difficulty))
+            problemSet.append(ArthimeticProblemModel(i + 1, exercisePreferenceSetting.operation, exercisePreferenceSetting.difficulty))
         }
-        isSummaryPage = false
+        isRedirectingToSummaryPage = false
         current = 0
     }
     
+    // Reset the problem set for another round
     mutating func resetProblemSet(){
-        problemSet = [MultiplicationProblemModel]()
-        QuestionRounds = preference_item.QuestionRounds
+        problemSet = [ArthimeticProblemModel]()
+        QuestionRounds = exercisePreferenceSetting.QuestionRounds
         for i in(0..<QuestionRounds) {
-            problemSet.append(MultiplicationProblemModel(i + 1, preference_item.operation, preference_item.difficulty))
+            problemSet.append(ArthimeticProblemModel(i + 1, exercisePreferenceSetting.operation, exercisePreferenceSetting.difficulty))
         }
+        isRedirectingToSummaryPage = false
         current = 0
-        currentPhase = 1
-        isSummaryPage = false
     }
     
     mutating func getNextProblem(){
         if current == QuestionRounds - 1 && currentProblem.correctness != .pending{
-            isSummaryPage.toggle()
+            isRedirectingToSummaryPage.toggle()
         }
-        current = (current + 1) % QuestionRounds        //Calculate the problem number only when we are trying to get the next problem
+        current = (current + 1) % QuestionRounds
     }
     
     

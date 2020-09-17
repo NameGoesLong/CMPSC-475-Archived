@@ -22,13 +22,14 @@
 		B2F45B4A2506A71A00CCB817 /* ChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B492506A71A00CCB817 /* ChoiceView.swift */; };
 		B2F45B502506AD9800CCB817 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B4F2506AD9800CCB817 /* ExerciseModel.swift */; };
 		B2F45B542507088000CCB817 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B532507088000CCB817 /* ResultView.swift */; };
-		B2F45B562509B06000CCB817 /* MultiplicationProblemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B552509B06000CCB817 /* MultiplicationProblemModel.swift */; };
+		B2F45B562509B06000CCB817 /* ArthimeticProblemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B552509B06000CCB817 /* ArthimeticProblemModel.swift */; };
 		B2F45B5A250EDC4000CCB817 /* PreferenceButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B59250EDC4000CCB817 /* PreferenceButtonView.swift */; };
 		B2F45B5C250EEFB000CCB817 /* PreferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B5B250EEFB000CCB817 /* PreferenceView.swift */; };
 		B2F45B5E250FEF0800CCB817 /* PreferenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B5D250FEF0700CCB817 /* PreferenceModel.swift */; };
 		B2F45B60251283A300CCB817 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B5F251283A300CCB817 /* SummaryView.swift */; };
 		B2F45B62251296DC00CCB817 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B61251296DC00CCB817 /* ViewConstants.swift */; };
 		B2F45B642512D47E00CCB817 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B632512D47E00CCB817 /* Extension.swift */; };
+		B2F45B672512F4CE00CCB817 /* DefaultButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F45B662512F4CE00CCB817 /* DefaultButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B2F45B1724FD7FAE00CCB817 /* Multiplication exercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Multiplication exercise.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2F45B1724FD7FAE00CCB817 /* ArthimeticExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArthimeticExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2F45B1A24FD7FAE00CCB817 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2F45B1C24FD7FAE00CCB817 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B2F45B1E24FD7FAE00CCB817 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,13 +62,14 @@
 		B2F45B492506A71A00CCB817 /* ChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceView.swift; sourceTree = "<group>"; };
 		B2F45B4F2506AD9800CCB817 /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
 		B2F45B532507088000CCB817 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
-		B2F45B552509B06000CCB817 /* MultiplicationProblemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplicationProblemModel.swift; sourceTree = "<group>"; };
+		B2F45B552509B06000CCB817 /* ArthimeticProblemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArthimeticProblemModel.swift; sourceTree = "<group>"; };
 		B2F45B59250EDC4000CCB817 /* PreferenceButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceButtonView.swift; sourceTree = "<group>"; };
 		B2F45B5B250EEFB000CCB817 /* PreferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceView.swift; sourceTree = "<group>"; };
 		B2F45B5D250FEF0700CCB817 /* PreferenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceModel.swift; sourceTree = "<group>"; };
 		B2F45B5F251283A300CCB817 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		B2F45B61251296DC00CCB817 /* ViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConstants.swift; sourceTree = "<group>"; };
 		B2F45B632512D47E00CCB817 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		B2F45B662512F4CE00CCB817 /* DefaultButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +102,7 @@
 		B2F45B1824FD7FAE00CCB817 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B2F45B1724FD7FAE00CCB817 /* Multiplication exercise.app */,
+				B2F45B1724FD7FAE00CCB817 /* ArthimeticExercise.app */,
 				B2F45B2D24FD7FAF00CCB817 /* Multiplication exerciseTests.xctest */,
 			);
 			name = Products;
@@ -109,6 +111,7 @@
 		B2F45B1924FD7FAE00CCB817 /* Multiplication exercise */ = {
 			isa = PBXGroup;
 			children = (
+				B2F45B652512F49B00CCB817 /* ViewConstants */,
 				B2F45B58250A835300CCB817 /* Model */,
 				B2F45B3C2506A3A500CCB817 /* Views */,
 				B2F45B1A24FD7FAE00CCB817 /* AppDelegate.swift */,
@@ -152,7 +155,6 @@
 				B2F45B59250EDC4000CCB817 /* PreferenceButtonView.swift */,
 				B2F45B5B250EEFB000CCB817 /* PreferenceView.swift */,
 				B2F45B5F251283A300CCB817 /* SummaryView.swift */,
-				B2F45B61251296DC00CCB817 /* ViewConstants.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -161,11 +163,20 @@
 			isa = PBXGroup;
 			children = (
 				B2F45B4F2506AD9800CCB817 /* ExerciseModel.swift */,
-				B2F45B552509B06000CCB817 /* MultiplicationProblemModel.swift */,
+				B2F45B552509B06000CCB817 /* ArthimeticProblemModel.swift */,
 				B2F45B5D250FEF0700CCB817 /* PreferenceModel.swift */,
 				B2F45B632512D47E00CCB817 /* Extension.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B2F45B652512F49B00CCB817 /* ViewConstants */ = {
+			isa = PBXGroup;
+			children = (
+				B2F45B61251296DC00CCB817 /* ViewConstants.swift */,
+				B2F45B662512F4CE00CCB817 /* DefaultButtonStyle.swift */,
+			);
+			path = ViewConstants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,7 +196,7 @@
 			);
 			name = "Multiplication exercise";
 			productName = "Multiplication exercise";
-			productReference = B2F45B1724FD7FAE00CCB817 /* Multiplication exercise.app */;
+			productReference = B2F45B1724FD7FAE00CCB817 /* ArthimeticExercise.app */;
 			productType = "com.apple.product-type.application";
 		};
 		B2F45B2C24FD7FAF00CCB817 /* Multiplication exerciseTests */ = {
@@ -282,11 +293,12 @@
 				B2F45B502506AD9800CCB817 /* ExerciseModel.swift in Sources */,
 				B2F45B3E2506A46D00CCB817 /* GameRootView.swift in Sources */,
 				B2F45B62251296DC00CCB817 /* ViewConstants.swift in Sources */,
+				B2F45B672512F4CE00CCB817 /* DefaultButtonStyle.swift in Sources */,
 				B2F45B462506A63400CCB817 /* ScoreView.swift in Sources */,
 				B2F45B1F24FD7FAE00CCB817 /* ContentView.swift in Sources */,
 				B2F45B402506A54B00CCB817 /* TitleView.swift in Sources */,
 				B2F45B482506A6B100CCB817 /* QuestView.swift in Sources */,
-				B2F45B562509B06000CCB817 /* MultiplicationProblemModel.swift in Sources */,
+				B2F45B562509B06000CCB817 /* ArthimeticProblemModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,14 +452,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Multiplication exercise/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Multiplication exercise/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "PSU.Multiplication-exercise";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "PSU.Arthimetic-exercise";
+				PRODUCT_NAME = ArthimeticExercise;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -459,14 +472,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Multiplication exercise/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Multiplication exercise/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "PSU.Multiplication-exercise";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "PSU.Arthimetic-exercise";
+				PRODUCT_NAME = ArthimeticExercise;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

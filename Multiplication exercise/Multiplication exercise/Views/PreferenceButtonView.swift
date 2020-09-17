@@ -22,7 +22,7 @@ struct PreferenceButtonView : View {
                 .foregroundColor(.black)
                 .padding(10)
         }.sheet(isPresented: $isShowingPreference) {
-            PreferenceView(isShowingPreference: self.$isShowingPreference, questionNumber: self.$exerciseModel.preference_item.QuestionRounds, preference: self.$exerciseModel.preference_item)
+            PreferenceView(isShowingPreference: self.$isShowingPreference, questionNumber: self.$exerciseModel.exercisePreferenceSetting.QuestionRounds, preference: self.$exerciseModel.exercisePreferenceSetting)
             
         }
         

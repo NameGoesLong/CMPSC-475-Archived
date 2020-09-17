@@ -13,11 +13,11 @@ enum Correctness{
 }
 
 //This is the model of a single multiplication problem
-struct MultiplicationProblemModel{
+struct ArthimeticProblemModel{
     private let selectionNumber = 4
     var id : Int
-    var multiplicand : Int
-    var multiplier : Int
+    var firstVariable : Int
+    var secondVariable : Int
     var result : Int
     var selection : [Int] {generateSelections(result)}
     var correctness : Correctness
@@ -27,29 +27,29 @@ struct MultiplicationProblemModel{
         if operation == .addition{
             switch difficulty {
             case .easy:
-                multiplicand = Int.random(in: 1...10)
-                multiplier = Int.random(in: 1...10)
+                firstVariable = Int.random(in: 1...10)
+                secondVariable = Int.random(in: 1...10)
             case .normal:
-                multiplicand = Int.random(in: 7...99)
-                multiplier = Int.random(in: 7...99)
+                firstVariable = Int.random(in: 7...99)
+                secondVariable = Int.random(in: 7...99)
             case .difficult:
-                multiplicand = Int.random(in: 50...999)
-                multiplier = Int.random(in: 50...999)
+                firstVariable = Int.random(in: 50...999)
+                secondVariable = Int.random(in: 50...999)
             }
-            result = multiplicand + multiplier
+            result = firstVariable + secondVariable
         }else{
             switch difficulty {
             case .easy:
-                multiplicand = Int.random(in: 1...10)
-                multiplier = Int.random(in: 1...10)
+                firstVariable = Int.random(in: 1...10)
+                secondVariable = Int.random(in: 1...10)
             case .normal:
-                multiplicand = Int.random(in: 7...15)
-                multiplier = Int.random(in: 7...15)
+                firstVariable = Int.random(in: 7...15)
+                secondVariable = Int.random(in: 7...15)
             case .difficult:
-                multiplicand = Int.random(in: 12...30)
-                multiplier = Int.random(in: 12...30)
+                firstVariable = Int.random(in: 12...30)
+                secondVariable = Int.random(in: 12...30)
             }
-            result = multiplicand * multiplier
+            result = firstVariable * secondVariable
         }
         correctness = .pending
     }

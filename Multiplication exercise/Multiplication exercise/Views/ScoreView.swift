@@ -13,7 +13,7 @@ struct ScoreView: View {
     var body: some View{
         VStack{
             HStack{
-                ForEach(exerciseModel.ScoreList, id: \.self){i in
+                ForEach(exerciseModel.scoreList, id: \.self){i in
                     Text(i)
                 }.padding(2.0).background(Circle().fill(Color.gray).opacity(0.4))
             }

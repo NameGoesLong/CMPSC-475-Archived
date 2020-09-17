@@ -10,23 +10,18 @@ import SwiftUI
 
 struct ResultView: View{
     @Binding var exerciseModel : ExerciseModel
-    //@Binding var isQuestPage : Bool
-    
-    var currentCorrectnessColorBinding : Color {
-        exerciseModel.currentCorrectness == "correct" ? Color.green : Color.red
+    private var currentCorrectnessColorBinding : Color {
+        exerciseModel.currentCorrectness == "correct" ? ViewConstants.approveColor : ViewConstants.denyColor
     }
+    
     var body: some View{
         VStack{
-            Text(exerciseModel.currentCorrectness).font(.system(size: 45, weight: .bold)).fontWeight(.bold).foregroundColor(currentCorrectnessColorBinding).multilineTextAlignment(.center).padding(.all).opacity(exerciseModel.isSummaryPage ? 0.0 : 1.0)
-            Text(exerciseModel.analysis)
+            Text(exerciseModel.currentCorrectness).font(.system(size: 45, weight: .bold)).fontWeight(.bold).foregroundColor(currentCorrectnessColorBinding).multilineTextAlignment(.center).padding(.all)
+            Text(exerciseModel.currentProblemAnalysis)
                 .padding(.all)
-            Button(exerciseModel.resultButtonText){
+            Button(ViewConstants.resultButtonText){
                 self.exerciseModel.getNextProblem()
-//                if(!self.exerciseModel.isSummaryPage){
-//                    self.isQuestPage.toggle()
-//                }
-            } .foregroundColor(Color.white)
-                .padding(.all).background(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                } .buttonStyle(ResultButtonStyle())
         }
         
     }

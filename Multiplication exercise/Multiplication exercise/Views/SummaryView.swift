@@ -10,19 +10,14 @@ import SwiftUI
 
 struct SummaryView: View{
     @Binding var exerciseModel : ExerciseModel
-    //@Binding var isQuestPage : Bool
     
-    var currentCorrectnessColorBinding : Color {
-        exerciseModel.currentCorrectness == "correct" ? Color.green : Color.red
-    }
     var body: some View{
         VStack{
-            Text(exerciseModel.analysis)
+            Text(ViewConstants.summary)
                 .padding(.all)
-            Button(exerciseModel.resultButtonText){
+            Button(ViewConstants.summaryButtonText){
                 self.exerciseModel.resetProblemSet()
-            } .foregroundColor(Color.white)
-                .padding(.all).background(RoundedRectangle(cornerRadius: 10, style: .continuous))
+            } .buttonStyle(ResultButtonStyle())
         }
         
     }

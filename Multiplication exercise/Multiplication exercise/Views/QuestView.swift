@@ -11,14 +11,13 @@ import SwiftUI
 //View for showing the question
 struct QuestView: View {
     @Binding var exerciseModel : ExerciseModel
-    //@Binding var isQuestPage :Bool
     
     var body: some View{
         VStack{
             Text("Problem \(exerciseModel.currentQuestionNumber)")
             VStack(alignment: .trailing){
-                Text(exerciseModel.current_multiplicand)
-                Text("\(exerciseModel.exercise_operator) \(exerciseModel.current_multiplier)")
+                Text(exerciseModel.currentFirstVariable)
+                Text("\(exerciseModel.currentExerciseOperator) \(exerciseModel.currentSecondVariable)")
             }.padding(.top).font(.largeTitle)
             Rectangle().frame(width: 100.0, height: 7.0)
             ChoiceView(exerciseModel: $exerciseModel)

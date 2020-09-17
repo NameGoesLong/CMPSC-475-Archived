@@ -11,16 +11,14 @@ import SwiftUI
 //View for button selection
 struct ChoiceView: View{
     @Binding var exerciseModel : ExerciseModel
-    //@Binding var isQuestPage :Bool
+
     var body: some View{
         HStack{
-            ForEach(exerciseModel.selection, id: \.self){ choice in
+            ForEach(exerciseModel.currentProblemSelections, id: \.self){ choice in
                 Button("\(choice)"){
-                    //self.isQuestPage.toggle()
                     self.exerciseModel.checkCorrectness(choice)
                 }
-                    .frame(width: 32.0)
-                    .padding().background(RoundedRectangle(cornerRadius: 10, style: .continuous).fill(Color.gray).opacity(0.2))
+            .buttonStyle(SelectionButtonStyle())
             }
             .padding(.top)
         }

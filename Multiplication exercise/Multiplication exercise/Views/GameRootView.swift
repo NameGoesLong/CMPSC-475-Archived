@@ -10,18 +10,22 @@ import SwiftUI
 
 
 struct GameRootView: View{
-    //@EnvironmentObject var exerciseViewModel : ExerciseViewModel
     @State private var exerciseModel  = ExerciseModel()
     var body: some View {
     VStack(alignment: .center){
+        HStack{
+            VStack(alignment: .leading){
+                Text("Operation: \(exerciseModel.problemSetOperation)").foregroundColor(Color.white.opacity(0.4))
+                Text("Difficulty: \(exerciseModel.problemSetDifficulty)").foregroundColor(Color.white.opacity(0.4))
+            }
+            Spacer()
+            PreferenceButtonView(exerciseModel: $exerciseModel)
+        }
+        TitleView().padding(.top)
         Spacer()
-        TitleView()
-        PreferenceButtonView(exerciseModel: $exerciseModel)
+        MainView(exerciseModel: $exerciseModel).padding(.vertical)
         Spacer()
-        MainView(exerciseModel: $exerciseModel)
-            .padding(.vertical)
-        Spacer()
-    }.frame( maxWidth: .infinity, maxHeight: .infinity).background(Color(red: 29/255.0, green: 53/255.0, blue: 87/255.0, opacity: 0.7)).foregroundColor(Color.orange).navigationBarBackButtonHidden(true)
+    }.frame( maxWidth: .infinity, maxHeight: .infinity).background(ViewConstants.backgroundColor).foregroundColor(ViewConstants.textColor).navigationBarBackButtonHidden(true)
         .navigationBarTitle("")
         .navigationBarHidden(true)
     }
