@@ -13,9 +13,9 @@ struct PokemonListView : View {
     @State var pokemons = Pokemons()
     
     // Extracted from: https://developer.apple.com/forums/thread/122705
-    init() {
-        UITableView.appearance().backgroundColor = .green // Uses UIColor
-    }
+//    init() {
+//        UITableView.appearance().backgroundColor = .green // Uses UIColor
+//    }
     
     var body: some View{
         NavigationView{

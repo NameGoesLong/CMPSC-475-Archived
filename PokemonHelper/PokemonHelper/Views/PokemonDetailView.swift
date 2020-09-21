@@ -39,8 +39,9 @@ struct PokemonDetailView : View {
                         }
                     }
                 }
-            }.navigationBarTitle(Text(pokemon.name))
-        }
+            }.navigationBarTitle("")
+            .navigationBarHidden(true)
+        }.navigationBarTitle(Text(pokemon.name),displayMode: .automatic)
     }
 }
 
