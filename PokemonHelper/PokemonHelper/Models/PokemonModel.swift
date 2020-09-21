@@ -12,10 +12,12 @@ struct Pokemon : Codable {
     let id : Int
     let name : String
     let types : [PokemonType]
-    let height : Float
-    let weight : Float
-    var weakness : [PokemonType]
-    let next_evolution : [Int]
+    let height : Double
+    let weight : Double
+    let weaknesses : [PokemonType]
+    let prev_evolution : [Int]?
+    let next_evolution : [Int]?
+    
     
     enum CodingKeys : String, CodingKey {
         case id
@@ -23,8 +25,13 @@ struct Pokemon : Codable {
         case types
         case height
         case weight
-        case weakness
+        case weaknesses
+        case prev_evolution
         case next_evolution
+    }
+    
+    func getFormattedId () -> String{
+        return String(format: "%03d", id)
     }
 }
 
