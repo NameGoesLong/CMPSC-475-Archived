@@ -1,15 +1,15 @@
 //
-//  Poke_dexTests.swift
-//  PokédexTests
+//  PokemonHelperTests.swift
+//  PokemonHelperTests
 //
 //  Created by New User on 20/9/20.
 //  Copyright © 2020 Chenyin Zhang. All rights reserved.
 //
 
 import XCTest
-@testable import Poke_dex
+@testable import PokemonHelper
 
-class Poke_dexTests: XCTestCase {
+class PokemonHelperTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Poke&#x301;dex.xcodeproj">
+      location = "self:PokemonHelper.xcodeproj">
    </FileRef>
 </Workspace>
