@@ -13,7 +13,7 @@ struct PokemonDetailView : View {
     var body: some View{
         NavigationView{
             List{
-                Image(pokemon.getFormattedId()).resizable().aspectRatio(contentMode: .fit)
+                Image(pokemon.getFormattedId()).resizable().aspectRatio(contentMode: .fit).padding(40.0).background(RoundedRectangle(cornerRadius: 20).fill(Color.gray)).overlay(Text(pokemon.getFormattedId()).font(.subheadline).foregroundColor(Color.white).padding(.all), alignment: .bottomTrailing)
                 VStack{
                     Text("Height: \(String(format: "%g", pokemon.height)) m")
                     Text("Weight: \(String(format: "%g", pokemon.weight)) kg")
