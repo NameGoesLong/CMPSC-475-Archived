@@ -43,7 +43,7 @@ struct PokemonDetailView : View {
 }
 
 struct PokemonDetailView_Previews: PreviewProvider {
-    static var pokemons = Pokemons()
+    static var pokemons = Pokedex()
     static var previews: some View {
         PokemonDetailView(pokemon: pokemons.allPokemon[0])
     }

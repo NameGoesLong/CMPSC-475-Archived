@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B282545125241808003B4405 /* pokedex-v2.json in Resources */ = {isa = PBXBuildFile; fileRef = B282545025241808003B4405 /* pokedex-v2.json */; };
 		B2ABE1B825183151005B1D90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2ABE1B725183151005B1D90 /* AppDelegate.swift */; };
 		B2ABE1BA25183151005B1D90 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2ABE1B925183151005B1D90 /* SceneDelegate.swift */; };
 		B2ABE1BC25183151005B1D90 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2ABE1BB25183151005B1D90 /* ContentView.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B282545025241808003B4405 /* pokedex-v2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pokedex-v2.json"; sourceTree = "<group>"; };
 		B2ABE1B425183151005B1D90 /* PokemonHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2ABE1B725183151005B1D90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2ABE1B925183151005B1D90 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		B2ABE1DF251832B6005B1D90 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B282545025241808003B4405 /* pokedex-v2.json */,
 				B2ABE1E1251834A3005B1D90 /* PokemonModel.swift */,
 				B2ABE1DB251831A0005B1D90 /* pokedex.json */,
 				B2ABE1D9251831A0005B1D90 /* PokemonType.swift */,
@@ -239,6 +242,7 @@
 				B2ABE1DE251831A0005B1D90 /* pokedex.json in Resources */,
 				B2ABE1C425183153005B1D90 /* LaunchScreen.storyboard in Resources */,
 				B2ABE1C125183153005B1D90 /* Preview Assets.xcassets in Resources */,
+				B282545125241808003B4405 /* pokedex-v2.json in Resources */,
 				B2ABE1BE25183153005B1D90 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

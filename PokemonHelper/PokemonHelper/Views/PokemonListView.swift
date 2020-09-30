@@ -10,7 +10,7 @@
 import SwiftUI
 
 struct PokemonListView : View {
-    @State var pokemons = Pokemons()
+    @State var pokemons = Pokedex()
     
     // Extracted from: https://developer.apple.com/forums/thread/122705
 //    init() {

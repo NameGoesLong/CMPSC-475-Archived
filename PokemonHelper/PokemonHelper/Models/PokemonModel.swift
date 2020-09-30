@@ -17,6 +17,7 @@ struct Pokemon : Codable {
     let weaknesses : [PokemonType]
     let prev_evolution : [Int]?
     let next_evolution : [Int]?
+    let captured : Bool
     
     
     enum CodingKeys : String, CodingKey {
@@ -28,6 +29,7 @@ struct Pokemon : Codable {
         case weaknesses
         case prev_evolution
         case next_evolution
+        case captured
     }
     
     func getFormattedId () -> String{
@@ -37,13 +39,13 @@ struct Pokemon : Codable {
 
 typealias AllPokemon = [Pokemon]
 
-struct Pokemons  {
+struct Pokedex  {
     
     var  allPokemon : AllPokemon
     
     init() {
         
-        let filename = "pokedex"
+        let filename = "pokedex-v2"
         let mainBundle = Bundle.main
         let jsonURL = mainBundle.url(forResource: filename, withExtension: "json")!
         
