@@ -9,16 +9,23 @@
 import SwiftUI
 
 struct PokemonDetailView : View {
-    var pokemon : Pokemon
+    @Binding var pokemon: Pokemon
+    @Binding var pokedex: Pokedex
     var body: some View{
-            List{
+        List{
+                Button(action:{pokemon.captured.toggle()}){
+                    pokemon.captured ? Text("Mark it as freed") : Text("Mark it as captured")
+                }.padding(.top).buttonStyle(ResultButtonStyle())
+                
                 Image(pokemon.getFormattedId()).resizable().aspectRatio(contentMode: .fit).padding(40.0).background(RoundedRectangle(cornerRadius: 20).fill(Color.gray)).overlay(Text(pokemon.getFormattedId()).font(.subheadline).foregroundColor(Color.white).padding(.all), alignment: .bottomTrailing).padding(20.0)
+                
                 VStack{
                     Text("Height: \(String(format: "%g", pokemon.height)) m")
                     Text("Weight: \(String(format: "%g", pokemon.weight)) kg")
                 }
-                VStack{
-                    Text("Types")
+                
+            VStack(alignment: .leading){
+                    Text("Types").font(.headline)
                     ScrollView(.horizontal){
                         HStack(spacing: 10.0){
                             ForEach(pokemon.types, id: \.self){ type in
@@ -26,10 +33,11 @@ struct PokemonDetailView : View {
                             }
                         }
                     }
-                    
+
                 }
-                VStack{
-                    Text("Weaknesses")
+                
+            VStack(alignment: .leading){
+                    Text("Weaknesses").font(.headline)
                     ScrollView(.horizontal){
                         HStack(spacing: 10.0){
                             ForEach(pokemon.weaknesses, id: \.self){ weakness in
@@ -38,13 +46,26 @@ struct PokemonDetailView : View {
                         }
                     }
                 }
+                
+                if((pokemon.prev_evolution) != nil){
+                    VStack(alignment: .leading){
+                        CategoryRow(pokedex: $pokedex, categoryName: "Evolves From", property: {pokemon.prev_evolution!.contains($0.id)})
+                    }
+                }
+                
+                if((pokemon.next_evolution) != nil){
+                    VStack(alignment: .leading){
+                        CategoryRow(pokedex: $pokedex, categoryName: "Evolves Into", property: {pokemon.next_evolution!.contains($0.id)})
+                    }
+                }
             }.navigationBarTitle(Text(pokemon.name),displayMode: .automatic)
     }
 }
 
 struct PokemonDetailView_Previews: PreviewProvider {
-    static var pokemons = Pokedex()
+    @State static var pokemon = Pokedex().allPokemon[0]
+    @State static var pokedex = Pokedex()
     static var previews: some View {
-        PokemonDetailView(pokemon: pokemons.allPokemon[0])
+        PokemonDetailView(pokemon: $pokemon, pokedex: $pokedex)
     }
 }

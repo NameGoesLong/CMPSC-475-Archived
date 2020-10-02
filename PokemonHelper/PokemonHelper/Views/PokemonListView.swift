@@ -10,30 +10,18 @@
 import SwiftUI
 
 struct PokemonListView : View {
-    @State var pokemons = Pokedex()
-    
-    // Extracted from: https://developer.apple.com/forums/thread/122705
-//    init() {
-//        UITableView.appearance().backgroundColor = .green // Uses UIColor
-//    }
+    @Binding var pokedex : Pokedex
+    @State var typeIndex : PokemonType? = nil
     
     var body: some View{
-        NavigationView{
             List{
-                ForEach(pokemons.allPokemon, id: \.self.id){ pokemon in
-                    NavigationLink(destination: PokemonDetailView(pokemon: pokemon)) {
-                    PokemonRowView(pokemon: pokemon)
+                ForEach(pokedex.pokemonIDs(for: {typeIndex==nil ? true : $0.types.contains(typeIndex!)}), id: \.self){ id in
+                    NavigationLink(destination: PokemonDetailView(pokemon: self.$pokedex.allPokemon[id], pokedex: $pokedex)) {
+                    PokemonRowView(pokemon: self.pokedex.allPokemon[id])
                     }
                 }
-            }.navigationBarTitle("Pokédex")
-        }
-        
+            }.navigationBarTitle(typeIndex==nil ? "All Pokemon" : typeIndex!.rawValue)
+            .navigationBarItems(trailing: Preferences(typeIndex: $typeIndex))
     }
 }
 
-
-struct PokemonListView_Previews: PreviewProvider {
-    static var previews: some View {
-        PokemonListView()
-    }
-}

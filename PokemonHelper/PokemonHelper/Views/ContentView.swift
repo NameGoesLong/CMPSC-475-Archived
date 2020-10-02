@@ -9,8 +9,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var pokedex = Pokedex()
+    @State var showingPreferences = false
+    //@State var sectionStyle : SectionStyle = .none
     var body: some View {
-        PokemonListView()
+        //PokemonListView()
+        NavigationView{
+            List{
+                Categories(pokedex: $pokedex)
+            }.navigationBarTitle(Text("Pokédex"))
+            .navigationBarItems(trailing: NavigationLink(destination: PokemonListView(pokedex: $pokedex)) {
+                                    Image(systemName: "slider.horizontal.3")
+                                    .imageScale(.large)
+                                    .accessibility(label: Text("Setting"))
+                                    .padding()})
+                
+            
+        }
+    }
+    
+    var preferenceButton: some View {
+        Button(action: { self.showingPreferences.toggle() }) {
+            Image(systemName: "slider.horizontal.3")
+                .imageScale(.large)
+                .accessibility(label: Text("Setting"))
+                .padding()
+        }
     }
 }
 

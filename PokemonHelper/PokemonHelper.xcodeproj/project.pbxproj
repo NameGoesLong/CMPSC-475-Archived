@@ -23,6 +23,11 @@
 		B2ABE1E6251834BE005B1D90 /* PokemonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2ABE1E4251834BE005B1D90 /* PokemonListView.swift */; };
 		B2ABE1E825184357005B1D90 /* PokemonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2ABE1E725184357005B1D90 /* PokemonDetailView.swift */; };
 		B2ABE1EB2518589A005B1D90 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2ABE1EA2518589A005B1D90 /* ViewConstants.swift */; };
+		B2AF732725255DF400B482FF /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AF732625255DF400B482FF /* CategoryRow.swift */; };
+		B2AF732B2525660400B482FF /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AF732A2525660400B482FF /* CategoryItem.swift */; };
+		B2AF73352525851100B482FF /* DefaultButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AF73342525851100B482FF /* DefaultButtonStyle.swift */; };
+		B2AF733B2526A50700B482FF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AF733A2526A50700B482FF /* Category.swift */; };
+		B2AF73492526DAA400B482FF /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AF73482526DAA400B482FF /* Preference.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +61,11 @@
 		B2ABE1E4251834BE005B1D90 /* PokemonListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonListView.swift; sourceTree = "<group>"; };
 		B2ABE1E725184357005B1D90 /* PokemonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailView.swift; sourceTree = "<group>"; };
 		B2ABE1EA2518589A005B1D90 /* ViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConstants.swift; sourceTree = "<group>"; };
+		B2AF732625255DF400B482FF /* CategoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
+		B2AF732A2525660400B482FF /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
+		B2AF73342525851100B482FF /* DefaultButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultButtonStyle.swift; sourceTree = "<group>"; };
+		B2AF733A2526A50700B482FF /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		B2AF73482526DAA400B482FF /* Preference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +156,10 @@
 				B2ABE1E3251834BE005B1D90 /* PokemonRowView.swift */,
 				B2ABE1DA251831A0005B1D90 /* Color+PokemonType.swift */,
 				B2ABE1E725184357005B1D90 /* PokemonDetailView.swift */,
+				B2AF732625255DF400B482FF /* CategoryRow.swift */,
+				B2AF732A2525660400B482FF /* CategoryItem.swift */,
+				B2AF733A2526A50700B482FF /* Category.swift */,
+				B2AF73482526DAA400B482FF /* Preference.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -153,6 +167,7 @@
 		B2ABE1E92518587C005B1D90 /* ViewConstants */ = {
 			isa = PBXGroup;
 			children = (
+				B2AF73342525851100B482FF /* DefaultButtonStyle.swift */,
 				B2ABE1EA2518589A005B1D90 /* ViewConstants.swift */,
 			);
 			path = ViewConstants;
@@ -203,7 +218,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Chenyin Zhang";
 				TargetAttributes = {
 					B2ABE1B325183151005B1D90 = {
@@ -261,16 +276,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2AF732725255DF400B482FF /* CategoryRow.swift in Sources */,
 				B2ABE1EB2518589A005B1D90 /* ViewConstants.swift in Sources */,
 				B2ABE1E6251834BE005B1D90 /* PokemonListView.swift in Sources */,
 				B2ABE1B825183151005B1D90 /* AppDelegate.swift in Sources */,
 				B2ABE1E825184357005B1D90 /* PokemonDetailView.swift in Sources */,
 				B2ABE1E2251834A4005B1D90 /* PokemonModel.swift in Sources */,
+				B2AF73352525851100B482FF /* DefaultButtonStyle.swift in Sources */,
 				B2ABE1E5251834BE005B1D90 /* PokemonRowView.swift in Sources */,
 				B2ABE1BA25183151005B1D90 /* SceneDelegate.swift in Sources */,
 				B2ABE1BC25183151005B1D90 /* ContentView.swift in Sources */,
+				B2AF73492526DAA400B482FF /* Preference.swift in Sources */,
 				B2ABE1DC251831A0005B1D90 /* PokemonType.swift in Sources */,
+				B2AF732B2525660400B482FF /* CategoryItem.swift in Sources */,
 				B2ABE1DD251831A0005B1D90 /* Color+PokemonType.swift in Sources */,
+				B2AF733B2526A50700B482FF /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +350,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -390,6 +411,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -427,6 +449,7 @@
 				DEVELOPMENT_TEAM = 7RMY788NB8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = PokemonHelper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -447,6 +470,7 @@
 				DEVELOPMENT_TEAM = 7RMY788NB8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = PokemonHelper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
