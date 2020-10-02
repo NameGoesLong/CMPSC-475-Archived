@@ -14,7 +14,10 @@ struct ResultButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .foregroundColor(Color.white)
-            .padding(.all).background(RoundedRectangle(cornerRadius: 10, style: .continuous))
+            .padding(.all)
+            .background(RoundedRectangle(cornerRadius: 10, style: .continuous)
+                            .fill(Color.primary)
+                            .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/))
     }
 }
 

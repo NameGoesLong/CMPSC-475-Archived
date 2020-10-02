@@ -13,15 +13,38 @@ struct PokemonDetailView : View {
     @Binding var pokedex: Pokedex
     var body: some View{
         List{
+            HStack{
+                Spacer()
                 Button(action:{pokemon.captured.toggle()}){
-                    pokemon.captured ? Text("Mark it as freed") : Text("Mark it as captured")
-                }.padding(.top).buttonStyle(ResultButtonStyle())
+                    pokemon.captured ?
+                        Text("Mark it as freed")
+                        : Text("Mark it as captured")
+                }.padding(.top)
+                .buttonStyle(ResultButtonStyle())
+                Spacer()
+            }
                 
-                Image(pokemon.getFormattedId()).resizable().aspectRatio(contentMode: .fit).padding(40.0).background(RoundedRectangle(cornerRadius: 20).fill(Color.gray)).overlay(Text(pokemon.getFormattedId()).font(.subheadline).foregroundColor(Color.white).padding(.all), alignment: .bottomTrailing).padding(20.0)
+                Image(pokemon.getFormattedId())
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding(40.0)
+                    .background(
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(pokemon.captured ? Color(pokemonType: pokemon.types[0]): Color.gray)
+                            .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+                    )
+                    .overlay(
+                        Text(pokemon.getFormattedId())
+                            .font(.subheadline)
+                            .foregroundColor(Color.white)
+                            .padding(.all),
+                        alignment: .bottomTrailing)
+                    .padding(20.0)
+                    .grayscale(pokemon.captured ? 0.0 : 0.99)
                 
-                VStack{
-                    Text("Height: \(String(format: "%g", pokemon.height)) m")
-                    Text("Weight: \(String(format: "%g", pokemon.weight)) kg")
+                VStack(alignment: .leading){
+                    Text("Height: \(String(format: "%g", pokemon.height)) m").font(.headline)
+                    Text("Weight: \(String(format: "%g", pokemon.weight)) kg").font(.headline)
                 }
                 
             VStack(alignment: .leading){
@@ -29,7 +52,13 @@ struct PokemonDetailView : View {
                     ScrollView(.horizontal){
                         HStack(spacing: 10.0){
                             ForEach(pokemon.types, id: \.self){ type in
-                                Text(type.rawValue).padding(10.0).frame(minWidth: 50.0).background(RoundedRectangle(cornerRadius: 50).fill(Color(pokemonType: type)).opacity(0.2))
+                                Text(type.rawValue)
+                                    .padding(10.0)
+                                    .frame(minWidth: 50.0)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 50)
+                                            .fill(Color(pokemonType: type))
+                                            .opacity(0.2))
                             }
                         }
                     }
@@ -41,7 +70,13 @@ struct PokemonDetailView : View {
                     ScrollView(.horizontal){
                         HStack(spacing: 10.0){
                             ForEach(pokemon.weaknesses, id: \.self){ weakness in
-                                Text(weakness.rawValue).padding(10.0).frame(minWidth: 50.0).background(RoundedRectangle(cornerRadius: 50).fill(Color(pokemonType: weakness)).opacity(0.2))
+                                Text(weakness.rawValue)
+                                    .padding(10.0)
+                                    .frame(minWidth: 50.0)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 50)
+                                            .fill(Color(pokemonType: weakness))
+                                            .opacity(0.2))
                             }
                         }
                     }
