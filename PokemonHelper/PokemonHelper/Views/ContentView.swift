@@ -9,31 +9,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var pokedex = Pokedex()
+    @EnvironmentObject var pokedex : Pokedex
     @State var showingPreferences = false
-    //@State var sectionStyle : SectionStyle = .none
     var body: some View {
-        //PokemonListView()
+        // Show all the rows in the Categories view
         NavigationView{
             List{
-                Categories(pokedex: $pokedex)
+                Categories().environmentObject(pokedex)
             }.navigationBarTitle(Text("Pokédex"))
-            .navigationBarItems(trailing: NavigationLink(destination: PokemonListView(pokedex: $pokedex)) {
+            .navigationBarItems(trailing: NavigationLink(destination: PokemonListView().environmentObject(pokedex)) {
                                     Image(systemName: "slider.horizontal.3")
-                                    .imageScale(.large)
-                                    .accessibility(label: Text("Setting"))
-                                    .padding()})
-                
-            
-        }
-    }
-    
-    var preferenceButton: some View {
-        Button(action: { self.showingPreferences.toggle() }) {
-            Image(systemName: "slider.horizontal.3")
-                .imageScale(.large)
-                .accessibility(label: Text("Setting"))
-                .padding()
+                                        .imageScale(.large)
+                                        .accessibility(label: Text("Setting"))
+                                        .padding()})
         }
     }
 }

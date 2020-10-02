@@ -12,6 +12,7 @@ struct CategoryItem: View {
     @Binding var pokemon: Pokemon
     
     var body: some View {
+        //Present a single Pokemon with its name and captured icon
         VStack(alignment: .leading) {
             Image(pokemon.getFormattedId())
                 .renderingMode(.original)

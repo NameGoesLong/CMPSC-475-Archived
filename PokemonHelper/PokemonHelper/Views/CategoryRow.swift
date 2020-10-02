@@ -9,14 +9,13 @@
 import SwiftUI
 
 struct CategoryRow: View {
-    @Binding var pokedex : Pokedex
+    @EnvironmentObject var pokedex : Pokedex
     let categoryName: String
     let property : ((Pokemon) -> Bool)
     
-    //var nonEmpty : Bool {pokedex.stateIndices(for: property).count > 0 }
-    
     var nonEmpty : Bool {pokedex.pokemonIDs(for: property).count > 0 }
     
+    //Provide a row holding the CategoryItem
     var body: some View {
         VStack(alignment: .leading){
             if nonEmpty{
@@ -25,9 +24,9 @@ struct CategoryRow: View {
                     HStack(alignment: .top, spacing: 0){
                         ForEach(pokedex.pokemonIDs(for: property), id:\.self){index in
                             NavigationLink(
-                                destination: PokemonDetailView(pokemon: self.$pokedex.allPokemon[index], pokedex: $pokedex),
+                                destination: PokemonDetailView(pokemon: $pokedex.allPokemon[index]),
                                 label: {
-                                    CategoryItem(pokemon: self.$pokedex.allPokemon[index])
+                                    CategoryItem(pokemon: $pokedex.allPokemon[index])
                                 })
                         }
                     }
@@ -44,6 +43,6 @@ struct CategoryRow_Previews: PreviewProvider {
     static var name = "Bug"
     static var property = {(pokemon: Pokemon) in true}
     static var previews: some View {
-        CategoryRow(pokedex: $pokedex, categoryName: name, property: property)
+        CategoryRow(categoryName: name, property: property)
     }
 }

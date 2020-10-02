@@ -9,15 +9,17 @@
 import SwiftUI
 
 struct Categories: View {
-    @Binding var pokedex : Pokedex
+    @EnvironmentObject var pokedex : Pokedex
     var body: some View {
         
         Group {
-            if(CategoryRow(pokedex: $pokedex, categoryName: "Captured", property: {$0.captured}).nonEmpty){
-                CategoryRow(pokedex: $pokedex, categoryName: "Captured", property: {$0.captured})
+            //Category row for Captured pokemons, show if the list is non empty
+            if(pokedex.pokemonIDs(for: {$0.captured}).count > 0){
+                CategoryRow(categoryName: "Captured", property: {$0.captured}).environmentObject(pokedex)
             }
+            //Category rows by pokemonTypes
             ForEach(pokedex.typeTitles, id:\.self) { typeTitle in
-                CategoryRow(pokedex: $pokedex, categoryName: typeTitle.rawValue, property: {$0.types.contains(typeTitle)})
+                CategoryRow(categoryName: typeTitle.rawValue, property: {$0.types.contains(typeTitle)}).environmentObject(pokedex)
             }
         }
     }
@@ -26,7 +28,7 @@ struct Categories: View {
 struct Categories_Previews: PreviewProvider {
     @State static var pokedex = Pokedex()
     static var previews: some View {
-        Categories(pokedex: $pokedex)
+        Categories().environmentObject(pokedex)
     }
 }
 

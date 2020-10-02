@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Pokemon : Codable {
+struct Pokemon : Codable{
     let id : Int
     let name : String
     let types : [PokemonType]
@@ -18,7 +18,6 @@ struct Pokemon : Codable {
     let prev_evolution : [Int]?
     let next_evolution : [Int]?
     var captured : Bool
-    
     
     enum CodingKeys : String, CodingKey {
         case id
@@ -31,7 +30,7 @@ struct Pokemon : Codable {
         case next_evolution
         case captured
     }
-    
+    // finally decide to leave it as is because we have to decode id from json
     func getFormattedId () -> String{
         return String(format: "%03d", id)
     }
@@ -39,9 +38,9 @@ struct Pokemon : Codable {
 
 typealias AllPokemon = [Pokemon]
 
-struct Pokedex  {
-    
-    var  allPokemon : AllPokemon{
+class Pokedex : ObservableObject {
+    @Published
+    var allPokemon : AllPokemon{
         didSet {
             saveData()
         }
@@ -85,15 +84,13 @@ struct Pokedex  {
     }
     
     var typeTitles: [PokemonType] {
-        //let alltypes = Set(allPokemon.flatMap({ $0.types }))
-        //return alltypes.sorted{$0.id < $1.id}
         return PokemonType.allCases
     }
     
+    // Return all the pokemon ids that fit the requirement
     func pokemonIDs(for property: (Pokemon) -> Bool) -> [Int] {
         let filteredPokemon = allPokemon.filter(property)
         let indices = filteredPokemon.map {p in allPokemon.firstIndex(where: {$0.id == p.id})!}
         return indices
     }
-    
 }
