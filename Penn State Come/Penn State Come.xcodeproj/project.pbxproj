@@ -1,0 +1,617 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B2536BD9252C30C9009FD779 /* Penn_State_ComeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2536BD8252C30C9009FD779 /* Penn_State_ComeApp.swift */; };
+		B2536BDB252C30C9009FD779 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2536BDA252C30C9009FD779 /* ContentView.swift */; };
+		B2536BDD252C30CB009FD779 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2536BDC252C30CB009FD779 /* Assets.xcassets */; };
+		B2536BE0252C30CB009FD779 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2536BDF252C30CB009FD779 /* Preview Assets.xcassets */; };
+		B2536BEB252C30CB009FD779 /* Penn_State_ComeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2536BEA252C30CB009FD779 /* Penn_State_ComeTests.swift */; };
+		B2536BF6252C30CB009FD779 /* Penn_State_ComeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2536BF5252C30CB009FD779 /* Penn_State_ComeUITests.swift */; };
+		B2536C0A252C310F009FD779 /* CampusBuildings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2536C09252C310F009FD779 /* CampusBuildings.swift */; };
+		B2536C12252C3195009FD779 /* buildings.json in Resources */ = {isa = PBXBuildFile; fileRef = B2536C11252C3195009FD779 /* buildings.json */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B2536BE7252C30CB009FD779 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2536BCD252C30C9009FD779 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B2536BD4252C30C9009FD779;
+			remoteInfo = "Penn State Come";
+		};
+		B2536BF2252C30CB009FD779 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2536BCD252C30C9009FD779 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B2536BD4252C30C9009FD779;
+			remoteInfo = "Penn State Come";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B2536BD5252C30C9009FD779 /* Penn State Come.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Penn State Come.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2536BD8252C30C9009FD779 /* Penn_State_ComeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Penn_State_ComeApp.swift; sourceTree = "<group>"; };
+		B2536BDA252C30C9009FD779 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B2536BDC252C30CB009FD779 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B2536BDF252C30CB009FD779 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B2536BE1252C30CB009FD779 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2536BE6252C30CB009FD779 /* Penn State ComeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Penn State ComeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2536BEA252C30CB009FD779 /* Penn_State_ComeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Penn_State_ComeTests.swift; sourceTree = "<group>"; };
+		B2536BEC252C30CB009FD779 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2536BF1252C30CB009FD779 /* Penn State ComeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Penn State ComeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2536BF5252C30CB009FD779 /* Penn_State_ComeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Penn_State_ComeUITests.swift; sourceTree = "<group>"; };
+		B2536BF7252C30CB009FD779 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2536C09252C310F009FD779 /* CampusBuildings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusBuildings.swift; sourceTree = "<group>"; };
+		B2536C11252C3195009FD779 /* buildings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = buildings.json; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B2536BD2252C30C9009FD779 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2536BE3252C30CB009FD779 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2536BEE252C30CB009FD779 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B2536BCC252C30C9009FD779 = {
+			isa = PBXGroup;
+			children = (
+				B2536BD7252C30C9009FD779 /* Penn State Come */,
+				B2536BE9252C30CB009FD779 /* Penn State ComeTests */,
+				B2536BF4252C30CB009FD779 /* Penn State ComeUITests */,
+				B2536BD6252C30C9009FD779 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B2536BD6252C30C9009FD779 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B2536BD5252C30C9009FD779 /* Penn State Come.app */,
+				B2536BE6252C30CB009FD779 /* Penn State ComeTests.xctest */,
+				B2536BF1252C30CB009FD779 /* Penn State ComeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B2536BD7252C30C9009FD779 /* Penn State Come */ = {
+			isa = PBXGroup;
+			children = (
+				B2536C08252C30EF009FD779 /* View Constants */,
+				B2536C06252C30DA009FD779 /* Models */,
+				B2536C07252C30E6009FD779 /* Views */,
+				B2536BD8252C30C9009FD779 /* Penn_State_ComeApp.swift */,
+				B2536BDA252C30C9009FD779 /* ContentView.swift */,
+				B2536BDC252C30CB009FD779 /* Assets.xcassets */,
+				B2536BE1252C30CB009FD779 /* Info.plist */,
+				B2536BDE252C30CB009FD779 /* Preview Content */,
+			);
+			path = "Penn State Come";
+			sourceTree = "<group>";
+		};
+		B2536BDE252C30CB009FD779 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				B2536BDF252C30CB009FD779 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B2536BE9252C30CB009FD779 /* Penn State ComeTests */ = {
+			isa = PBXGroup;
+			children = (
+				B2536BEA252C30CB009FD779 /* Penn_State_ComeTests.swift */,
+				B2536BEC252C30CB009FD779 /* Info.plist */,
+			);
+			path = "Penn State ComeTests";
+			sourceTree = "<group>";
+		};
+		B2536BF4252C30CB009FD779 /* Penn State ComeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B2536BF5252C30CB009FD779 /* Penn_State_ComeUITests.swift */,
+				B2536BF7252C30CB009FD779 /* Info.plist */,
+			);
+			path = "Penn State ComeUITests";
+			sourceTree = "<group>";
+		};
+		B2536C06252C30DA009FD779 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B2536C11252C3195009FD779 /* buildings.json */,
+				B2536C09252C310F009FD779 /* CampusBuildings.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B2536C07252C30E6009FD779 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B2536C08252C30EF009FD779 /* View Constants */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Constants";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B2536BD4252C30C9009FD779 /* Penn State Come */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2536BFA252C30CB009FD779 /* Build configuration list for PBXNativeTarget "Penn State Come" */;
+			buildPhases = (
+				B2536BD1252C30C9009FD779 /* Sources */,
+				B2536BD2252C30C9009FD779 /* Frameworks */,
+				B2536BD3252C30C9009FD779 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Penn State Come";
+			productName = "Penn State Come";
+			productReference = B2536BD5252C30C9009FD779 /* Penn State Come.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B2536BE5252C30CB009FD779 /* Penn State ComeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2536BFD252C30CB009FD779 /* Build configuration list for PBXNativeTarget "Penn State ComeTests" */;
+			buildPhases = (
+				B2536BE2252C30CB009FD779 /* Sources */,
+				B2536BE3252C30CB009FD779 /* Frameworks */,
+				B2536BE4252C30CB009FD779 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B2536BE8252C30CB009FD779 /* PBXTargetDependency */,
+			);
+			name = "Penn State ComeTests";
+			productName = "Penn State ComeTests";
+			productReference = B2536BE6252C30CB009FD779 /* Penn State ComeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B2536BF0252C30CB009FD779 /* Penn State ComeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2536C00252C30CB009FD779 /* Build configuration list for PBXNativeTarget "Penn State ComeUITests" */;
+			buildPhases = (
+				B2536BED252C30CB009FD779 /* Sources */,
+				B2536BEE252C30CB009FD779 /* Frameworks */,
+				B2536BEF252C30CB009FD779 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B2536BF3252C30CB009FD779 /* PBXTargetDependency */,
+			);
+			name = "Penn State ComeUITests";
+			productName = "Penn State ComeUITests";
+			productReference = B2536BF1252C30CB009FD779 /* Penn State ComeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B2536BCD252C30C9009FD779 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					B2536BD4252C30C9009FD779 = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
+					B2536BE5252C30CB009FD779 = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = B2536BD4252C30C9009FD779;
+					};
+					B2536BF0252C30CB009FD779 = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = B2536BD4252C30C9009FD779;
+					};
+				};
+			};
+			buildConfigurationList = B2536BD0252C30C9009FD779 /* Build configuration list for PBXProject "Penn State Come" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B2536BCC252C30C9009FD779;
+			productRefGroup = B2536BD6252C30C9009FD779 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B2536BD4252C30C9009FD779 /* Penn State Come */,
+				B2536BE5252C30CB009FD779 /* Penn State ComeTests */,
+				B2536BF0252C30CB009FD779 /* Penn State ComeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B2536BD3252C30C9009FD779 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2536BE0252C30CB009FD779 /* Preview Assets.xcassets in Resources */,
+				B2536C12252C3195009FD779 /* buildings.json in Resources */,
+				B2536BDD252C30CB009FD779 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2536BE4252C30CB009FD779 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2536BEF252C30CB009FD779 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B2536BD1252C30C9009FD779 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2536BDB252C30C9009FD779 /* ContentView.swift in Sources */,
+				B2536BD9252C30C9009FD779 /* Penn_State_ComeApp.swift in Sources */,
+				B2536C0A252C310F009FD779 /* CampusBuildings.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2536BE2252C30CB009FD779 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2536BEB252C30CB009FD779 /* Penn_State_ComeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2536BED252C30CB009FD779 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2536BF6252C30CB009FD779 /* Penn_State_ComeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B2536BE8252C30CB009FD779 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B2536BD4252C30C9009FD779 /* Penn State Come */;
+			targetProxy = B2536BE7252C30CB009FD779 /* PBXContainerItemProxy */;
+		};
+		B2536BF3252C30CB009FD779 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B2536BD4252C30C9009FD779 /* Penn State Come */;
+			targetProxy = B2536BF2252C30CB009FD779 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B2536BF8252C30CB009FD779 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B2536BF9252C30CB009FD779 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B2536BFB252C30CB009FD779 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Penn State Come/Preview Content\"";
+				DEVELOPMENT_TEAM = 7RMY788NB8;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Penn State Come/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "PSU.Penn-State-Come";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B2536BFC252C30CB009FD779 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Penn State Come/Preview Content\"";
+				DEVELOPMENT_TEAM = 7RMY788NB8;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Penn State Come/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "PSU.Penn-State-Come";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B2536BFE252C30CB009FD779 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7RMY788NB8;
+				INFOPLIST_FILE = "Penn State ComeTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "PSU.Penn-State-ComeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Penn State Come.app/Penn State Come";
+			};
+			name = Debug;
+		};
+		B2536BFF252C30CB009FD779 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7RMY788NB8;
+				INFOPLIST_FILE = "Penn State ComeTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "PSU.Penn-State-ComeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Penn State Come.app/Penn State Come";
+			};
+			name = Release;
+		};
+		B2536C01252C30CB009FD779 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7RMY788NB8;
+				INFOPLIST_FILE = "Penn State ComeUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "PSU.Penn-State-ComeUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Penn State Come";
+			};
+			name = Debug;
+		};
+		B2536C02252C30CB009FD779 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7RMY788NB8;
+				INFOPLIST_FILE = "Penn State ComeUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "PSU.Penn-State-ComeUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Penn State Come";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B2536BD0252C30C9009FD779 /* Build configuration list for PBXProject "Penn State Come" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2536BF8252C30CB009FD779 /* Debug */,
+				B2536BF9252C30CB009FD779 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2536BFA252C30CB009FD779 /* Build configuration list for PBXNativeTarget "Penn State Come" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2536BFB252C30CB009FD779 /* Debug */,
+				B2536BFC252C30CB009FD779 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2536BFD252C30CB009FD779 /* Build configuration list for PBXNativeTarget "Penn State ComeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2536BFE252C30CB009FD779 /* Debug */,
+				B2536BFF252C30CB009FD779 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2536C00252C30CB009FD779 /* Build configuration list for PBXNativeTarget "Penn State ComeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2536C01252C30CB009FD779 /* Debug */,
+				B2536C02252C30CB009FD779 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B2536BCD252C30C9009FD779 /* Project object */;
+}
