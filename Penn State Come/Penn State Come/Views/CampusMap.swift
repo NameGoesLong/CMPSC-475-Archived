@@ -33,12 +33,12 @@ struct CampusMap: View {
                 Image(systemName: "xmark.circle").resizable()
                     .frame(width: 30.0, height: 30.0)
                     .disabled(locationsManager.mappedPlaces.isEmpty)
-            }.padding(.horizontal, 30.0)
+            }.padding(.horizontal, 30.0).background(Circle().fill(Color.white))
             Button(action: {locationsManager.showFavorite.toggle()}) {
                 Image(systemName: "heart.circle.fill").resizable()
                     .frame(width: 30.0, height: 30.0)
                     .foregroundColor(locationsManager.showFavorite ? Color.red : Color.gray)
-            }.padding(.horizontal, 30.0)
+            }.padding(.horizontal, 30.0).background(Circle().fill(Color.white))
         }.padding(10.0)
     }
     
