@@ -15,8 +15,11 @@ struct SectionViews : View {
     var body : some View {
         
         ForEach(campusBuildings.stateIndices(for: filter), id:\.self) { index in
-            BuildingRowView(building: self.campusBuildings.allBuildings[index])
-            
+            NavigationLink(destination: BuildingDetailView(building: self.$campusBuildings.allBuildings[index])) {
+                BuildingRowView(building: self.campusBuildings.allBuildings[index])
+            }
         }
     }
 }
+
+//BuildingDetailView(building: self.$campusBuildings.allBuildings[index])

@@ -11,7 +11,8 @@ import MapKit
 
 struct CampusMap: View {
     @EnvironmentObject var locationsManager : LocationsManager
-    @State var userTrackingMode  : MapUserTrackingMode = .follow
+    @State var userTrackingMode : MapUserTrackingMode = .follow
+    @State var campusBuildings = CampusBuildings()
     
     
     var body: some View {
@@ -19,7 +20,7 @@ struct CampusMap: View {
             interactionModes: .all,
             showsUserLocation: true,
             userTrackingMode: $userTrackingMode,
-            annotationItems: locationsManager.mappedPlaces,
+            annotationItems: campusBuildings.annotatedBuildings(),
             annotationContent: annotationsForCategory)
             .overlay(buttonGroupView,alignment: .bottom)
     }
@@ -36,10 +37,10 @@ struct CampusMap: View {
     }
     
     //MARK: Three different functions for creating annotations
-    func annotationsForCategory (item:Place) -> some MapAnnotationProtocol {
+    func annotationsForCategory (item:Building) -> some MapAnnotationProtocol {
         MapAnnotation(coordinate: item.coordinate) {
-            Image(item.category).renderingMode(.template)
-                .foregroundColor(item.highlighted ? Color.red : Color.black)
+            Image(systemName: "mappin.and.ellipse").renderingMode(.template)
+                .foregroundColor(item.favorite ? Color.red : Color.black)
         }
     }
     func annotationPins (item:Place) -> some MapAnnotationProtocol {

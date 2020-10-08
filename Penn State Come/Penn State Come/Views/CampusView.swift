@@ -20,7 +20,8 @@ struct CampusView: View {
                         Text("Map")
                     }
                 
-                BuildingListView().tabItem {
+                BuildingListView()
+                    .tabItem {
                     Image(systemName: "list.dash")
                     Text("Buildings")
                 }

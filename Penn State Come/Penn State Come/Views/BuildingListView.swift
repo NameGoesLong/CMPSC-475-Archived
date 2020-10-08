@@ -16,14 +16,17 @@ struct BuildingListView : View {
     var sectionStyle = SectionStyle.byName
     
     var body: some View{
-        List{
-            ForEach( sectionTitles(for: sectionStyle), id: \.self) { sectionTitle in
-                Section(header: Text(sectionTitle)) {
-                    SectionViews(campusBuildings: self.$campusBuildings,
-                                 filter: sectionFilter(for: sectionStyle, sectionTitle: sectionTitle))
+        NavigationView{
+            List{
+                ForEach( sectionTitles(for: sectionStyle), id: \.self) { sectionTitle in
+                    Section(header: Text(sectionTitle)) {
+                        SectionViews(campusBuildings: self.$campusBuildings,
+                                     filter: sectionFilter(for: sectionStyle, sectionTitle: sectionTitle))
+                    }
                 }
-            }
-        }.navigationBarTitle("Building List")
+            }.navigationTitle("Penn State Buildings")
+        }
+        
     }
     
     // These functions are left for future extension

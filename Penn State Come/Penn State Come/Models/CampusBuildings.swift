@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-struct Building : Codable{
+struct Building : Codable, Identifiable{
     let id = UUID()
     let latitude : Double
     let longitude : Double
@@ -17,6 +17,8 @@ struct Building : Codable{
     let yearConstructed : Int?
     let photo : String
     var favorite : Bool
+    
+    var coordinate : CLLocationCoordinate2D
     
     enum CodingKeys : String, CodingKey {
         case latitude
@@ -49,18 +51,23 @@ struct Building : Codable{
         }else{
             self.favorite = false
         }
+        
+        coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
 }
 
 typealias AllBuildings = [Building]
 
-class CampusBuildings: ObservableObject {
+class CampusBuildings : ObservableObject{
     
     var allBuildings : AllBuildings{
         didSet {
             saveData()
         }
     }
+    
+    // Map will annotate these items
+    @Published var pinnedBuildings = [Building]()
     
     //MARK: - Locations
     // Centered in downtown State College
@@ -96,8 +103,14 @@ class CampusBuildings: ObservableObject {
            print("Error info: \(error)")
             allBuildings = []
         }
-      
         
+        for i in 1..<10{
+            pinnedBuildings.append(allBuildings[i])
+        }
+    }
+    
+    func annotatedBuildings() ->[Building]{
+        return pinnedBuildings
     }
     
     func saveData() {
