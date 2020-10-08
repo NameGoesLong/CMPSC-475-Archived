@@ -18,10 +18,10 @@ struct BuildingDetailView : View {
             HStack{
                 Spacer()
                 Button(action:{
-                    self.presentationMode.wrappedValue.dismiss()
                     tabSelection = 1
-                    locationsManager.mappedPlaces.append(building)
+                    locationsManager.addToMapped(buiding: building)
                     locationsManager.recenter(building: building)
+                    self.presentationMode.wrappedValue.dismiss()
                 }){
                     Text("Pin building in map")
                 }.padding(.top)

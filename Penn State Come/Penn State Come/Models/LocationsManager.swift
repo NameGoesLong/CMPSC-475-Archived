@@ -38,7 +38,17 @@ class LocationsManager : ObservableObject {
     
     func recenter(building: Building){
         region.center = building.coordinate
-        region.span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
+        region.span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+    }
+    
+    func clean(){
+        mappedPlaces = []
+    }
+    
+    func addToMapped(buiding: Building){
+        if !mappedPlaces.contains(where:{$0.id==buiding.id}){
+            mappedPlaces.append(buiding)
+        }
     }
     
     //MARK: Local Search

@@ -29,7 +29,7 @@ struct CampusMap: View {
     
     var buttonGroupView : some View{
         HStack{
-            Button(action: {print("button clicked")}) {
+            Button(action: {locationsManager.clean()}) {
                 Image(systemName: "xmark.circle")
             }.padding(.all)
             Button(action: {print("heart clicked")}) {
