@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct Building : Codable{
     let id = UUID()
@@ -14,6 +15,7 @@ struct Building : Codable{
     let name : String
     let buildingCode : Int
     let yearConstructed : Int?
+    let photo : String
     var favorite : Bool
     
     enum CodingKeys : String, CodingKey {
@@ -22,6 +24,7 @@ struct Building : Codable{
         case name
         case buildingCode = "opp_bldg_code"
         case yearConstructed = "year_constructed"
+        case photo
         case favorite
     }
     
@@ -36,6 +39,11 @@ struct Building : Codable{
         }else{
             self.yearConstructed = nil
         }
+        if let photo = try container.decodeIfPresent(String.self, forKey: .photo){
+            self.photo = photo
+        }else{
+            self.photo = "defaultbuilding"
+        }
         if let favorite = try container.decodeIfPresent(Bool.self, forKey: .favorite){
             self.favorite = favorite
         }else{
@@ -48,7 +56,22 @@ typealias AllBuildings = [Building]
 
 class CampusBuildings: ObservableObject {
     
-    var allBuildings : AllBuildings
+    var allBuildings : AllBuildings{
+        didSet {
+            saveData()
+        }
+    }
+    
+    //MARK: - Locations
+    // Centered in downtown State College
+    static let initialCoordinate = CLLocationCoordinate2D(latitude: 40.794978, longitude: -77.860785)
+    static let span : CLLocationDegrees = 0.01
+    
+    // define 4 corner points of downtown State College
+    static let campusCoordinates = [(40.791831951313,-77.865203974557),
+                                      (40.800364570711,-77.853778542571),
+                                      (40.799476294037,-77.8525124806654),
+                                      (40.7908968034537,-77.8638607142546)].map {(a,b) in CLLocationCoordinate2D(latitude: a, longitude: b)}
     
     let destinationURL : URL
     
@@ -85,5 +108,17 @@ class CampusBuildings: ObservableObject {
         } catch  {
             print("Error writing: \(error)")
         }
+    }
+    
+    func buildingTitles(using titleFor: (Building) -> String) -> [String] {
+        let titles = Set(allBuildings.map(titleFor))
+        return titles.sorted()
+    }
+    
+
+    func stateIndices(for property: (Building) -> Bool) -> [Int] {
+        let filteredBuildings = allBuildings.filter(property)
+        let indices = filteredBuildings.map {s in allBuildings.firstIndex(where: {$0.name == s.name})!}
+        return indices
     }
 }

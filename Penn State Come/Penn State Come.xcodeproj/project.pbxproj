@@ -15,6 +15,13 @@
 		B2536BF6252C30CB009FD779 /* Penn_State_ComeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2536BF5252C30CB009FD779 /* Penn_State_ComeUITests.swift */; };
 		B2536C0A252C310F009FD779 /* CampusBuildings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2536C09252C310F009FD779 /* CampusBuildings.swift */; };
 		B2536C12252C3195009FD779 /* buildings.json in Resources */ = {isa = PBXBuildFile; fileRef = B2536C11252C3195009FD779 /* buildings.json */; };
+		B2536C17252C3474009FD779 /* BuildingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2536C16252C3474009FD779 /* BuildingListView.swift */; };
+		B2536C1C252D3BEC009FD779 /* BuildingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2536C1B252D3BEC009FD779 /* BuildingRowView.swift */; };
+		B2536C24252D41E1009FD779 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2536C23252D41E1009FD779 /* SectionView.swift */; };
+		B2536C2F252D472C009FD779 /* String+FirstLetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2536C2E252D472C009FD779 /* String+FirstLetter.swift */; };
+		B2536C37252D5C12009FD779 /* CampusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2536C36252D5C12009FD779 /* CampusView.swift */; };
+		B2536C3C252D5C23009FD779 /* CampusMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2536C3B252D5C23009FD779 /* CampusMap.swift */; };
+		B2536C41252D7B7B009FD779 /* LocationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2536C40252D7B7A009FD779 /* LocationsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +56,13 @@
 		B2536BF7252C30CB009FD779 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2536C09252C310F009FD779 /* CampusBuildings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusBuildings.swift; sourceTree = "<group>"; };
 		B2536C11252C3195009FD779 /* buildings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = buildings.json; sourceTree = "<group>"; };
+		B2536C16252C3474009FD779 /* BuildingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingListView.swift; sourceTree = "<group>"; };
+		B2536C1B252D3BEC009FD779 /* BuildingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingRowView.swift; sourceTree = "<group>"; };
+		B2536C23252D41E1009FD779 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
+		B2536C2E252D472C009FD779 /* String+FirstLetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+FirstLetter.swift"; sourceTree = "<group>"; };
+		B2536C36252D5C12009FD779 /* CampusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusView.swift; sourceTree = "<group>"; };
+		B2536C3B252D5C23009FD779 /* CampusMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusMap.swift; sourceTree = "<group>"; };
+		B2536C40252D7B7A009FD779 /* LocationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +156,8 @@
 			children = (
 				B2536C11252C3195009FD779 /* buildings.json */,
 				B2536C09252C310F009FD779 /* CampusBuildings.swift */,
+				B2536C2E252D472C009FD779 /* String+FirstLetter.swift */,
+				B2536C40252D7B7A009FD779 /* LocationsManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -149,6 +165,11 @@
 		B2536C07252C30E6009FD779 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B2536C23252D41E1009FD779 /* SectionView.swift */,
+				B2536C16252C3474009FD779 /* BuildingListView.swift */,
+				B2536C1B252D3BEC009FD779 /* BuildingRowView.swift */,
+				B2536C36252D5C12009FD779 /* CampusView.swift */,
+				B2536C3B252D5C23009FD779 /* CampusMap.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -290,9 +311,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2536C3C252D5C23009FD779 /* CampusMap.swift in Sources */,
+				B2536C1C252D3BEC009FD779 /* BuildingRowView.swift in Sources */,
 				B2536BDB252C30C9009FD779 /* ContentView.swift in Sources */,
+				B2536C24252D41E1009FD779 /* SectionView.swift in Sources */,
 				B2536BD9252C30C9009FD779 /* Penn_State_ComeApp.swift in Sources */,
+				B2536C2F252D472C009FD779 /* String+FirstLetter.swift in Sources */,
+				B2536C41252D7B7B009FD779 /* LocationsManager.swift in Sources */,
+				B2536C17252C3474009FD779 /* BuildingListView.swift in Sources */,
 				B2536C0A252C310F009FD779 /* CampusBuildings.swift in Sources */,
+				B2536C37252D5C12009FD779 /* CampusView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
