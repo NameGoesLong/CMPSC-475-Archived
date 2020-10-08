@@ -14,11 +14,24 @@ class LocationsManager : ObservableObject {
     //MARK: Published values
     @Published var region = MKCoordinateRegion(center: CampusBuildings.initialCoordinate, span: MKCoordinateSpan(latitudeDelta: CampusBuildings.span, longitudeDelta: CampusBuildings.span))
     
+    @Published var showFavorite : Bool = false
+    
     // Map will annotate these items
     var mappedPlaces = [Building]()
     
     var annotatedPlaces : [Building] {
-        mappedPlaces + self.getFavoriteList()
+        if showFavorite{
+//            var totalAnnotated = self.getFavoriteList()
+//            mappedPlaces.forEach{building in
+//                if !totalAnnotated.contains(where: {$0.id == building.id}){
+//                    totalAnnotated.append(building)
+//                }
+//            }
+//            return totalAnnotated
+            return mappedPlaces + self.getFavoriteList()
+        }else{
+            return mappedPlaces
+        }
     }
     func recenter(building: Building){
         region.center = building.coordinate
