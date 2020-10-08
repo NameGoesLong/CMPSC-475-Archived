@@ -169,12 +169,12 @@
 		B2536C07252C30E6009FD779 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B2536C23252D41E1009FD779 /* SectionView.swift */,
-				B2536C16252C3474009FD779 /* BuildingListView.swift */,
-				B2536C1B252D3BEC009FD779 /* BuildingRowView.swift */,
 				B2536C36252D5C12009FD779 /* CampusView.swift */,
 				B2536C3B252D5C23009FD779 /* CampusMap.swift */,
+				B2536C16252C3474009FD779 /* BuildingListView.swift */,
 				B2536C48252EA934009FD779 /* BuildingDetailView.swift */,
+				B2536C1B252D3BEC009FD779 /* BuildingRowView.swift */,
+				B2536C23252D41E1009FD779 /* SectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

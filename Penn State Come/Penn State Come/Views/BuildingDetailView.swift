@@ -8,13 +8,20 @@
 import SwiftUI
 
 struct BuildingDetailView : View {
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var locationsManager : LocationsManager
     @Binding var building :Building
+    @Binding var tabSelection :Int
     
     var body : some View{
         List{
             HStack{
                 Spacer()
-                Button(action:{print("Pinned")}){
+                Button(action:{
+                        self.presentationMode.wrappedValue.dismiss()
+                        tabSelection = 1
+                    locationsManager.campusBuildings.pinnedBuildingsList.append(building)
+                }){
                     Text("Pin building in map")
                 }.padding(.top)
                 .buttonStyle(ResultButtonStyle())
@@ -23,12 +30,15 @@ struct BuildingDetailView : View {
             
             HStack{
                 Spacer()
-                Button(action:{campusBuildings.allBuildings[building.id - 1].captured.toggle()}){
+                //action:{campusBuildings.allBuildings[building.id - 1].favorite.toggle()}
+                Button(action:{building.favorite.toggle()}){
                     building.favorite ? Text("Cancel the favorite") : Text("Favorite building")
                 }.padding(.top)
                 .buttonStyle(ResultButtonStyle())
                 Spacer()
             }
+            
+            Text(building.name)
             
             //Image for pokemon. Turned grey when not captured, the background become the color of the first of its types when captured
             Image(building.photo)

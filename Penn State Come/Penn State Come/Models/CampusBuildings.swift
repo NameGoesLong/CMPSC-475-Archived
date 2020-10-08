@@ -58,7 +58,7 @@ struct Building : Codable, Identifiable{
 
 typealias AllBuildings = [Building]
 
-class CampusBuildings : ObservableObject{
+struct CampusBuildings{
     
     var allBuildings : AllBuildings{
         didSet {
@@ -67,7 +67,7 @@ class CampusBuildings : ObservableObject{
     }
     
     // Map will annotate these items
-    @Published var pinnedBuildings = [Building]()
+    var pinnedBuildingsList = [Building]()
     
     //MARK: - Locations
     // Centered in downtown State College
@@ -104,13 +104,9 @@ class CampusBuildings : ObservableObject{
             allBuildings = []
         }
         
-        for i in 1..<10{
-            pinnedBuildings.append(allBuildings[i])
-        }
-    }
-    
-    func annotatedBuildings() ->[Building]{
-        return pinnedBuildings
+//        for i in 1..<10{
+//            pinnedBuildingsList.append(allBuildings[i])
+//        }
     }
     
     func saveData() {
@@ -134,4 +130,12 @@ class CampusBuildings : ObservableObject{
         let indices = filteredBuildings.map {s in allBuildings.firstIndex(where: {$0.name == s.name})!}
         return indices
     }
+    
+    func annotatedBuildings() ->[Building]{
+        return pinnedBuildingsList
+    }
+    
+//    mutating func pinBuilding(id: Int){
+//        pinnedBuildingsList.append(allBuildings[id - 1])
+//    }
 }

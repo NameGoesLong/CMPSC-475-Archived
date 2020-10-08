@@ -28,7 +28,7 @@ struct Place :Identifiable {
 }
 
 class LocationsManager : ObservableObject {
-    
+    @Published var campusBuildings = CampusBuildings()
     
     //MARK: Published values
     @Published var region = MKCoordinateRegion(center: CampusBuildings.initialCoordinate, span: MKCoordinateSpan(latitudeDelta: CampusBuildings.span, longitudeDelta: CampusBuildings.span))

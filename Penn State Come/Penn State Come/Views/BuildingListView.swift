@@ -13,6 +13,8 @@ enum SectionStyle: String, CaseIterable {
 
 struct BuildingListView : View {
     @ State var campusBuildings = CampusBuildings()
+    @EnvironmentObject var locationsManager : LocationsManager
+    @Binding var tabSelection : Int
     var sectionStyle = SectionStyle.byName
     
     var body: some View{
@@ -20,8 +22,9 @@ struct BuildingListView : View {
             List{
                 ForEach( sectionTitles(for: sectionStyle), id: \.self) { sectionTitle in
                     Section(header: Text(sectionTitle)) {
-                        SectionViews(campusBuildings: self.$campusBuildings,
+                        SectionViews(campusBuildings: self.$campusBuildings, tabSelection: $tabSelection,
                                      filter: sectionFilter(for: sectionStyle, sectionTitle: sectionTitle))
+                            .environmentObject(locationsManager)
                     }
                 }
             }.navigationTitle("Penn State Buildings")
@@ -54,8 +57,8 @@ struct BuildingListView : View {
     }
 }
 
-struct BuildingListView_Previews: PreviewProvider {
-    static var previews: some View {
-        BuildingListView()
-    }
-}
+//struct BuildingListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BuildingListView(, tabSelection: <#Binding<Int>#>)
+//    }
+//}
