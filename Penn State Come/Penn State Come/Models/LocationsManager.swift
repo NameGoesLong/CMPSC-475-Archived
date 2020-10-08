@@ -34,9 +34,12 @@ class LocationsManager : ObservableObject {
     @Published var region = MKCoordinateRegion(center: CampusBuildings.initialCoordinate, span: MKCoordinateSpan(latitudeDelta: CampusBuildings.span, longitudeDelta: CampusBuildings.span))
     
     // Map will annotate these items
-    @Published var mappedPlaces = [Place]()
+    @Published var mappedPlaces = [Building]()
     
-
+    func recenter(building: Building){
+        region.center = building.coordinate
+        region.span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
+    }
     
     //MARK: Local Search
 //    var searchCategoryIndex : Int = 0 {

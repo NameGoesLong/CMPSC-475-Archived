@@ -13,6 +13,7 @@ struct CampusMap: View {
     @EnvironmentObject var locationsManager : LocationsManager
     @State var userTrackingMode : MapUserTrackingMode = .follow
     @State var campusBuildings = CampusBuildings()
+    //@State private var centerCoordinate = CLLocationCoordinate2D()
     
     
     var body: some View {
@@ -20,9 +21,10 @@ struct CampusMap: View {
             interactionModes: .all,
             showsUserLocation: true,
             userTrackingMode: $userTrackingMode,
-            annotationItems: campusBuildings.annotatedBuildings(),
+            annotationItems: locationsManager.mappedPlaces,
             annotationContent: annotationsForCategory)
             .overlay(buttonGroupView,alignment: .bottom)
+            .animation(.easeInOut(duration: 1.0))
     }
     
     var buttonGroupView : some View{
@@ -43,10 +45,10 @@ struct CampusMap: View {
                 .foregroundColor(item.favorite ? Color.red : Color.black)
         }
     }
-    func annotationPins (item:Place) -> some MapAnnotationProtocol {
+    func annotationPins (item:Building) -> some MapAnnotationProtocol {
         MapPin(coordinate: item.coordinate)
     }
-    func annotationMarkers (item:Place) -> some MapAnnotationProtocol {
+    func annotationMarkers (item:Building) -> some MapAnnotationProtocol {
         MapMarker(coordinate: item.coordinate)
     }
     
