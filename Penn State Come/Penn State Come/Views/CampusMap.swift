@@ -21,7 +21,7 @@ struct CampusMap: View {
             interactionModes: .all,
             showsUserLocation: true,
             userTrackingMode: $userTrackingMode,
-            annotationItems: locationsManager.mappedPlaces,
+            annotationItems: locationsManager.annotatedPlaces,
             annotationContent: annotationsForCategory)
             .overlay(buttonGroupView,alignment: .bottom)
             .animation(.easeInOut(duration: 1.0))
@@ -29,7 +29,7 @@ struct CampusMap: View {
     
     var buttonGroupView : some View{
         HStack{
-            Button(action: {locationsManager.clean()}) {
+            Button(action: {locationsManager.cleanPinnedBuildings()}) {
                 Image(systemName: "xmark.circle")
             }.padding(.all)
             Button(action: {print("heart clicked")}) {
