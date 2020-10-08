@@ -17,7 +17,7 @@ class LocationsManager : ObservableObject {
     @Published var showFavorite : Bool = false
     
     // Map will annotate these items
-    var mappedPlaces = [Building]()
+    @Published var mappedPlaces = [Building]()
     
     var annotatedPlaces : [Building] {
         if showFavorite{

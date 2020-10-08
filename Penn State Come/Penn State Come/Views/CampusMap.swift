@@ -12,9 +12,6 @@ import MapKit
 struct CampusMap: View {
     @EnvironmentObject var locationsManager : LocationsManager
     @State var userTrackingMode : MapUserTrackingMode = .follow
-    @State var campusBuildings = CampusBuildings()
-    //@State private var centerCoordinate = CLLocationCoordinate2D()
-    
     
     var body: some View {
         Map(coordinateRegion: $locationsManager.region,

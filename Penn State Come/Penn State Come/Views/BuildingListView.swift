@@ -12,7 +12,7 @@ enum SectionStyle: String, CaseIterable {
 }
 
 struct BuildingListView : View {
-    @ State var campusBuildings = CampusBuildings()
+    //@ State var campusBuildings = CampusBuildings()
     @EnvironmentObject var locationsManager : LocationsManager
     @Binding var tabSelection : Int
     var sectionStyle = SectionStyle.byName
@@ -22,7 +22,7 @@ struct BuildingListView : View {
             List{
                 ForEach( sectionTitles(for: sectionStyle), id: \.self) { sectionTitle in
                     Section(header: Text(sectionTitle)) {
-                        SectionViews(campusBuildings: self.$campusBuildings, tabSelection: $tabSelection,
+                        SectionViews(tabSelection: $tabSelection,
                                      filter: sectionFilter(for: sectionStyle, sectionTitle: sectionTitle))
                             .environmentObject(locationsManager)
                     }
@@ -37,7 +37,7 @@ struct BuildingListView : View {
     func sectionTitles(for sectionStyle:SectionStyle) -> [String] {
         switch sectionStyle {
         case .byName:
-            return self.campusBuildings.buildingTitles(using: {$0.name.firstLetter!})
+            return locationsManager.campusBuildings.buildingTitles(using: {$0.name.firstLetter!})
         //case .byDecade: break
         default:
             assert(false, "No section titles for .none option")
