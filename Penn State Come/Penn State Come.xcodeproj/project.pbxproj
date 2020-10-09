@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B2536BD9252C30C9009FD779 /* Penn_State_ComeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2536BD8252C30C9009FD779 /* Penn_State_ComeApp.swift */; };
-		B2536BDB252C30C9009FD779 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2536BDA252C30C9009FD779 /* ContentView.swift */; };
 		B2536BDD252C30CB009FD779 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2536BDC252C30CB009FD779 /* Assets.xcassets */; };
 		B2536BE0252C30CB009FD779 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2536BDF252C30CB009FD779 /* Preview Assets.xcassets */; };
 		B2536BEB252C30CB009FD779 /* Penn_State_ComeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2536BEA252C30CB009FD779 /* Penn_State_ComeTests.swift */; };
@@ -46,7 +45,6 @@
 /* Begin PBXFileReference section */
 		B2536BD5252C30C9009FD779 /* Penn State Come.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Penn State Come.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2536BD8252C30C9009FD779 /* Penn_State_ComeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Penn_State_ComeApp.swift; sourceTree = "<group>"; };
-		B2536BDA252C30C9009FD779 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B2536BDC252C30CB009FD779 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B2536BDF252C30CB009FD779 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B2536BE1252C30CB009FD779 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -121,7 +119,6 @@
 				B2536C06252C30DA009FD779 /* Models */,
 				B2536C07252C30E6009FD779 /* Views */,
 				B2536BD8252C30C9009FD779 /* Penn_State_ComeApp.swift */,
-				B2536BDA252C30C9009FD779 /* ContentView.swift */,
 				B2536BDC252C30CB009FD779 /* Assets.xcassets */,
 				B2536BE1252C30CB009FD779 /* Info.plist */,
 				B2536BDE252C30CB009FD779 /* Preview Content */,
@@ -321,7 +318,6 @@
 				B2536C4E252EAA21009FD779 /* DefaultButtonStyle.swift in Sources */,
 				B2536C1C252D3BEC009FD779 /* BuildingRowView.swift in Sources */,
 				B2536C49252EA934009FD779 /* BuildingDetailView.swift in Sources */,
-				B2536BDB252C30C9009FD779 /* ContentView.swift in Sources */,
 				B2536C24252D41E1009FD779 /* SectionView.swift in Sources */,
 				B2536BD9252C30C9009FD779 /* Penn_State_ComeApp.swift in Sources */,
 				B2536C2F252D472C009FD779 /* String+FirstLetter.swift in Sources */,

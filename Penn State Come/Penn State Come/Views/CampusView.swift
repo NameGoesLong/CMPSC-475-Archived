@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CampusView: View {
-    @ObservedObject var locationsManager = LocationsManager()
+    @EnvironmentObject var locationsManager : LocationsManager
     @State var tabSelection = "map"
     // It requires extra efforts to conform the actions for tabview transition when clicking buttons inside the subview of tab view.
     // This is not addressed perfectly in this app due to limited time given
@@ -36,8 +36,8 @@ struct CampusView: View {
 }
 
 
-struct DownTownView_Previews: PreviewProvider {
-    static var previews: some View {
-        CampusView()
-    }
-}
+//struct DownTownView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CampusView()
+//    }
+//}

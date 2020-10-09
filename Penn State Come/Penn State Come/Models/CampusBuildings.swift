@@ -61,11 +61,7 @@ typealias AllBuildings = [Building]
 
 struct CampusBuildings{
     
-    var allBuildings : AllBuildings{
-        didSet {
-            saveData()
-        }
-    }
+    var allBuildings : AllBuildings
     
     //MARK: - Locations
     // Centered in State College -- somewhat

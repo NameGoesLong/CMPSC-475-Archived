@@ -9,9 +9,19 @@ import SwiftUI
 
 @main
 struct Penn_State_ComeApp: App {
+    let locationsManager = LocationsManager()
+    
+    @Environment(\.scenePhase) private var scenePhase
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CampusView().environmentObject(locationsManager)
+        }.onChange(of: scenePhase){phase in
+            switch phase{
+            case .inactive:
+                locationsManager.campusBuildings.saveData()
+            default:
+                break
+            }
         }
     }
 }
