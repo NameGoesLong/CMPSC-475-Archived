@@ -30,6 +30,7 @@ struct Building : Codable, Identifiable{
         case favorite
     }
     
+    // Create custom decoder to add favorite attributes to the model
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         latitude = try container.decode(Double.self, forKey: .latitude)
@@ -66,11 +67,8 @@ struct CampusBuildings{
         }
     }
     
-    // Map will annotate these items
-    var pinnedBuildingsList = [Building]()
-    
     //MARK: - Locations
-    // Centered in downtown State College
+    // Centered in State College -- somewhat
     static let initialCoordinate = CLLocationCoordinate2D(latitude: 40.8005644421705, longitude: -77.8604697928673)
     static let span : CLLocationDegrees = 0.02
         

@@ -15,6 +15,32 @@ struct BuildingDetailView : View {
     
     var body : some View{
         List{
+            
+            //Image for the building with name lying at the bottom
+            Image(building.photo)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding(40.0)
+                .background(
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(Color.gray)
+                ).overlay(
+                    Text(building.name)
+                        .font(.subheadline)
+                        .foregroundColor(Color.white)
+                        .padding(.all),
+                    alignment: .bottom)
+
+            // This is provided for future extension
+//            if building.yearConstructed != nil{
+//                Text("Constructed in \(building.yearConstructed!)")
+//                    .font(.subheadline)
+//            }
+            
+            // Pin button. The action after click:
+            //1. pop the navigation view
+            //2. switch tabview to map
+            //3. center and zoom pinned location
             HStack{
                 Spacer()
                 Button(action:{
@@ -24,32 +50,22 @@ struct BuildingDetailView : View {
                     self.presentationMode.wrappedValue.dismiss()
                 }){
                     Text("Pin building in map")
-                }.padding(.top)
+                }
                 .buttonStyle(ResultButtonStyle())
                 Spacer()
             }
             
+            //Favorite button
             HStack{
                 Spacer()
-                //action:{campusBuildings.allBuildings[building.id - 1].favorite.toggle()}
                 Button(action:{building.favorite.toggle()}){
                     building.favorite ? Text("Cancel the favorite") : Text("Favorite building")
-                }.padding(.top)
+                }
                 .buttonStyle(ResultButtonStyle())
                 Spacer()
             }
-            
-            Text(building.name)
-            
-            Image(building.photo)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .padding(40.0)
-                .background(
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(Color.gray)
-//                        .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
-                )
-        }
+           
+        }.navigationBarTitle(building.name,displayMode: .inline)
     }
+    
 }

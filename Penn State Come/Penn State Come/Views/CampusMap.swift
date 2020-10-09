@@ -24,13 +24,16 @@ struct CampusMap: View {
             .animation(.easeInOut(duration: 1.0))
     }
     
+    // two buttons that control: 1. clearing the pinned annotations and 2. display/hide the favorite items
     var buttonGroupView : some View{
         HStack{
             Button(action: {locationsManager.cleanPinnedBuildings()}) {
                 Image(systemName: "xmark.circle").resizable()
                     .frame(width: 30.0, height: 30.0)
                     .disabled(locationsManager.mappedPlaces.isEmpty)
-            }.padding(.horizontal, 30.0).background(Circle().fill(Color.white))
+            }.padding(.horizontal, 30.0)
+            .background(Circle().fill(Color.white))
+            
             Button(action: {
                     locationsManager.showFavorite.toggle()
                 
@@ -38,11 +41,14 @@ struct CampusMap: View {
                 Image(systemName: "heart.circle.fill").resizable()
                     .frame(width: 30.0, height: 30.0)
                     .foregroundColor(locationsManager.showFavorite ? Color.red : Color.gray)
-            }.padding(.horizontal, 30.0).background(Circle().fill(Color.white))
+            }.padding(.horizontal, 30.0)
+            .background(Circle().fill(Color.white))
+            
         }.padding(10.0)
     }
     
     //MARK: Three different functions for creating annotations
+    // The rest two are implemented for future use
     func annotationsForCategory (item:Building) -> some MapAnnotationProtocol {
         MapAnnotation(coordinate: item.coordinate) {
             Image(systemName: "mappin.and.ellipse").renderingMode(.template)

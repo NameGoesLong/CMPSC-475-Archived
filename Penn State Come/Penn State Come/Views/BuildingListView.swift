@@ -12,7 +12,6 @@ enum SectionStyle: String, CaseIterable {
 }
 
 struct BuildingListView : View {
-    //@ State var campusBuildings = CampusBuildings()
     @EnvironmentObject var locationsManager : LocationsManager
     @Binding var tabSelection : String
     var sectionStyle = SectionStyle.byName
@@ -32,7 +31,7 @@ struct BuildingListView : View {
         
     }
     
-    // These functions are left for future extension
+    // MARK: These functions are implemented for future extension
     // generate array of section titles based on section style
     func sectionTitles(for sectionStyle:SectionStyle) -> [String] {
         switch sectionStyle {
@@ -56,9 +55,3 @@ struct BuildingListView : View {
         }
     }
 }
-
-//struct BuildingListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BuildingListView(, tabSelection: <#Binding<Int>#>)
-//    }
-//}
