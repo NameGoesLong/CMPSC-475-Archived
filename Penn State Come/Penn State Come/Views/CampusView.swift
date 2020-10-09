@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CampusView: View {
     @ObservedObject var locationsManager = LocationsManager()
-    @State var tabSelection = 1
+    @State var tabSelection = "map"
     // It requires extra efforts to conform the actions for tabview transition when clicking buttons inside the subview of tab view.
     // This is not addressed perfectly in this app due to limited time given
     var body: some View {
@@ -20,13 +20,13 @@ struct CampusView: View {
                     .environmentObject(locationsManager).tabItem {
                         Image(systemName: "map")
                         Text("Map")
-                    }.tag(1)
+                    }.tag("map")
                 
                 BuildingListView(tabSelection: $tabSelection)
                     .tabItem {
                     Image(systemName: "list.dash")
                     Text("Buildings")
-                    }.tag(2)
+                    }.tag("list")
                     .environmentObject(locationsManager)
             }
         }

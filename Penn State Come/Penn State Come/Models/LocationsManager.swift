@@ -21,14 +21,14 @@ class LocationsManager : ObservableObject {
     
     var annotatedPlaces : [Building] {
         if showFavorite{
-//            var totalAnnotated = self.getFavoriteList()
-//            mappedPlaces.forEach{building in
-//                if !totalAnnotated.contains(where: {$0.id == building.id}){
-//                    totalAnnotated.append(building)
-//                }
-//            }
-//            return totalAnnotated
-            return mappedPlaces + self.getFavoriteList()
+            // Make sure there is no duplicates in the list, otherwise it would cause error in the map's annotations
+            var totalAnnotated = self.getFavoriteList()
+            mappedPlaces.forEach{building in
+                if !totalAnnotated.contains(where: {$0.id == building.id}){
+                    totalAnnotated.append(building)
+                }
+            }
+            return totalAnnotated
         }else{
             return mappedPlaces
         }

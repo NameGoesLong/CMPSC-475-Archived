@@ -11,14 +11,14 @@ struct BuildingDetailView : View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var locationsManager : LocationsManager
     @Binding var building :Building
-    @Binding var tabSelection :Int
+    @Binding var tabSelection :String
     
     var body : some View{
         List{
             HStack{
                 Spacer()
                 Button(action:{
-                    tabSelection = 1
+                    tabSelection = "map"
                     locationsManager.addToMapped(buiding: building)
                     locationsManager.recenter(building: building)
                     self.presentationMode.wrappedValue.dismiss()
@@ -41,7 +41,6 @@ struct BuildingDetailView : View {
             
             Text(building.name)
             
-            //Image for pokemon. Turned grey when not captured, the background become the color of the first of its types when captured
             Image(building.photo)
                 .resizable()
                 .aspectRatio(contentMode: .fit)

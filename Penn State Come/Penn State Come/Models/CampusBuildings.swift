@@ -73,13 +73,7 @@ struct CampusBuildings{
     // Centered in downtown State College
     static let initialCoordinate = CLLocationCoordinate2D(latitude: 40.8005644421705, longitude: -77.8604697928673)
     static let span : CLLocationDegrees = 0.02
-    
-    // define 4 corner points of downtown State College
-//    static let campusCoordinates = [(40.791831951313,-77.865203974557),
-//                                      (40.800364570711,-77.853778542571),
-//                                      (40.799476294037,-77.8525124806654),
-//                                      (40.7908968034537,-77.8638607142546)].map {(a,b) in CLLocationCoordinate2D(latitude: a, longitude: b)}
-//    
+        
     let destinationURL : URL
     
     init() {
@@ -103,10 +97,6 @@ struct CampusBuildings{
            print("Error info: \(error)")
             allBuildings = []
         }
-        
-//        for i in 1..<10{
-//            pinnedBuildingsList.append(allBuildings[i])
-//        }
     }
     
     func saveData() {
@@ -131,8 +121,4 @@ struct CampusBuildings{
         return indices
     }
     
-//    func annotatedBuildings() ->[Building]{
-//        return pinnedBuildingsList
-//    }
-//
 }

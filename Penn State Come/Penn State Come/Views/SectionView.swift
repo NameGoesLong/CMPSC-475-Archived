@@ -11,7 +11,7 @@ import SwiftUI
 struct SectionViews : View {
     @EnvironmentObject var locationsManager : LocationsManager
     //@Binding var campusBuildings : CampusBuildings
-    @Binding var tabSelection :Int
+    @Binding var tabSelection :String
     var filter : ((Building) -> Bool)
     
     var body : some View {

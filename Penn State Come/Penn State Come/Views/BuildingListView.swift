@@ -14,7 +14,7 @@ enum SectionStyle: String, CaseIterable {
 struct BuildingListView : View {
     //@ State var campusBuildings = CampusBuildings()
     @EnvironmentObject var locationsManager : LocationsManager
-    @Binding var tabSelection : Int
+    @Binding var tabSelection : String
     var sectionStyle = SectionStyle.byName
     
     var body: some View{
