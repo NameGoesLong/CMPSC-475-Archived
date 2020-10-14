@@ -8,7 +8,21 @@
 import Foundation
 import MapKit
 
-class LocationsManager : ObservableObject {
+class LocationsManager : NSObject, ObservableObject, CLLocationManagerDelegate {
+    let locationManager : CLLocationManager
+    
+    var showsUserLocation = false
+    
+    override init() {
+        locationManager = CLLocationManager()
+        
+        super.init()
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+    }
+    
     @Published var campusBuildings = CampusBuildings()
     
     //MARK: Published values
@@ -18,6 +32,22 @@ class LocationsManager : ObservableObject {
     
     // Map will annotate these items
     @Published var mappedPlaces = [Building]()
+    
+    @Published var route : MKRoute?
+    
+    //MARK: - CLLocationManager Delegate
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .authorizedAlways, .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+            showsUserLocation = true
+        default:
+            locationManager.stopUpdatingLocation()
+            showsUserLocation = false
+        }
+    }
     
     var annotatedPlaces : [Building] {
         if showFavorite{
@@ -33,8 +63,17 @@ class LocationsManager : ObservableObject {
             return mappedPlaces
         }
     }
+    
     func recenter(building: Building){
         region.center = building.coordinate
+        region.span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+    }
+    
+    func recenterOnUser(){
+        guard let location = locationManager.location else{
+            return
+        }
+        region.center = location.coordinate
         region.span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     }
     
@@ -57,5 +96,23 @@ class LocationsManager : ObservableObject {
             }
         }
         return result
+    }
+    
+    //MARK: - Directions
+    
+    func provideDirections(from source:CLLocationCoordinate2D,to destination:CLLocationCoordinate2D) {
+        let request = MKDirections.Request()
+        request.source = MKMapItem(placemark: MKPlacemark(coordinate: source))
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: destination))    //notice this is an elementary sloution
+        request.transportType = .walking
+        request.requestsAlternateRoutes = true
+        let directions = MKDirections(request: request)
+        directions.calculate { (response, error) in
+            guard (error == nil) else {print(error!.localizedDescription); return}
+            
+            if let route = response?.routes.first {
+                self.route = route
+            }
+        }
     }
 }

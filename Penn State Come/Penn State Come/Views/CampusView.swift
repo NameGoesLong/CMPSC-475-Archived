@@ -28,6 +28,11 @@ struct CampusView: View {
                     Text("Buildings")
                     }.tag("list")
                     .environmentObject(locationsManager)
+                DirectionView()
+                    .tabItem {
+                        Image("direction")
+                        Text("Direction")
+                    }.tag("direction")
             }
         }
     }
