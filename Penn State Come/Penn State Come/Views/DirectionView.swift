@@ -11,8 +11,8 @@ import MapKit
 struct DirectionView : View {
     @EnvironmentObject var locationsManager : LocationsManager
     @State var Source : String = ""
-    @State var SourceGeo : CLLocationCoordinate2D = CLLocationCoordinate2D()
-    @State var DestinationGeo : CLLocationCoordinate2D = CLLocationCoordinate2D()
+    @State var SourceGeo : CLLocationCoordinate2D? = nil
+    @State var DestinationGeo : CLLocationCoordinate2D? = nil
     @State var Destination : String = ""
     var body: some View{
         NavigationView{
@@ -60,12 +60,12 @@ struct DirectionView : View {
         VStack{
             if locationsManager.route != nil{
                 VStack{
-                    Text("ETA: \(locationsManager.route!.expectedTravelTime)")
+                    Text("ETA: \(locationsManager.route!.expectedTravelTime.stringFromTimeInterval())")
                     List {
                         ForEach(locationsManager.route?.steps ?? [], id:\.instructions) {step in
                             Text(step.instructions)
                         }
-                    }
+                    }.listStyle(PlainListStyle())
                 }
             }else{
                 Spacer()

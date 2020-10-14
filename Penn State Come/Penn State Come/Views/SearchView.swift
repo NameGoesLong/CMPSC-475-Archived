@@ -12,28 +12,40 @@ struct SearchView :View{
     @EnvironmentObject var locationsManager : LocationsManager
     @Environment(\.presentationMode) var presentationMode
     @Binding var tab : String
-    @Binding var tabGeo : CLLocationCoordinate2D
+    @Binding var tabGeo : CLLocationCoordinate2D?
     @State private var searchText = ""
+    var currentText = "Current Position"
     var body: some View{
         VStack{
             SearchBar(text: $searchText)
-            List(
-                locationsManager.campusBuildings.allBuildings.filter(
-                    { searchText.isEmpty ?
-                        true : $0.name.lowercased().contains(searchText.lowercased())
-                    }
-                )
-            ) { item in
+                .padding(.all)
+            List{
                 Button(action: {
-                    searchText = item.name
-                    tab = item.name
-                    tabGeo = item.coordinate
+                    searchText = currentText
+                    tab = currentText
+                    tabGeo = nil
                     self.presentationMode.wrappedValue.dismiss()
                 }){
-                    Text(item.name)
+                    Text(currentText)
+                }
+                ForEach(
+                    locationsManager.campusBuildings.allBuildings.filter(
+                        { searchText.isEmpty ?
+                            true : $0.name.lowercased().contains(searchText.lowercased())
+                        }
+                    )
+                ) { item in
+                    Button(action: {
+                        searchText = item.name
+                        tab = item.name
+                        tabGeo = item.coordinate
+                        self.presentationMode.wrappedValue.dismiss()
+                    }){
+                        Text(item.name)
+                    }
                 }
             }
-        }
+        }.navigationBarTitle("",displayMode: .inline)
     }
 }
 
