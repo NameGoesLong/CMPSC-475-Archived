@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct DirectionView : View {
-    @State var Start : String = ""
+    @EnvironmentObject var locationsManager : LocationsManager
+    @State var Source : String = ""
     @State var Destination : String = ""
     var body: some View{
         NavigationView{
@@ -22,14 +23,16 @@ struct DirectionView : View {
     var selectionView : some View {
         VStack{
             NavigationLink(
-                destination: Text("Start")
+                destination: SearchView(tab : $Source).environmentObject(locationsManager)
                 ){
-                TextField("Please input your start location", text: $Start).textFieldStyle(RoundedBorderTextFieldStyle())
+                TextField("Please input your start location", text: $Source).textFieldStyle(RoundedBorderTextFieldStyle())
+                    .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
             }
             NavigationLink(
-                destination: Text("Destination")
+                destination: SearchView(tab : $Destination).environmentObject(locationsManager)
                 ){
                 TextField("Please input your destination", text: $Destination).textFieldStyle(RoundedBorderTextFieldStyle())
+                    .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
             }
             Button(action: {print("Search clicked")}){
                 Text("Get Direction")

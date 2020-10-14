@@ -17,7 +17,8 @@ struct CampusView: View {
             TabView(selection: $tabSelection){
                 CampusMap()
                     .navigationBarTitleDisplayMode(.inline)
-                    .environmentObject(locationsManager).tabItem {
+                    .environmentObject(locationsManager)
+                    .tabItem {
                         Image(systemName: "map")
                         Text("Map")
                     }.tag("map")
@@ -29,6 +30,7 @@ struct CampusView: View {
                     }.tag("list")
                     .environmentObject(locationsManager)
                 DirectionView()
+                    .environmentObject(locationsManager)
                     .tabItem {
                         Image("direction")
                         Text("Direction")
