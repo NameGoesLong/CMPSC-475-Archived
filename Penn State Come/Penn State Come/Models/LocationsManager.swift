@@ -103,7 +103,7 @@ class LocationsManager : NSObject, ObservableObject, CLLocationManagerDelegate {
     func provideDirections(from source:CLLocationCoordinate2D,to destination:CLLocationCoordinate2D) {
         let request = MKDirections.Request()
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: source))
-        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: destination))    //notice this is an elementary sloution
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: destination))    //notice this is an elementary solution
         request.transportType = .walking
         request.requestsAlternateRoutes = true
         let directions = MKDirections(request: request)

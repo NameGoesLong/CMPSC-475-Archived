@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct SearchView :View{
     @EnvironmentObject var locationsManager : LocationsManager
     @Environment(\.presentationMode) var presentationMode
     @Binding var tab : String
+    @Binding var tabGeo : CLLocationCoordinate2D
     @State private var searchText = ""
     var body: some View{
         VStack{
@@ -23,7 +25,9 @@ struct SearchView :View{
                 )
             ) { item in
                 Button(action: {
+                    searchText = item.name
                     tab = item.name
+                    tabGeo = item.coordinate
                     self.presentationMode.wrappedValue.dismiss()
                 }){
                     Text(item.name)
@@ -68,18 +72,7 @@ struct SearchBar: View {
                 .onTapGesture {
                     self.isEditing = true
                 }
-//            if isEditing {
-//                Button(action: {
-//                    self.isEditing = false
-//                    self.text = ""
-//                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-//                }) {
-//                    Text("Cancel")
-//                }
-//                .padding(.trailing, 10)
-//                .transition(.move(edge: .trailing))
-//                .animation(.default)
-//            }
+
         }
     }
 }

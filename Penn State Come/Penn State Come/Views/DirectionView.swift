@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct DirectionView : View {
     @EnvironmentObject var locationsManager : LocationsManager
     @State var Source : String = ""
+    @State var SourceGeo : CLLocationCoordinate2D = CLLocationCoordinate2D()
+    @State var DestinationGeo : CLLocationCoordinate2D = CLLocationCoordinate2D()
     @State var Destination : String = ""
     var body: some View{
         NavigationView{
@@ -23,29 +26,49 @@ struct DirectionView : View {
     var selectionView : some View {
         VStack{
             NavigationLink(
-                destination: SearchView(tab : $Source).environmentObject(locationsManager)
+                destination: SearchView(tab : $Source, tabGeo: $SourceGeo).environmentObject(locationsManager)
                 ){
                 TextField("Please input your start location", text: $Source).textFieldStyle(RoundedBorderTextFieldStyle())
                     .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
             }
             NavigationLink(
-                destination: SearchView(tab : $Destination).environmentObject(locationsManager)
+                destination: SearchView(tab : $Destination, tabGeo: $DestinationGeo).environmentObject(locationsManager)
                 ){
                 TextField("Please input your destination", text: $Destination).textFieldStyle(RoundedBorderTextFieldStyle())
                     .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
             }
-            Button(action: {print("Search clicked")}){
-                Text("Get Direction")
-            }.buttonStyle(SelectionButtonStyle())
+            HStack{
+                Button(action: {
+                    Source = ""
+                    Destination = ""
+                    locationsManager.route = nil
+                }){
+                    Text("Clear Search")
+                }.buttonStyle(SelectionButtonStyle())
+                Button(action: {
+                    print("Search clicked")
+                    locationsManager.provideDirections(from: SourceGeo, to: DestinationGeo)
+                    
+                }){
+                    Text("Get Direction")
+                }.buttonStyle(SelectionButtonStyle())
+            }
         }.padding(.all)
     }
     
     var directionList : some View {
         VStack{
-            List{
-                ForEach(1..<10){i in
-                    Text("Step \(i)")
+            if locationsManager.route != nil{
+                VStack{
+                    Text("ETA: \(locationsManager.route!.expectedTravelTime)")
+                    List {
+                        ForEach(locationsManager.route?.steps ?? [], id:\.instructions) {step in
+                            Text(step.instructions)
+                        }
+                    }
                 }
+            }else{
+                Spacer()
             }
         }
     }
