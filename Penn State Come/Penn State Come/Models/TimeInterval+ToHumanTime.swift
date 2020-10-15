@@ -8,6 +8,7 @@
 import Foundation
 
 extension TimeInterval{
+    //Added the function to convert the ETA
     func stringFromTimeInterval() -> NSString {
 
       let ti = NSInteger(self)

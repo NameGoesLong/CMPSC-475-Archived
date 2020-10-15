@@ -23,6 +23,7 @@ struct DirectionView : View {
         }
     }
     
+    // The direction view would get geolocation from the search view
     var selectionView : some View {
         VStack{
             NavigationLink(
@@ -61,6 +62,7 @@ struct DirectionView : View {
             if locationsManager.route != nil{
                 VStack{
                     Text("ETA: \(locationsManager.route!.expectedTravelTime.stringFromTimeInterval())")
+                        .font(.headline)
                     List {
                         ForEach(locationsManager.route?.steps ?? [], id:\.instructions) {step in
                             Text(step.instructions)

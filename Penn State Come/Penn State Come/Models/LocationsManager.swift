@@ -33,6 +33,7 @@ class LocationsManager : NSObject, ObservableObject, CLLocationManagerDelegate {
     // Map will annotate these items
     @Published var mappedPlaces = [Building]()
     
+    //This is the route for direction
     @Published var route : MKRoute?
     
     //MARK: - CLLocationManager Delegate
@@ -74,7 +75,7 @@ class LocationsManager : NSObject, ObservableObject, CLLocationManagerDelegate {
             return
         }
         region.center = location.coordinate
-        region.span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        region.span = MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007)
     }
     
     func cleanPinnedBuildings(){
@@ -99,7 +100,7 @@ class LocationsManager : NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     //MARK: - Directions
-    
+    //Check if the input is valid. If the input is nil, then return the user location
     func provideDirections(from source:CLLocationCoordinate2D?,to destination:CLLocationCoordinate2D?) {
         let request = MKDirections.Request()
         request.source = (source != nil ? MKMapItem(placemark: MKPlacemark(coordinate: source!)) : MKMapItem.forCurrentLocation())

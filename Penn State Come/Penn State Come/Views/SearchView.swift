@@ -20,14 +20,16 @@ struct SearchView :View{
             SearchBar(text: $searchText)
                 .padding(.all)
             List{
+                //Provide the selection of current location
                 Button(action: {
-                    searchText = currentText
+                    //searchText = currentText
                     tab = currentText
                     tabGeo = nil
                     self.presentationMode.wrappedValue.dismiss()
                 }){
                     Text(currentText)
                 }
+                //Filter the locations by the text input
                 ForEach(
                     locationsManager.campusBuildings.allBuildings.filter(
                         { searchText.isEmpty ?
@@ -36,7 +38,7 @@ struct SearchView :View{
                     )
                 ) { item in
                     Button(action: {
-                        searchText = item.name
+                        //searchText = item.name
                         tab = item.name
                         tabGeo = item.coordinate
                         self.presentationMode.wrappedValue.dismiss()
