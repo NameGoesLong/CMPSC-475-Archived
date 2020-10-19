@@ -34,9 +34,13 @@ struct BookDetailView : View {
     
     var buttonGroupView : some View{
         VStack{
-            Button(action: {print("Add to readlist")}){
+            Button(action: {
+                bookLibrary.addToReadingList(book: book)
+            }){
                 Text("Add the book to reading list")
             }.buttonStyle(ResultButtonStyle())
+            .disabled(book.currentlyReading)
+            .opacity(book.currentlyReading ? 0.4 : 0.8)
             Button(action: {print("Record progress")}){
                 Text("Record Progress")
             }.buttonStyle(ResultButtonStyle())

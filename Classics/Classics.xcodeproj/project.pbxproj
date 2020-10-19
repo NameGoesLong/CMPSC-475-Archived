@@ -159,11 +159,11 @@
 		B2D91191253D345300109BE1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B2D911B7253D43B900109BE1 /* AppMainView.swift */,
 				B2D911A0253D3FC800109BE1 /* BookListView.swift */,
 				B2D911A5253D3FEA00109BE1 /* BookCardView.swift */,
 				B2D911AA253D400000109BE1 /* BookListRow.swift */,
 				B2D911AF253D401300109BE1 /* BookCardItem.swift */,
-				B2D911B7253D43B900109BE1 /* AppMainView.swift */,
 				B2D911BC253D45B800109BE1 /* BookDetailView.swift */,
 			);
 			path = Views;

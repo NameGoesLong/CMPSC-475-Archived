@@ -13,15 +13,15 @@ struct BookListView : View{
         List{
             ForEach(bookLibrary.allBooks){ book in
                 NavigationLink(
-                    destination: BookDetailView(book: $bookLibrary.allBooks[getBookPlace(book: book)]).environmentObject(bookLibrary)
+                    destination: BookDetailView(book: $bookLibrary.allBooks[bookLibrary.getBookPlace(book: book)]).environmentObject(bookLibrary)
                 ){
                     BookListRow(book: book)
                 }
             }
-        }
+        }.listStyle(PlainListStyle())
     }
     
-    func getBookPlace(book: Book) -> Int{
-        return bookLibrary.allBooks.firstIndex(where: {$0.id == book.id})!
-    }
+//    func getBookPlace(book: Book) -> Int{
+//        return bookLibrary.allBooks.firstIndex(where: {$0.id == book.id})!
+//    }
 }

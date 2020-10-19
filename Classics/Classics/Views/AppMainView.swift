@@ -7,14 +7,43 @@
 
 import SwiftUI
 
+enum DisplayMode : String {
+    case listMode = "square.grid.2x2"
+    case cardMode = "list.dash"
+}
+
 struct AppMainView : View{
-    var bookLibrary = BookLibrary()
+    @EnvironmentObject var bookLibrary : BookLibrary
+    @State var displaymode : DisplayMode = .listMode
     var body: some View{
-        
         NavigationView{
-            BookListView()
-                .environmentObject(bookLibrary)
-                .navigationTitle("Classical Books")
+            Group{
+                switch displaymode{
+                case .listMode:
+                    BookListView()
+                        .environmentObject(bookLibrary)
+                case .cardMode:
+                    BookCardView()
+                        .environmentObject(bookLibrary)
+                }
+            }.navigationBarItems(trailing: preferenceButton)
+            .navigationTitle("Classical Books")
+        }
+    }
+    
+    var preferenceButton: some View {
+        Button(action: {
+                if self.displaymode == .cardMode{
+                    self.displaymode = .listMode
+                }
+                else{
+                    self.displaymode = .cardMode
+                }
+                     }) {
+            Image(systemName: displaymode.rawValue)
+                .imageScale(.large)
+                .accessibility(label: Text("User Profile"))
+                .padding()
         }
     }
 }

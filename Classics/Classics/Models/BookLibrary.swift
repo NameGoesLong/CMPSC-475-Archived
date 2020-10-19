@@ -54,7 +54,7 @@ struct Book : Codable, Identifiable{
         }else{
             self.currentlyReading = false
         }
-        if let progress = try container.decodeIfPresent(Int.self, forKey: .currentlyReading){
+        if let progress = try container.decodeIfPresent(Int.self, forKey: .progress){
             self.progress = progress
         }else{
             self.progress = nil
@@ -66,7 +66,7 @@ typealias AllBooks = [Book]
 
 class BookLibrary : ObservableObject{
     
-    var allBooks : AllBooks
+    @Published var allBooks : AllBooks
     
     let destinationURL : URL
     
@@ -103,11 +103,18 @@ class BookLibrary : ObservableObject{
         }
     }
     
-    func buildingTitles(using titleFor: (Book) -> String) -> [String] {
+    func bookTitle(using titleFor: (Book) -> String) -> [String] {
         let titles = Set(allBooks.map(titleFor))
         return titles.sorted()
     }
     
+    func getBookPlace(book: Book) -> Int{
+        return allBooks.firstIndex(where: {$0.id == book.id})!
+    }
+    
+    func addToReadingList(book: Book){
+        allBooks[self.getBookPlace(book: book)].currentlyReading = true
+    }
 
 //    func bookIndices(for property: (Book) -> Bool) -> [Int] {
 //        let filteredBooks = allBooks.filter(property)
