@@ -12,6 +12,22 @@ struct BookDetailView : View {
     @Binding var book :Book
     var body: some View{
         List{
+            Image(book.image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding(40.0)
+                .background(
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(Color.gray)
+                )
+            Text(book.title)
+            if book.author != nil{
+                Text(book.author!)
+            }
+            Text(book.country)
+            Text(book.language)
+            Text(book.link)
+            Text(String(book.pages))
             buttonGroupView
         }
     }
@@ -20,10 +36,10 @@ struct BookDetailView : View {
         VStack{
             Button(action: {print("Add to readlist")}){
                 Text("Add the book to reading list")
-            }
+            }.buttonStyle(ResultButtonStyle())
             Button(action: {print("Record progress")}){
                 Text("Record Progress")
-            }
+            }.buttonStyle(ResultButtonStyle())
         }.padding(10.0)
     }
 }
