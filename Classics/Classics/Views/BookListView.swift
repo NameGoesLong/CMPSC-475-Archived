@@ -13,20 +13,28 @@ struct BookListView : View{
     var body: some View{
         List{
             ForEach(
-//                //When typeIndex is nil, then return all the pokemons
-//                //otherwise, return the type the user selected
-//                ForEach(
-//                    pokedex.pokemonIDs(
-//                        for: {typeIndex==nil ? true : $0.types.contains(typeIndex!)}
-//                    ),
-                bookLibrary.allBooks){ book in
+                bookLibrary.bookIndices(for: sectionFilter(for: typeIndex)),
+                id:\.self){ index in
                 NavigationLink(
-                    destination: BookDetailView(book: $bookLibrary.allBooks[bookLibrary.getBookPlace(book: book)]).environmentObject(bookLibrary)
+                    destination: BookDetailView(book: $bookLibrary.allBooks[index])
+                        .environmentObject(bookLibrary)
                 ){
-                    BookListRow(book: book)
+                    BookListRow(book: bookLibrary.allBooks[index])
                 }
             }
         }.listStyle(PlainListStyle())
+    }
+    
+    // generate a filter (predicate function) that tests whether a book belongs in the section with title sectionTitle using sectionStyle
+    func sectionFilter(for selectionMode:SelectionMode) ->  ((Book) -> Bool) {
+        switch selectionMode {
+        case .CurrentlyReading:
+            return {$0.currentlyReading}
+        case .FinishedReading:
+            return {$0.progress == $0.pages}
+        default:
+            return {_ in true}
+        }
     }
     
 }

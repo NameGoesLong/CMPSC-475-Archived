@@ -15,20 +15,20 @@ enum DisplayMode : String {
 struct AppMainView : View{
     @EnvironmentObject var bookLibrary : BookLibrary
     @State var displaymode : DisplayMode = .listMode
-    @State var typeIndex : SelectionMode = .Default
+    @State var selectionMode : SelectionMode = .Default
     var body: some View{
         NavigationView{
             Group{
                 switch displaymode{
                 case .listMode:
-                    BookListView(typeIndex: $typeIndex)
+                    BookListView(typeIndex: $selectionMode)
                         .environmentObject(bookLibrary)
                 case .cardMode:
-                    BookCardView(typeIndex: $typeIndex)
+                    BookCardView(typeIndex: $selectionMode)
                         .environmentObject(bookLibrary)
                 }
             }.navigationTitle("Classical Books")
-            .navigationBarItems(leading: Preferences(typeIndex: $typeIndex),trailing: preferenceButton)
+            .navigationBarItems(leading: Preferences(typeIndex: $selectionMode),trailing: preferenceButton)
             
         }
     }
@@ -48,4 +48,5 @@ struct AppMainView : View{
                 .padding()
         }
     }
+
 }
