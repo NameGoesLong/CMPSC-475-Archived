@@ -26,8 +26,9 @@ struct AppMainView : View{
                     BookCardView()
                         .environmentObject(bookLibrary)
                 }
-            }.navigationBarItems(trailing: preferenceButton)
-            .navigationTitle("Classical Books")
+            }.navigationTitle("Classical Books")
+            .navigationBarItems(leading: Preferences(),trailing: preferenceButton)
+            
         }
     }
     

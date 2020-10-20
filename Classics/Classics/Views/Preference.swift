@@ -1,0 +1,25 @@
+//
+//  Preference.swift
+//  Classics
+//
+//  Created by New User on 19/10/20.
+//
+
+import SwiftUI
+
+enum SelectionMode : String, CaseIterable {
+    case CurrentlyReading
+    case FinishedReading
+    case Default
+}
+
+struct Preferences: View {
+    @State var typeIndex : SelectionMode = .Default
+    var body: some View {
+        Picker(selection: $typeIndex, label:Text("Filter")){
+            ForEach(SelectionMode.allCases, id: \.self) { value in
+                Text(value.rawValue).tag(value)
+            }
+        }.pickerStyle(MenuPickerStyle())
+    }
+}

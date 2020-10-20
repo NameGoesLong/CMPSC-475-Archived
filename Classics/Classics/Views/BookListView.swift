@@ -21,7 +21,4 @@ struct BookListView : View{
         }.listStyle(PlainListStyle())
     }
     
-//    func getBookPlace(book: Book) -> Int{
-//        return bookLibrary.allBooks.firstIndex(where: {$0.id == book.id})!
-//    }
 }
