@@ -8,9 +8,9 @@
 import SwiftUI
 
 enum SelectionMode : String, CaseIterable {
+    case Default
     case CurrentlyReading
     case FinishedReading
-    case Default
 }
 
 struct Preferences: View {
