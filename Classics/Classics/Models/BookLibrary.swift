@@ -116,10 +116,10 @@ class BookLibrary : ObservableObject{
         allBooks[self.getBookPlace(book: book)].currentlyReading = true
     }
 
-//    func bookIndices(for property: (Book) -> Bool) -> [Int] {
-//        let filteredBooks = allBooks.filter(property)
-//        let indices = filteredBooks.map {s in allBooks.firstIndex(where: {$0.title == s.title})!}
-//        return indices
-//    }
+    func bookIndices(for property: (Book) -> Bool) -> [Int] {
+        let filteredBooks = allBooks.filter(property)
+        let indices = filteredBooks.map {s in allBooks.firstIndex(where: {$0.title == s.title})!}
+        return indices
+    }
     
 }

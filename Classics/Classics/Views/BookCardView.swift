@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BookCardView : View  {
     @EnvironmentObject var bookLibrary :BookLibrary
+    @Binding var typeIndex : SelectionMode
     
     var columns: [GridItem] =
              Array(repeating: .init(.flexible()), count: 2)

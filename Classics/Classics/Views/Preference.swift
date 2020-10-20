@@ -14,7 +14,7 @@ enum SelectionMode : String, CaseIterable {
 }
 
 struct Preferences: View {
-    @State var typeIndex : SelectionMode = .Default
+    @Binding var typeIndex : SelectionMode
     var body: some View {
         Picker(selection: $typeIndex, label:Text("Filter")){
             ForEach(SelectionMode.allCases, id: \.self) { value in
