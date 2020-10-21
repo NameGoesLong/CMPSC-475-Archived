@@ -18,8 +18,8 @@ struct Book : Codable, Identifiable{
     let title : String
     let year : Int
     var currentlyReading : Bool
-    var progress : Int?
-
+    var noteList : [Note]
+    var progress : Int
     
     enum CodingKeys : String, CodingKey {
         case author
@@ -31,7 +31,12 @@ struct Book : Codable, Identifiable{
         case title
         case year
         case currentlyReading
+        case noteList
         case progress
+        
+//        enum NoteListKey : String, CodingKey{
+//            case notes
+//        }
     }
     
     // Create custom decoder to add currentlyReading attribute and progress attribute to the model
@@ -57,8 +62,36 @@ struct Book : Codable, Identifiable{
         if let progress = try container.decodeIfPresent(Int.self, forKey: .progress){
             self.progress = progress
         }else{
-            self.progress = nil
+            self.progress = 0
         }
+        
+        if let noteList = try container.decodeIfPresent([Note].self, forKey: .noteList){
+            self.noteList = noteList
+        }else{
+            self.noteList = []
+        }
+        
+//        let noteListContainer = try? container.nestedContainer(keyedBy: CodingKeys.NoteListKey.self, forKey: .noteList)
+//        if noteListContainer != nil {
+//            if let notes = try noteListContainer!.decodeIfPresent([Note].self, forKey: .notes){
+//                self.noteList = notes
+//            }else{
+//                self.noteList = []
+//            }
+//        }else{
+//            self.noteList = []
+//        }
+    }
+    
+    mutating func addNote(noteBody : String){
+        let note = Note(time: self.getCurrentTimeStamp(), progress: self.progress, modified: false, noteBody: noteBody)
+        self.noteList.append(note)
+    }
+    
+    func getCurrentTimeStamp() -> String{
+        let formatter3 = DateFormatter()
+        formatter3.dateFormat = "HH:mm E, d MMM y"
+        return formatter3.string(from: Date())
     }
 }
 
