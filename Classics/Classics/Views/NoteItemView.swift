@@ -8,16 +8,28 @@
 import SwiftUI
 
 struct NoteItemView : View {
-    @Binding var note: Note
+    @EnvironmentObject var bookLibrary : BookLibrary
+
+    var note: Note
+    var bookIndex : Int
+    var noteIndex : Int
     @State var isEditing = false
-    //@Environment(\.editMode) var editMode
+    @State var text :String = ""
+    @State var revealDetails = false
     
-    
+    init(note: Note, bookIndex: Int, noteIndex: Int) {
+        self.note = note
+        self.bookIndex = bookIndex
+        self.noteIndex = noteIndex
+    }
     
     var body : some View {
         UITextView.appearance().backgroundColor = .clear
-        return DisclosureGroup("Time: \(note.time)   Progress: \(note.progress)"){
-            TextEditor(text: $note.noteBody)
+        return DisclosureGroup("Time: \(note.time)   Progress: \(note.progress)", isExpanded:$revealDetails){
+            TextEditor(text: $text)
+                .onAppear{
+                    self.text = note.noteBody
+                }
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .background(
                     RoundedRectangle(cornerRadius: 5)
@@ -42,12 +54,14 @@ struct NoteItemView : View {
                 }
             }.background(Color.secondary.opacity(0.2))
             .padding()
-//            Button(action: {
-//                self.isEditing = false
-//            }){
-//                Text("Save")
-//            }.background(Color.secondary.opacity(0.2))
-//            .padding()
+            Button(action: {
+                self.isEditing = false
+                revealDetails = false
+                bookLibrary.allBooks[bookIndex].noteList.remove(at: noteIndex)
+            }){
+                Text("Delete")
+            }.background(Color.secondary.opacity(0.2))
+            .padding()
 //            Button(action: {
 //                self.isEditing = false
 //            }){

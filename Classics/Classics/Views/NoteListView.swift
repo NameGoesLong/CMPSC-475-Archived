@@ -20,23 +20,20 @@ struct NoteListView: View {
     @State private var editing = false
 
     var body: some View {
-        VStack{
+        ScrollView{
 //            let myEditButton: Button<Text> = Button(editing ? "Done" : "Edit", action: {editing.toggle()})
             
-            List {
+            Group {
                 if book.noteList.count == 0 {
                     Text("There is currently no note for this book.")
                 }
                 ForEach((0..<book.noteList.count).reversed(), id:\.self) { index in
-                    Group{
-                        NoteItemView(note:$book.noteList[index])
-                    }
+                    NoteItemView(note:book.noteList[index], bookIndex: bookLibrary.getBookPlace(book: book), noteIndex: index).environmentObject(bookLibrary)
                 }
-                .onDelete{indexSet in
-                    bookLibrary.allBooks[bookLibrary.getBookPlace(book: book)].deleteNote(indexSet: indexSet)
-                }
+//                .onDelete{indexSet in
+//                    bookLibrary.allBooks[bookLibrary.getBookPlace(book: book)].deleteNote(indexSet: indexSet)
+//                }
             }
-            .listStyle(InsetListStyle())
             .navigationTitle(Text("BookNotes"))
             .navigationBarItems(leading: addButton,
                                 trailing: EditButton())
