@@ -89,9 +89,15 @@ struct Book : Codable, Identifiable{
     }
     
     func getCurrentTimeStamp() -> String{
-        let formatter3 = DateFormatter()
-        formatter3.dateFormat = "HH:mm E, d MMM y"
-        return formatter3.string(from: Date())
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm E, d MMM y"
+        return formatter.string(from: Date())
+    }
+    
+    mutating func deleteNote(indexSet: IndexSet){
+        indexSet.forEach { (i) in
+            self.noteList.remove(at: self.noteList.count - i)
+        }
     }
 }
 

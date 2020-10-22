@@ -20,30 +20,39 @@ struct NoteListView: View {
     @State private var editing = false
 
     var body: some View {
-        ScrollView{
-            let myEditButton: Button<Text> = Button(editing ? "Done" : "Edit", action: {editing.toggle()})
+        VStack{
+//            let myEditButton: Button<Text> = Button(editing ? "Done" : "Edit", action: {editing.toggle()})
             
-            Group {
+            List {
                 if book.noteList.count == 0 {
-                    Text("no note")
+                    Text("There is currently no note for this book.")
                 }
-                ForEach(0..<book.noteList.count, id:\.self) { index in
-                    NoteItemView(note:$book.noteList[index])
+                ForEach((0..<book.noteList.count).reversed(), id:\.self) { index in
+                    Group{
+                        NoteItemView(note:$book.noteList[index])
+                    }
+                }
+                .onDelete{indexSet in
+                    bookLibrary.allBooks[bookLibrary.getBookPlace(book: book)].deleteNote(indexSet: indexSet)
                 }
             }
-            .navigationTitle(Text("Things To Do"))
+            .listStyle(InsetListStyle())
+            .navigationTitle(Text("BookNotes"))
             .navigationBarItems(leading: addButton,
-                                trailing: myEditButton)
+                                trailing: EditButton())
             
             .environment(\.editMode, $editMode)
         }
         .sheet(isPresented: $isAdding) {
-            TextField("Add", text: $addTextItem, onEditingChanged: {_ in}) {
-                bookLibrary.allBooks[bookLibrary.getBookPlace(book: book)].addNote(noteBody: addTextItem)
-                addTextItem = ""
-                isAdding = false
-            }.textFieldStyle(RoundedBorderTextFieldStyle())
-            .padding()
+            VStack{
+                Text("Add new note").font(.largeTitle).padding()
+                TextField("Add", text: $addTextItem, onEditingChanged: {_ in}) {
+                    bookLibrary.allBooks[bookLibrary.getBookPlace(book: book)].addNote(noteBody: addTextItem)
+                    addTextItem = ""
+                    isAdding = false
+                }.textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+            }
             Spacer()
         }
         

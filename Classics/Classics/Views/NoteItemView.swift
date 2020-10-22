@@ -32,18 +32,28 @@ struct NoteItemView : View {
     var noteButtonGroup : some View {
         HStack{
             Button(action: {
-                self.isEditing = true
+                self.isEditing.toggle()
             }){
-                Text("Modify")
+                if self.isEditing{
+                    Text("Save")
+                }else{
+                    Text("Modify")
+
+                }
             }.background(Color.secondary.opacity(0.2))
             .padding()
-            
-            Button(action: {
-                self.isEditing = false
-            }){
-                Text("Delete")
-            }.background(Color.primary.opacity(0.2))
-            .padding()
+//            Button(action: {
+//                self.isEditing = false
+//            }){
+//                Text("Save")
+//            }.background(Color.secondary.opacity(0.2))
+//            .padding()
+//            Button(action: {
+//                self.isEditing = false
+//            }){
+//                Text("Delete")
+//            }.background(Color.primary.opacity(0.2))
+//            .padding()
         }
     }
 }

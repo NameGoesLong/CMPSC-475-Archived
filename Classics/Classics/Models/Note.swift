@@ -20,4 +20,11 @@ struct Note : Codable, Hashable{
         case modified
         case noteBody
     }
+    
+    func timeToDate() -> Date{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm E, d MMM y"// yyyy-MM-dd"
+
+        return dateFormatter.date(from: self.time)!
+    }
 }

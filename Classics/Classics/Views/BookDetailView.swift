@@ -31,7 +31,12 @@ struct BookDetailView : View {
                 }
                 
                 TextField("Update progress", text: $tempProgress, onCommit: {
-                    book.progress = Int(tempProgress)!
+                    if tempProgress.isNumber{
+                        if checkValid(progress: Int(tempProgress)!){
+                            book.progress = Int(tempProgress)!
+                        }
+                    }
+                    tempProgress = ""
                 })
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad)
@@ -75,5 +80,12 @@ struct BookDetailView : View {
 //                Spacer()
 //            }
         }.padding(10.0)
+    }
+    
+    func checkValid(progress input: Int) -> Bool{
+        let start = 0
+        let end = book.pages
+        let validRange = start...end
+        return validRange.contains(input)
     }
 }
