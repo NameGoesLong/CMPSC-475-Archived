@@ -36,8 +36,10 @@ struct NoteListView: View {
             VStack{
                 Text("Add new note").font(.largeTitle).padding()
                 TextField("Add", text: $addTextItem, onEditingChanged: {_ in}) {
-                    bookLibrary.allBooks[bookLibrary.getBookPlace(book: book)].addNote(noteBody: addTextItem)
-                    addTextItem = ""
+                    if addTextItem != ""{
+                        bookLibrary.allBooks[bookLibrary.getBookPlace(book: book)].addNote(noteBody: addTextItem)
+                        addTextItem = ""
+                    }
                     isAdding = false
                 }.textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
@@ -54,8 +56,14 @@ struct NoteListView: View {
     }
 
     private var addButton : some View {
-        Button(action: {isAdding = true})
-            { Image(systemName: "plus") }}
+        Button(action: {
+                isAdding = true
+            
+        }){
+            Image(systemName: "plus")
+        }.disabled(editing)
+        
+    }
 
 
 }
