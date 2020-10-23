@@ -9,7 +9,7 @@ import Foundation
 
 
 struct Note : Codable, Hashable{
-    let time : String
+    let time : Date
     let progress : Int
     var modified : Bool
     var noteBody : String
@@ -21,10 +21,9 @@ struct Note : Codable, Hashable{
         case noteBody
     }
     
-    func timeToDate() -> Date{
+    func timeToString() -> String{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm E, d MMM y"// yyyy-MM-dd"
-
-        return dateFormatter.date(from: self.time)!
+        return dateFormatter.string(from: self.time)
     }
 }

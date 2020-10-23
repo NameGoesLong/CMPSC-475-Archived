@@ -12,6 +12,7 @@ enum DisplayMode : String {
     case cardMode = "list.dash"
 }
 
+// Switch between the displaymode
 struct AppMainView : View{
     @EnvironmentObject var bookLibrary : BookLibrary
     @State var displaymode : DisplayMode = .listMode

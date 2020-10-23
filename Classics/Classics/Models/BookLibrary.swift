@@ -7,6 +7,7 @@
 
 import Foundation
 
+//Here we put note into list
 struct Book : Codable, Identifiable{
     let id = UUID()
     let author : String?
@@ -34,12 +35,10 @@ struct Book : Codable, Identifiable{
         case noteList
         case progress
         
-//        enum NoteListKey : String, CodingKey{
-//            case notes
-//        }
     }
     
     // Create custom decoder to add currentlyReading attribute and progress attribute to the model
+    // It also try to read the sublist as note
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         if let author = try container.decodeIfPresent(String.self, forKey: .author){
@@ -54,6 +53,7 @@ struct Book : Codable, Identifiable{
         pages = try container.decode(Int.self, forKey: .pages)
         title = try container.decode(String.self, forKey: .title)
         year = try container.decode(Int.self, forKey: .year)
+        
         if let currentlyReading = try container.decodeIfPresent(Bool.self, forKey: .currentlyReading){
             self.currentlyReading = currentlyReading
         }else{
@@ -71,34 +71,14 @@ struct Book : Codable, Identifiable{
             self.noteList = []
         }
         
-//        let noteListContainer = try? container.nestedContainer(keyedBy: CodingKeys.NoteListKey.self, forKey: .noteList)
-//        if noteListContainer != nil {
-//            if let notes = try noteListContainer!.decodeIfPresent([Note].self, forKey: .notes){
-//                self.noteList = notes
-//            }else{
-//                self.noteList = []
-//            }
-//        }else{
-//            self.noteList = []
-//        }
     }
     
+    //Add note to the list
     mutating func addNote(noteBody : String){
-        let note = Note(time: self.getCurrentTimeStamp(), progress: self.progress, modified: false, noteBody: noteBody)
+        let note = Note(time: Date(), progress: self.progress, modified: false, noteBody: noteBody)
         self.noteList.append(note)
     }
     
-    func getCurrentTimeStamp() -> String{
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm E, d MMM y"
-        return formatter.string(from: Date())
-    }
-    
-    mutating func deleteNote(indexSet: IndexSet){
-        indexSet.forEach { (i) in
-            self.noteList.remove(at: self.noteList.count - i)
-        }
-    }
 }
 
 typealias AllBooks = [Book]
@@ -142,11 +122,8 @@ class BookLibrary : ObservableObject{
         }
     }
     
-    func bookTitle(using titleFor: (Book) -> String) -> [String] {
-        let titles = Set(allBooks.map(titleFor))
-        return titles.sorted()
-    }
     
+    //find the corresponding of the list
     func getBookPlace(book: Book) -> Int{
         return allBooks.firstIndex(where: {$0.id == book.id})!
     }
@@ -154,7 +131,12 @@ class BookLibrary : ObservableObject{
     func addToReadingList(book: Book){
         allBooks[self.getBookPlace(book: book)].currentlyReading = true
     }
+    
+    func removeFromReadingList(book: Book){
+        allBooks[self.getBookPlace(book: book)].currentlyReading = false
+    }
 
+    //Get indicies of the book by requirements
     func bookIndices(for property: (Book) -> Bool) -> [Int] {
         let filteredBooks = allBooks.filter(property)
         let indices = filteredBooks.map {s in allBooks.firstIndex(where: {$0.title == s.title})!}

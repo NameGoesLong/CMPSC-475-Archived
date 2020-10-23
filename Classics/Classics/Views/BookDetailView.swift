@@ -11,50 +11,77 @@ struct BookDetailView : View {
     @EnvironmentObject var bookLibrary : BookLibrary
     @Binding var book :Book
     @State private var tempProgress = ""
+    @State private var updateProgress = false
     var body: some View{
         List{
-            Image(book.image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .padding(40.0)
-                .background(
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(Color.gray)
-                )
-            Text(book.title)
-            VStack{
-                HStack {
-                    ProgressView("Reading Progress…", value: Double(book.progress * 100 / book.pages), total: 100)
-                    Button(action:{print("clicked")}){
-                        Text("Update")
+            HStack{
+                Image(book.image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding(5.0)
+                    .background(
+                        RoundedRectangle(cornerRadius: 5)
+                            .fill(Color.gray)
+                            .opacity(0.1)
+                    )
+                    .frame( maxHeight: 160)
+                // Book basic information
+                VStack(alignment:.leading){
+                    Text("Title:\n \(book.title)")
+                        .padding(1)
+                    if book.author != nil{
+                        Text("Author:\n \(book.author!)")
+                            .padding(1)
                     }
-                }
-                
-                TextField("Update progress", text: $tempProgress, onCommit: {
-                    if tempProgress.isNumber{
-                        if checkValid(progress: Int(tempProgress)!){
-                            book.progress = Int(tempProgress)!
-                        }
-                    }
-                    tempProgress = ""
-                })
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .keyboardType(.numberPad)
-                
+                    Text("Country:\n \(book.country)")
+                        .padding(1)
+                    Text("Language:\n \(book.language)")
+                        .padding(1)
+                    Spacer()
+                }.font(.subheadline)
             }
-            if book.author != nil{
-                Text(book.author!)
-            }
-            Text(book.country)
-            Text(book.language)
-            Text(book.link)
-            Text(String(book.pages))
+            // ReadingList Add/Remove
             buttonGroupView
+            
             NavigationLink(
                 destination: NoteListView(book: $book).environmentObject(bookLibrary)){
                 Text("Record Notes")
             }
-        }
+            
+            VStack{
+                // Showing reading progress
+                ProgressView("Reading Progress: page \(book.progress) / \(book.pages)", value: Double(book.progress * 100 / book.pages), total: 100)
+                // Textfield for updating the progress
+                // Only accessable when the book is in the reading list
+                HStack {
+                    TextField("Update progress", text: $tempProgress, onCommit: {
+                        if tempProgress.isNumber{
+                            if checkValid(progress: Int(tempProgress)!){
+                                book.progress = Int(tempProgress)!
+                            }
+                        }
+                        tempProgress = ""
+                        updateProgress = false
+                    })
+                    .disabled(!updateProgress)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .keyboardType(.numberPad)
+                    
+                    
+                    Group{
+                        Button(action:{
+                            updateProgress = true
+                        }){
+                            Text("Update")
+                        }
+                        .disabled(!book.currentlyReading)
+                        .buttonStyle(BorderlessButtonStyle())
+                    }
+                }
+                
+            }
+            Text(book.link)
+        }.navigationBarTitle(book.title,displayMode: .inline)
     }
     
     var buttonGroupView : some View{
@@ -62,26 +89,19 @@ struct BookDetailView : View {
             HStack{
                 Spacer()
                 Button(action: {
-                    bookLibrary.addToReadingList(book: book)
+                    book.currentlyReading ? bookLibrary.removeFromReadingList(book: book) : bookLibrary.addToReadingList(book: book)
                 }){
-                        book.currentlyReading ?
-                            Text("Already inside the list")
-                            : Text("Add the book to reading list")
+                    book.currentlyReading ?
+                        Text("Remove from reading list")
+                        : Text("Add to reading list")
                 }.buttonStyle(ResultButtonStyle())
-                .disabled(book.currentlyReading)
                 .opacity(book.currentlyReading ? 0.4 : 0.8)
                 Spacer()
             }
-//            HStack{
-//                Spacer()
-//                Button(action: {print("Record progress")}){
-//                    Text("Record Progress")
-//                }.buttonStyle(ResultButtonStyle())
-//                Spacer()
-//            }
         }.padding(10.0)
     }
     
+    // Helper function for checking whether the progress is valid
     func checkValid(progress input: Int) -> Bool{
         let start = 0
         let end = book.pages

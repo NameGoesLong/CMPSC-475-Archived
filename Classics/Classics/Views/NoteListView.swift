@@ -10,9 +10,7 @@ import SwiftUI
 struct NoteListView: View {
     @EnvironmentObject var bookLibrary : BookLibrary
     @Binding var book : Book
-    @Environment(\.editMode) var mode
-
-    @State var editMode = EditMode.inactive
+    
     @State private var addTextItem : String = ""
     @State private var isAdding = false
 
@@ -21,7 +19,6 @@ struct NoteListView: View {
 
     var body: some View {
         ScrollView{
-//            let myEditButton: Button<Text> = Button(editing ? "Done" : "Edit", action: {editing.toggle()})
             
             Group {
                 if book.noteList.count == 0 {
@@ -30,15 +27,10 @@ struct NoteListView: View {
                 ForEach((0..<book.noteList.count).reversed(), id:\.self) { index in
                     NoteItemView(note:book.noteList[index], bookIndex: bookLibrary.getBookPlace(book: book), noteIndex: index).environmentObject(bookLibrary)
                 }
-//                .onDelete{indexSet in
-//                    bookLibrary.allBooks[bookLibrary.getBookPlace(book: book)].deleteNote(indexSet: indexSet)
-//                }
             }
             .navigationTitle(Text("BookNotes"))
-            .navigationBarItems(leading: addButton,
-                                trailing: EditButton())
+            .navigationBarItems(trailing: addButton)
             
-            .environment(\.editMode, $editMode)
         }
         .sheet(isPresented: $isAdding) {
             VStack{
@@ -49,6 +41,12 @@ struct NoteListView: View {
                     isAdding = false
                 }.textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
+                Button(action:{
+                    addTextItem = ""
+                    isAdding = false
+                }){
+                    Text("Cancel")
+                }
             }
             Spacer()
         }
