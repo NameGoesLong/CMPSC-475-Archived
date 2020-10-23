@@ -38,7 +38,7 @@ struct NoteItemView : View {
             }
             
             noteButtonGroup
-        }.onAppear(){
+        }.padding().onAppear(){
             self.text = note.noteBody
         }
     }
