@@ -70,9 +70,18 @@ struct BookDetailView : View {
                     
                     Group{
                         Button(action:{
-                            updateProgress = true
+                            if updateProgress{
+                                if tempProgress.isNumber{
+                                    if checkValid(progress: Int(tempProgress)!){
+                                        book.progress = Int(tempProgress)!
+                                    }
+                                }
+                                tempProgress = ""
+                            }
+                            updateProgress.toggle()
                         }){
-                            Text("Update")
+                            updateProgress ? Text("Save")
+                                : Text("Update")
                         }
                         .disabled(!book.currentlyReading)
                         .buttonStyle(BorderlessButtonStyle())
@@ -95,7 +104,7 @@ struct BookDetailView : View {
                         Text("Remove from reading list")
                         : Text("Add to reading list")
                 }.buttonStyle(ResultButtonStyle())
-                .opacity(book.currentlyReading ? 0.4 : 0.8)
+                .opacity(book.currentlyReading ? 0.7 : 0.4)
                 Spacer()
             }
         }.padding(10.0)
