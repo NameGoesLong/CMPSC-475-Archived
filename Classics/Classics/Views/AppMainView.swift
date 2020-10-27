@@ -17,6 +17,15 @@ struct AppMainView : View{
     @EnvironmentObject var bookLibrary : BookLibrary
     @State var displaymode : DisplayMode = .listMode
     @State var selectionMode : SelectionMode = .Default
+    
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \BookItem.title, ascending: true)],
+                      animation: .default)
+        private var books: FetchedResults<BookItem>
+
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \NoteItem.timestamp, ascending: true)],
+                      animation: .default)
+        private var notes: FetchedResults<NoteItem>
+    
     var body: some View{
         NavigationView{
             Group{
