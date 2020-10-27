@@ -11,6 +11,11 @@ struct BookCardView : View  {
     @EnvironmentObject var bookLibrary :BookLibrary
     @Binding var typeIndex : SelectionMode
     
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \BookItem.title, ascending: true)],
+                      animation: .default)
+        private var books: FetchedResults<BookItem>
+    
     var columns: [GridItem] =
              Array(repeating: .init(.flexible()), count: 2)
     

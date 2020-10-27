@@ -16,9 +16,9 @@ extension NoteItem {
         return NSFetchRequest<NoteItem>(entityName: "NoteItem")
     }
 
-    @NSManaged public var timestamp: Date?
+    @NSManaged public var timestamp: Date
     @NSManaged public var progress: Int32
-    @NSManaged public var noteBody: String?
+    @NSManaged public var noteBody: String
     @NSManaged public var modified: Bool
     @NSManaged public var book: BookItem?
 

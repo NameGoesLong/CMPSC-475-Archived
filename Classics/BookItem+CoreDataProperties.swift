@@ -17,16 +17,16 @@ extension BookItem {
     }
 
     @NSManaged public var author: String?
-    @NSManaged public var country: String?
-    @NSManaged public var image: String?
-    @NSManaged public var language: String?
-    @NSManaged public var link: String?
+    @NSManaged public var country: String
+    @NSManaged public var image: String
+    @NSManaged public var language: String
+    @NSManaged public var link: String
     @NSManaged public var pages: Int32
-    @NSManaged public var title: String?
+    @NSManaged public var title: String
     @NSManaged public var year: Int16
     @NSManaged public var currentlyReading: Bool
     @NSManaged public var progress: Int32
-    @NSManaged public var roster: NSSet?
+    @NSManaged public var roster: Set<NoteItem>
 
 }
 
