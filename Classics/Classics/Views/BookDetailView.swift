@@ -9,7 +9,8 @@ import SwiftUI
 
 struct BookDetailView : View {
     @EnvironmentObject var bookLibrary : BookLibrary
-    @Binding var book :Book
+    //@Binding var book :Book
+    @ObservedObject var book :BookItem
     @State private var tempProgress = ""
     @State private var updateProgress = false
     var body: some View{
@@ -44,7 +45,7 @@ struct BookDetailView : View {
             buttonGroupView
             
             NavigationLink(
-                destination: NoteListView(book: $book).environmentObject(bookLibrary)){
+                destination: NoteListView(book: book).environmentObject(bookLibrary)){
                 Text("Record Notes")
             }
             
@@ -57,7 +58,7 @@ struct BookDetailView : View {
                     TextField("Update progress", text: $tempProgress, onCommit: {
                         if tempProgress.isNumber{
                             if checkValid(progress: Int(tempProgress)!){
-                                book.progress = Int(tempProgress)!
+                                book.progress = Int32(Int(tempProgress)!)
                             }
                         }
                         tempProgress = ""
@@ -73,7 +74,7 @@ struct BookDetailView : View {
                             if updateProgress{
                                 if tempProgress.isNumber{
                                     if checkValid(progress: Int(tempProgress)!){
-                                        book.progress = Int(tempProgress)!
+                                        book.progress = Int32(Int(tempProgress)!)
                                     }
                                 }
                                 tempProgress = ""
@@ -98,7 +99,7 @@ struct BookDetailView : View {
             HStack{
                 Spacer()
                 Button(action: {
-                    book.currentlyReading ? bookLibrary.removeFromReadingList(book: book) : bookLibrary.addToReadingList(book: book)
+                    book.currentlyReading.toggle()
                 }){
                     book.currentlyReading ?
                         Text("Remove from reading list")
@@ -113,7 +114,7 @@ struct BookDetailView : View {
     // Helper function for checking whether the progress is valid
     func checkValid(progress input: Int) -> Bool{
         let start = 0
-        let end = book.pages
+        let end = Int(book.pages)
         let validRange = start...end
         return validRange.contains(input)
     }

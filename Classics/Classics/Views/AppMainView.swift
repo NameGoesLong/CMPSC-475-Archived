@@ -32,10 +32,10 @@ struct AppMainView : View{
             Group{
                 switch displaymode{
                 case .listMode:
-                    BookListView(typeIndex: $selectionMode)
+                    BookListView(predicate: sectionFilter(for: self.selectionMode))
                         .environmentObject(bookLibrary)
                 case .cardMode:
-                    BookCardView(typeIndex: $selectionMode)
+                    BookCardView(predicate: sectionFilter(for: self.selectionMode))
                         .environmentObject(bookLibrary)
                 }
             }.navigationTitle("Classical Books")
@@ -66,7 +66,7 @@ struct AppMainView : View{
     func sectionFilter(for selectionMode:SelectionMode) ->  (NSPredicate?) {
         switch selectionMode {
         case .CurrentlyReading:
-            return NSPredicate(format: "currentlyReading == %@","true")
+            return NSPredicate(format: "currentlyReading == %@",NSNumber(value: true))
         case .FinishedReading:
             return NSPredicate(format: "%K == %K","pages","progress")
         default:

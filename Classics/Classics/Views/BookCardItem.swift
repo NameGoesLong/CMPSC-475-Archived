@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct BookCardItem : View {
-    let book : Book
+    @ObservedObject var book :BookItem
     var body: some View{
         VStack{
             Image(book.image)

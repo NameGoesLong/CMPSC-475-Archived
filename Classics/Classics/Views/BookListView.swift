@@ -9,38 +9,54 @@ import SwiftUI
 
 struct BookListView : View{
     @EnvironmentObject var bookLibrary : BookLibrary
-    @Binding var typeIndex : SelectionMode
+    //@Binding var typeIndex : SelectionMode
     
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \BookItem.title, ascending: true)],
-                      animation: .default)
-        private var books: FetchedResults<BookItem>
+    var fetchRequest: FetchRequest<BookItem>
+    private var books: FetchedResults<BookItem> {fetchRequest.wrappedValue}
+    
+    init(predicate: NSPredicate?){
+        if predicate != nil{
+            fetchRequest = FetchRequest<BookItem>(
+                        entity: BookItem.entity(),
+                        sortDescriptors: [NSSortDescriptor(keyPath: \BookItem.title, ascending: true)],
+                        predicate: predicate!,
+                        animation: .default
+                    )
+        }else{
+            fetchRequest = FetchRequest<BookItem>(
+                        entity: BookItem.entity(),
+                        sortDescriptors: [NSSortDescriptor(keyPath: \BookItem.title, ascending: true)],
+                        animation: .default
+                    )
+        }
+    }
     
     var body: some View{
         List{
             ForEach(
-                bookLibrary.bookIndices(for: sectionFilter(for: typeIndex)),
-                id:\.self){ index in
+                books,
+                id:\.self){ book in
                 NavigationLink(
-                    destination: BookDetailView(book: $bookLibrary.allBooks[index])
+                    destination: BookDetailView(book: book)
                         .environmentObject(bookLibrary)
                 ){
-                    BookListRow(book: bookLibrary.allBooks[index])
+                    BookListRow(book: book)
                 }
             }
         }.listStyle(PlainListStyle())
     }
     
     // generate a filter (predicate function) that tests whether a book belongs in the section with title sectionTitle using sectionStyle
-    func sectionFilter(for selectionMode:SelectionMode) ->  ((Book) -> Bool) {
-        switch selectionMode {
-        case .CurrentlyReading:
-            return {$0.currentlyReading}
-        case .FinishedReading:
-            return {$0.progress == $0.pages}
-        default:
-            return {_ in true}
-        }
-    }
-    
+//    func sectionFilter(for selectionMode:SelectionMode) ->  ((Book) -> Bool) {
+//        switch selectionMode {
+//        case .CurrentlyReading:
+//            return {$0.currentlyReading}
+//        case .FinishedReading:
+//            return {$0.progress == $0.pages}
+//        default:
+//            return {_ in true}
+//        }
+//    }
+//
 }

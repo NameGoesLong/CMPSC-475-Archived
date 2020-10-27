@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BookListRow : View {
-    let book : Book
+    @ObservedObject var book :BookItem
     var body: some View{
         HStack{
             Text(book.title)
@@ -26,9 +26,3 @@ struct BookListRow : View {
     
 }
 
-struct BookListRow_Previews: PreviewProvider {
-    private let bookLibrary = BookLibrary()
-    static var previews: some View {
-        BookListRow(book: BookLibrary().allBooks[0])
-    }
-}
