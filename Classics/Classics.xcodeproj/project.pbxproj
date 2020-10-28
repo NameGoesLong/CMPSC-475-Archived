@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B28395A72549F1EC00984988 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28395A62549F1EC00984988 /* SearchView.swift */; };
 		B2BA4394254786D000D4EA4E /* Classics.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B2BA4392254786D000D4EA4E /* Classics.xcdatamodeld */; };
 		B2BA439F254796A300D4EA4E /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BA439E254796A300D4EA4E /* Persistence.swift */; };
 		B2BA43A725479E4A00D4EA4E /* NoteItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BA43A325479E4A00D4EA4E /* NoteItem+CoreDataClass.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B28395A62549F1EC00984988 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		B2BA4393254786D000D4EA4E /* Classics.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Classics.xcdatamodel; sourceTree = "<group>"; };
 		B2BA439E254796A300D4EA4E /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		B2BA43A325479E4A00D4EA4E /* NoteItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteItem+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -195,6 +197,7 @@
 		B2D91191253D345300109BE1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B28395A62549F1EC00984988 /* SearchView.swift */,
 				B2D911B7253D43B900109BE1 /* AppMainView.swift */,
 				B2D911A0253D3FC800109BE1 /* BookListView.swift */,
 				B2D911A5253D3FEA00109BE1 /* BookCardView.swift */,
@@ -359,6 +362,7 @@
 				B2D9119C253D3B0C00109BE1 /* BookLibrary.swift in Sources */,
 				B2BA43A925479E4A00D4EA4E /* BookItem+CoreDataClass.swift in Sources */,
 				B2D911AB253D400000109BE1 /* BookListRow.swift in Sources */,
+				B28395A72549F1EC00984988 /* SearchView.swift in Sources */,
 				B2D911B8253D43B900109BE1 /* AppMainView.swift in Sources */,
 				B2BA43A725479E4A00D4EA4E /* NoteItem+CoreDataClass.swift in Sources */,
 				B2BA4394254786D000D4EA4E /* Classics.xcdatamodeld in Sources */,

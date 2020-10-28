@@ -9,7 +9,6 @@ import SwiftUI
 
 struct BookListView : View{
     @EnvironmentObject var bookLibrary : BookLibrary
-    //@Binding var typeIndex : SelectionMode
     
     @Environment(\.managedObjectContext) private var viewContext
     var fetchRequest: FetchRequest<BookItem>
@@ -47,16 +46,4 @@ struct BookListView : View{
         }.listStyle(PlainListStyle())
     }
     
-    // generate a filter (predicate function) that tests whether a book belongs in the section with title sectionTitle using sectionStyle
-//    func sectionFilter(for selectionMode:SelectionMode) ->  ((Book) -> Bool) {
-//        switch selectionMode {
-//        case .CurrentlyReading:
-//            return {$0.currentlyReading}
-//        case .FinishedReading:
-//            return {$0.progress == $0.pages}
-//        default:
-//            return {_ in true}
-//        }
-//    }
-//
 }

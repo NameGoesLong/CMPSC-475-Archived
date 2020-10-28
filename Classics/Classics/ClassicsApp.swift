@@ -22,7 +22,6 @@ struct ClassicsApp: App {
         }.onChange(of: scenePhase){phase in
             switch phase{
             case .inactive:
-                bookLibrary.saveData()
                 try? persistenceController.container.viewContext.save()
             default:
                 break

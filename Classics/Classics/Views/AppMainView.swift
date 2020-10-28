@@ -17,19 +17,14 @@ struct AppMainView : View{
     @EnvironmentObject var bookLibrary : BookLibrary
     @State var displaymode : DisplayMode = .listMode
     @State var selectionMode : SelectionMode = .Default
+    @State var searchText = ""
     
     @Environment(\.managedObjectContext) private var viewContext
-//    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \BookItem.title, ascending: true)],
-//                      animation: .default)
-//        private var books: FetchedResults<BookItem>
-//
-//    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \NoteItem.timestamp, ascending: true)],
-//                      animation: .default)
-//        private var notes: FetchedResults<NoteItem>
     
     var body: some View{
         NavigationView{
             Group{
+                //SearchBar(text: $searchText)
                 switch displaymode{
                 case .listMode:
                     BookListView(predicate: sectionFilter(for: self.selectionMode))

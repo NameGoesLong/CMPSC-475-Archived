@@ -73,11 +73,6 @@ struct Book : Codable, Identifiable{
         
     }
     
-    //Add note to the list
-    mutating func addNote(noteBody : String){
-        let note = Note(time: Date(), progress: self.progress, modified: false, noteBody: noteBody)
-        self.noteList.append(note)
-    }
     
 }
 
@@ -112,35 +107,5 @@ class BookLibrary : ObservableObject{
         }
     }
     
-    func saveData() {
-        let encoder = JSONEncoder()
-        do {
-            let data  = try encoder.encode(allBooks)
-            try data.write(to: self.destinationURL)
-        } catch  {
-            print("Error writing: \(error)")
-        }
-    }
-    
-    
-    //find the corresponding of the list
-    func getBookPlace(book: Book) -> Int{
-        return allBooks.firstIndex(where: {$0.id == book.id})!
-    }
-    
-    func addToReadingList(book: Book){
-        allBooks[self.getBookPlace(book: book)].currentlyReading = true
-    }
-    
-    func removeFromReadingList(book: Book){
-        allBooks[self.getBookPlace(book: book)].currentlyReading = false
-    }
 
-    //Get indicies of the book by requirements
-    func bookIndices(for property: (Book) -> Bool) -> [Int] {
-        let filteredBooks = allBooks.filter(property)
-        let indices = filteredBooks.map {s in allBooks.firstIndex(where: {$0.title == s.title})!}
-        return indices
-    }
-    
 }

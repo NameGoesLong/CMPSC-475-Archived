@@ -37,7 +37,6 @@ struct NoteListView: View {
         ScrollView{
             
             Group {
-                //Text("There is currently no note for this book.")
                 if notes.count == 0 {
                     Text("There is currently no note for this book.")
                 }
