@@ -12,9 +12,14 @@ struct NoteItemView : View {
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var note: NoteItem
     @State var isEditing = false
-    @State var text :String = ""
+    @State var text :String
     @State var revealDetails = false
 
+    init(note: NoteItem){
+        self.note = note
+        _text = State(initialValue: note.noteBody)
+    }
+    
     
     var body : some View {
         UITextView.appearance().backgroundColor = .clear
@@ -28,12 +33,11 @@ struct NoteItemView : View {
                     .padding()
                     .disabled(!isEditing)
                 Text(text).opacity(0).padding(.all, 8) // <- This will solve the issue if it is in the same ZStack
-            }
+            }.frame(minHeight:150)
             
             noteButtonGroup
-        }.padding().onAppear(){
-            self.text = note.noteBody
         }
+        .padding(.horizontal)
     }
     
     var noteButtonGroup : some View {
