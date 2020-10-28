@@ -25,5 +25,9 @@ extension NoteItem {
 }
 
 extension NoteItem : Identifiable {
-
+    func timeToString() -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm E, d MMM y"// yyyy-MM-dd"
+        return dateFormatter.string(from: self.timestamp)
+    }
 }

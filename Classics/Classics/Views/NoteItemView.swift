@@ -9,19 +9,12 @@ import SwiftUI
 
 struct NoteItemView : View {
     @EnvironmentObject var bookLibrary : BookLibrary
-
-    var note: Note
-    var bookIndex : Int
-    var noteIndex : Int
+    @Environment(\.managedObjectContext) private var viewContext
+    @ObservedObject var note: NoteItem
     @State var isEditing = false
     @State var text :String = ""
     @State var revealDetails = false
-    
-    init(note: Note, bookIndex: Int, noteIndex: Int) {
-        self.note = note
-        self.bookIndex = bookIndex
-        self.noteIndex = noteIndex
-    }
+
     
     var body : some View {
         UITextView.appearance().backgroundColor = .clear
@@ -47,7 +40,7 @@ struct NoteItemView : View {
         HStack{
             Button(action: {
                 if self.isEditing{
-                    bookLibrary.allBooks[bookIndex].noteList[noteIndex].noteBody = text
+                    note.noteBody = text
                 }
                 self.isEditing.toggle()
             }){
@@ -62,7 +55,8 @@ struct NoteItemView : View {
             Button(action: {
                 self.isEditing = false
                 revealDetails = false
-                bookLibrary.allBooks[bookIndex].noteList.remove(at: noteIndex)
+                self.viewContext.delete(note)
+                print("remove")
             }){
                 Text("Delete")
             }.background(Color.secondary.opacity(0.2))

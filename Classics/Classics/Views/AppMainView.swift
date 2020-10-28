@@ -19,13 +19,13 @@ struct AppMainView : View{
     @State var selectionMode : SelectionMode = .Default
     
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \BookItem.title, ascending: true)],
-                      animation: .default)
-        private var books: FetchedResults<BookItem>
-
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \NoteItem.timestamp, ascending: true)],
-                      animation: .default)
-        private var notes: FetchedResults<NoteItem>
+//    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \BookItem.title, ascending: true)],
+//                      animation: .default)
+//        private var books: FetchedResults<BookItem>
+//
+//    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \NoteItem.timestamp, ascending: true)],
+//                      animation: .default)
+//        private var notes: FetchedResults<NoteItem>
     
     var body: some View{
         NavigationView{
@@ -33,10 +33,10 @@ struct AppMainView : View{
                 switch displaymode{
                 case .listMode:
                     BookListView(predicate: sectionFilter(for: self.selectionMode))
-                        .environmentObject(bookLibrary)
+                        .environmentObject(bookLibrary).environment(\.managedObjectContext, viewContext)
                 case .cardMode:
                     BookCardView(predicate: sectionFilter(for: self.selectionMode))
-                        .environmentObject(bookLibrary)
+                        .environmentObject(bookLibrary).environment(\.managedObjectContext, viewContext)
                 }
             }.navigationTitle("Classical Books")
             .navigationBarItems(leading: Preferences(typeIndex: $selectionMode),trailing: preferenceButton)

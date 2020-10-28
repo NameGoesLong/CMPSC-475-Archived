@@ -9,6 +9,8 @@ import SwiftUI
 
 struct BookDetailView : View {
     @EnvironmentObject var bookLibrary : BookLibrary
+    @Environment(\.managedObjectContext) private var viewContext
+    
     //@Binding var book :Book
     @ObservedObject var book :BookItem
     @State private var tempProgress = ""
@@ -45,7 +47,10 @@ struct BookDetailView : View {
             buttonGroupView
             
             NavigationLink(
-                destination: NoteListView(book: book).environmentObject(bookLibrary)){
+                destination: NoteListView(book: book)
+                    .environmentObject(bookLibrary)
+                    .environment(\.managedObjectContext, viewContext)
+            ){
                 Text("Record Notes")
             }
             

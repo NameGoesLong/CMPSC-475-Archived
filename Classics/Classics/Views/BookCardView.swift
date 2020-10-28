@@ -43,7 +43,7 @@ struct BookCardView : View  {
                         id:\.self){ book in
                     NavigationLink(
                         destination: BookDetailView(book: book)
-                            .environmentObject(bookLibrary)
+                            .environmentObject(bookLibrary).environment(\.managedObjectContext, viewContext)
                     ){
                         BookCardItem(book: book)
                     }
