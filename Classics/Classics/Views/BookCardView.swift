@@ -19,15 +19,30 @@ struct BookCardView : View  {
     var columns: [GridItem] =
              Array(repeating: .init(.flexible()), count: 2)
     
-    init(predicate: NSPredicate?){
-        if predicate != nil{
+    init(sectionPredicate: NSPredicate?,searchPredicate: NSPredicate?){
+        var predicateList : [NSPredicate] = []
+        if sectionPredicate != nil {
+            predicateList.append(sectionPredicate!)
+        }
+        if searchPredicate != nil{
+            predicateList.append(searchPredicate!)
+        }
+        switch predicateList.count{
+        case 1:
+            fetchRequest = FetchRequest<BookItem>(
+                entity: BookItem.entity(),
+                sortDescriptors: [NSSortDescriptor(keyPath: \BookItem.title, ascending: true)],
+                predicate: predicateList[0],
+                animation: .default
+            )
+        case 2:
             fetchRequest = FetchRequest<BookItem>(
                         entity: BookItem.entity(),
                         sortDescriptors: [NSSortDescriptor(keyPath: \BookItem.title, ascending: true)],
-                        predicate: predicate!,
+                predicate: NSCompoundPredicate(andPredicateWithSubpredicates: predicateList),
                         animation: .default
                     )
-        }else{
+        default:
             fetchRequest = FetchRequest<BookItem>(
                         entity: BookItem.entity(),
                         sortDescriptors: [NSSortDescriptor(keyPath: \BookItem.title, ascending: true)],
@@ -38,6 +53,9 @@ struct BookCardView : View  {
     
     var body: some View{
         ScrollView{
+            if books.count == 0{
+                Text("No book under the selected condition")
+            }
             LazyVGrid(columns: columns){
                 ForEach(books,
                         id:\.self){ book in

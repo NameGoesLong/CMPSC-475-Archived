@@ -14,15 +14,30 @@ struct BookListView : View{
     var fetchRequest: FetchRequest<BookItem>
     private var books: FetchedResults<BookItem> {fetchRequest.wrappedValue}
     
-    init(predicate: NSPredicate?){
-        if predicate != nil{
+    init(sectionPredicate: NSPredicate?,searchPredicate: NSPredicate?){
+        var predicateList : [NSPredicate] = []
+        if sectionPredicate != nil {
+            predicateList.append(sectionPredicate!)
+        }
+        if searchPredicate != nil{
+            predicateList.append(searchPredicate!)
+        }
+        switch predicateList.count{
+        case 1:
+            fetchRequest = FetchRequest<BookItem>(
+                entity: BookItem.entity(),
+                sortDescriptors: [NSSortDescriptor(keyPath: \BookItem.title, ascending: true)],
+                predicate: predicateList[0],
+                animation: .default
+            )
+        case 2:
             fetchRequest = FetchRequest<BookItem>(
                         entity: BookItem.entity(),
                         sortDescriptors: [NSSortDescriptor(keyPath: \BookItem.title, ascending: true)],
-                        predicate: predicate!,
+                predicate: NSCompoundPredicate(andPredicateWithSubpredicates: predicateList),
                         animation: .default
                     )
-        }else{
+        default:
             fetchRequest = FetchRequest<BookItem>(
                         entity: BookItem.entity(),
                         sortDescriptors: [NSSortDescriptor(keyPath: \BookItem.title, ascending: true)],
@@ -32,18 +47,23 @@ struct BookListView : View{
     }
     
     var body: some View{
-        List{
-            ForEach(
-                books,
-                id:\.self){ book in
-                NavigationLink(
-                    destination: BookDetailView(book: book)
-                        .environmentObject(bookLibrary).environment(\.managedObjectContext, viewContext)
-                ){
-                    BookListRow(book: book)
-                }
+        Group{
+            if books.count == 0{
+                Text("No book under the selected condition")
             }
-        }.listStyle(PlainListStyle())
+            List{
+                ForEach(
+                    books,
+                    id:\.self){ book in
+                    NavigationLink(
+                        destination: BookDetailView(book: book)
+                            .environmentObject(bookLibrary).environment(\.managedObjectContext, viewContext)
+                    ){
+                        BookListRow(book: book)
+                    }
+                    }
+            }.listStyle(PlainListStyle())
+        }
     }
     
 }

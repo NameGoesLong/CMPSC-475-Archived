@@ -18,22 +18,23 @@ struct AppMainView : View{
     @State var displaymode : DisplayMode = .listMode
     @State var selectionMode : SelectionMode = .Default
     @State var searchText = ""
+    @State var filteringRequirement = "author"
     
     @Environment(\.managedObjectContext) private var viewContext
     
     var body: some View{
         NavigationView{
-            Group{
-                //SearchBar(text: $searchText)
+            VStack{
+                SearchBar(text: $searchText, filteringRequirement: $filteringRequirement)
                 switch displaymode{
                 case .listMode:
-                    BookListView(predicate: sectionFilter(for: self.selectionMode))
+                    BookListView(sectionPredicate: sectionFilter(),searchPredicate: searchFilter())
                         .environmentObject(bookLibrary).environment(\.managedObjectContext, viewContext)
                 case .cardMode:
-                    BookCardView(predicate: sectionFilter(for: self.selectionMode))
+                    BookCardView(sectionPredicate: sectionFilter(),searchPredicate: searchFilter())
                         .environmentObject(bookLibrary).environment(\.managedObjectContext, viewContext)
                 }
-            }.navigationTitle("Classical Books")
+            }.navigationBarTitle("Classical Books", displayMode: .inline)
             .navigationBarItems(leading: Preferences(typeIndex: $selectionMode),trailing: preferenceButton)
             
         }.onAppear() {
@@ -58,14 +59,24 @@ struct AppMainView : View{
     }
     
     // Function to pass in the correct NSPredicate
-    func sectionFilter(for selectionMode:SelectionMode) ->  (NSPredicate?) {
-        switch selectionMode {
+    func sectionFilter() ->  (NSPredicate?) {
+        switch self.selectionMode {
         case .CurrentlyReading:
             return NSPredicate(format: "currentlyReading == %@",NSNumber(value: true))
         case .FinishedReading:
             return NSPredicate(format: "%K == %K","pages","progress")
         default:
             return nil
+        }
+    }
+    
+    func searchFilter() ->  (NSPredicate?){
+        if self.searchText == "" {
+            return nil
+        }else if self.filteringRequirement == "author"{
+            return NSPredicate(format: "author contains[cd] %@",searchText)
+        }else{
+            return NSPredicate(format: "title contains[cd] %@",searchText)
         }
     }
 

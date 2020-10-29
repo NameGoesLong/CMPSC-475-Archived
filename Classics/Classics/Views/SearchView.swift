@@ -12,11 +12,15 @@ import MapKit
 // Extracted from https://www.appcoda.com/swiftui-search-bar/
 struct SearchBar: View {
     @Binding var text: String
-    
+    @Binding var filteringRequirement : String
     @State private var isEditing = false
     
     var body: some View {
-        HStack {
+        VStack {
+            Picker("selection", selection: $filteringRequirement/*@START_MENU_TOKEN@*//*@END_MENU_TOKEN@*/){
+                Text("Author").tag("author")
+                Text("Title").tag("title")
+            }.padding(.horizontal).pickerStyle(SegmentedPickerStyle())
             TextField("Search", text: $text)
                 .padding(7)
                 .padding(.horizontal, 25)
@@ -33,6 +37,7 @@ struct SearchBar: View {
                             Button(action: {
                                 self.text = ""
                                 self.isEditing = false
+                                self.hideKeyboard()
                             }) {
                                 Image(systemName: "multiply.circle.fill")
                                     .foregroundColor(.gray)

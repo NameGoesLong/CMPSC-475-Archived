@@ -28,6 +28,7 @@
 		B2536C41252D7B7B009FD779 /* LocationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2536C40252D7B7A009FD779 /* LocationsManager.swift */; };
 		B2536C49252EA934009FD779 /* BuildingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2536C48252EA934009FD779 /* BuildingDetailView.swift */; };
 		B2536C4E252EAA21009FD779 /* DefaultButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2536C4D252EAA21009FD779 /* DefaultButtonStyle.swift */; };
+		B28395AC254A695800984988 /* View+dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28395AB254A695800984988 /* View+dismissKeyboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		B2536C40252D7B7A009FD779 /* LocationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsManager.swift; sourceTree = "<group>"; };
 		B2536C48252EA934009FD779 /* BuildingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingDetailView.swift; sourceTree = "<group>"; };
 		B2536C4D252EAA21009FD779 /* DefaultButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButtonStyle.swift; sourceTree = "<group>"; };
+		B28395AB254A695800984988 /* View+dismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+dismissKeyboard.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 				B2536C2E252D472C009FD779 /* String+FirstLetter.swift */,
 				B2536C40252D7B7A009FD779 /* LocationsManager.swift */,
 				B24D90E82536B3F20077B45D /* TimeInterval+ToHumanTime.swift */,
+				B28395AB254A695800984988 /* View+dismissKeyboard.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2536C3C252D5C23009FD779 /* CampusMap.swift in Sources */,
+				B28395AC254A695800984988 /* View+dismissKeyboard.swift in Sources */,
 				B2536C4E252EAA21009FD779 /* DefaultButtonStyle.swift in Sources */,
 				B2536C1C252D3BEC009FD779 /* BuildingRowView.swift in Sources */,
 				B2536C49252EA934009FD779 /* BuildingDetailView.swift in Sources */,
