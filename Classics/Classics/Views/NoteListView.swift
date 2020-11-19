@@ -63,7 +63,7 @@ struct NoteListView: View {
                         newNote.book = book
                         addTextItem = ""
                     }
-                    print("note added")
+                    //print("note added")
                     isAdding = false
                 }.textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
