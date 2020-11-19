@@ -30,7 +30,7 @@ struct ContactListView : View {
                 records,
                 id:\.self){ record in
                 NavigationLink(
-                    destination: Text(record.phone)
+                    destination: ContactDetailView(record: record)
                 ){
                     ContactListRow(record: record)
                 }

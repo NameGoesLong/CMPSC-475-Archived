@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-enum processPhase :String, CaseIterable{
-    case scan = "Scan Item"
-    case getName = "Get Name"
-    case getPhone = "Get Phone Number"
-    case summary = "Record Summary"
-}
 
 struct ProcessItemView : View {
     
@@ -22,6 +16,8 @@ struct ProcessItemView : View {
     @ObservedObject private var record = RecordChecker()
     
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.presentationMode) var presentationMode
+
     var fetchRequest: FetchRequest<Record>
     private var records: FetchedResults<Record> {fetchRequest.wrappedValue}
     
@@ -109,6 +105,8 @@ struct ProcessItemView : View {
                     // start scanning
                     addRecord(name: record.name, phone: record.phone)
                     print("record added")
+                    //MARK: Exit the view here
+                    self.presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("Add to record")
                 }
