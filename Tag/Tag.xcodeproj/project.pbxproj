@@ -17,6 +17,7 @@
 		B21D89542566113900293E11 /* ContactDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D89532566113900293E11 /* ContactDetailView.swift */; };
 		B21D89592566116400293E11 /* ContactListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D89582566116400293E11 /* ContactListRow.swift */; };
 		B21D895E2566173100293E11 /* DefaultButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D895D2566173100293E11 /* DefaultButtonStyle.swift */; };
+		B21D89662566F51000293E11 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D89652566F51000293E11 /* QRCodeView.swift */; };
 		B24DECD025635A1000947763 /* TagApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24DECCF25635A1000947763 /* TagApp.swift */; };
 		B24DECD425635A1100947763 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B24DECD325635A1100947763 /* Assets.xcassets */; };
 		B24DECD725635A1100947763 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B24DECD625635A1100947763 /* Preview Assets.xcassets */; };
@@ -56,6 +57,7 @@
 		B21D89532566113900293E11 /* ContactDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailView.swift; sourceTree = "<group>"; };
 		B21D89582566116400293E11 /* ContactListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListRow.swift; sourceTree = "<group>"; };
 		B21D895D2566173100293E11 /* DefaultButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DefaultButtonStyle.swift; path = "../../../Classics/Classics/View Constants/DefaultButtonStyle.swift"; sourceTree = "<group>"; };
+		B21D89652566F51000293E11 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
 		B24DECCC25635A1000947763 /* Tag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B24DECCF25635A1000947763 /* TagApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagApp.swift; sourceTree = "<group>"; };
 		B24DECD325635A1100947763 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				B21D89272564C00500293E11 /* SelectionView.swift */,
 				B21D89532566113900293E11 /* ContactDetailView.swift */,
 				B21D89582566116400293E11 /* ContactListRow.swift */,
+				B21D89652566F51000293E11 /* QRCodeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				B24DED0925635ACB00947763 /* MainView.swift in Sources */,
 				B21D891E256496E500293E11 /* ProcessItemView.swift in Sources */,
 				B24DECD925635A1100947763 /* Persistence.swift in Sources */,
+				B21D89662566F51000293E11 /* QRCodeView.swift in Sources */,
 				B21D895E2566173100293E11 /* DefaultButtonStyle.swift in Sources */,
 				B21D894325660A3600293E11 /* Record+CoreDataProperties.swift in Sources */,
 				B21D89542566113900293E11 /* ContactDetailView.swift in Sources */,

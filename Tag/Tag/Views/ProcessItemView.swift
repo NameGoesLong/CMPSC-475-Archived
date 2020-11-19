@@ -35,7 +35,7 @@ struct ProcessItemView : View {
                 //Group{
                     if !recognizedText.isEmpty{
                         Form{
-                            Section{
+                            Section(header:Text("Step 1: Choose the data from Scanned text")){
                                 Picker(selection: $record.name, label: Text("Choose data for Name")) {
                                     Text("-- PLEASE CHOOSE FROM INPUTS--").tag("")
                                     ForEach(recognizedText,id:\.self){ element in
@@ -49,33 +49,37 @@ struct ProcessItemView : View {
                                     }
                                 }.pickerStyle(DefaultPickerStyle())
                             }
+                            Section(header:Text("Step 2: Fix minor issues in the data")){
+                                VStack{
+                                    TextField("Name", text:$record.name).disabled(record.name=="")
+                                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                                        .keyboardType(.namePhonePad)
+                                    Validator(icon: record.isNameValid ?
+                                                "checkmark.rectangle.fill"
+                                                : "xmark.square",
+                                              color: record.isNameValid ?
+                                                Color.green
+                                                : Color.red,
+                                              message: record.isNameValid ?
+                                              "Valid name"
+                                              : "Invalid name. Correct format: \"<Firstname> <LastName>\"")
+                                }
+                                VStack{
+                                    TextField("Phone", text:$record.phone).disabled(record.phone=="")
+                                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                                        .keyboardType(.phonePad)
+                                    Validator(icon: record.isPhoneValid ?
+                                                "checkmark.rectangle.fill"
+                                                : "xmark.square",
+                                              color: record.isPhoneValid ?
+                                                Color.green
+                                                : Color.red,
+                                              message: record.isPhoneValid ?
+                                              "Valid name"
+                                              : "Invalid phone.")
+                                }
+                            }
                         }
-                        
-                        TextField("Name", text:$record.name).disabled(record.name=="")
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .keyboardType(.namePhonePad)
-                        Validator(icon: record.isNameValid ?
-                                    "checkmark.rectangle.fill"
-                                    : "xmark.square",
-                                  color: record.isNameValid ?
-                                    Color.green
-                                    : Color.red,
-                                  message: record.isNameValid ?
-                                  "Valid name"
-                                  : "Invalid name. Correct format: \"<Firstname> <LastName>\"")
-                        
-                        TextField("Phone", text:$record.phone).disabled(record.phone=="")
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .keyboardType(.phonePad)
-                        Validator(icon: record.isPhoneValid ?
-                                    "checkmark.rectangle.fill"
-                                    : "xmark.square",
-                                  color: record.isPhoneValid ?
-                                    Color.green
-                                    : Color.red,
-                                  message: record.isPhoneValid ?
-                                  "Valid name"
-                                  : "Invalid phone.")
                     }
                     
                 //}

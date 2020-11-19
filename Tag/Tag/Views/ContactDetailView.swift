@@ -13,38 +13,42 @@ import Contacts
 struct ContactDetailView: View {
     @ObservedObject var record : Record
     @State private var showingAlert = false
+    @State private var showingQRCode = false
     @Environment(\.managedObjectContext) private var viewContext
 
 
     var body: some View{
-        List{
-            HStack{
-                Spacer()
-                Image("avator")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding(5.0)
-                    .background(
-                        RoundedRectangle(cornerRadius: 5)
-                            .fill(Color.gray)
-                            .opacity(0.1)
-                    )
-                    .frame( maxHeight: 160)
-                Spacer()
+        VStack{
+            List{
+                HStack{
+                    Spacer()
+                    Image("avator")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(5.0)
+                        .background(
+                            RoundedRectangle(cornerRadius: 5)
+                                .fill(Color.gray)
+                                .opacity(0.1)
+                        )
+                        .frame( maxHeight: 160)
+                    Spacer()
+                }
+                
+                VStack(alignment:.leading){
+                    Text("First Name: \(record.firstname)")
+                        .padding(1)
+                    Text("Last Name: \(record.lastname)")
+                        .padding(1)
+                    Text("Phone Number: \(record.phone)")
+                        .padding(1)
+                }.font(.subheadline)
             }
-            
-            VStack(alignment:.leading){
-                Text("First Name: \(record.firstname)")
-                    .padding(1)
-                Text("Last Name: \(record.lastname)")
-                    .padding(1)
-                Text("Phone Number: \(record.phone)")
-                    .padding(1)
-            }.font(.subheadline)
-            
             buttonGroupView
-            
+        }.sheet(isPresented: $showingQRCode) {
+            QRCodeView(record: record)
         }
+        
     }
     
     var buttonGroupView : some View{
@@ -62,6 +66,12 @@ struct ContactDetailView: View {
                             Alert(title: Text("Important message"), message: Text("Successfully stored into the Contacts."), dismissButton: .default(Text("Got it!")))
                         }
                 Spacer()
+                Button(action: {
+                    showingQRCode = true
+                }){
+                    Text("Generate QR Code")
+                }.buttonStyle(ResultButtonStyle())
+                .opacity(0.7)
             }
         }.padding(10.0)
     }
