@@ -13,6 +13,7 @@ struct ProcessItemView : View {
     @State private var recognizedText : [String] = []
     @State private var showingScanningView = false
     @State private var afterScan = false
+    @State private var scannedPicture : CGImage? = nil
     @ObservedObject private var record = RecordChecker()
     
     @Environment(\.managedObjectContext) private var viewContext
@@ -34,6 +35,16 @@ struct ProcessItemView : View {
             VStack {
                 //Group{
                     if !recognizedText.isEmpty{
+                        Image(decorative: scannedPicture!, scale: 1.0)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .padding(5.0)
+                            .background(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .fill(Color.gray)
+                                    .opacity(0.1)
+                            )
+                            .frame( maxHeight: 160)
                         Form{
                             Section(header:Text("Step 1: Choose the data from Scanned text")){
                                 Picker(selection: $record.name, label: Text("Choose data for Name")) {
@@ -88,7 +99,7 @@ struct ProcessItemView : View {
                 buttonGroup
             }
         }.sheet(isPresented: $showingScanningView) {
-            ScanDocumentView(recognizedText: self.$recognizedText, scanSuccess: self.$afterScan)
+            ScanDocumentView(recognizedText: self.$recognizedText, scanSuccess: self.$afterScan, scannedPicture: $scannedPicture)
         }
     }
     

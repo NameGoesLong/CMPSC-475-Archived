@@ -2,7 +2,7 @@
 //  Record+CoreDataProperties.swift
 //  Tag
 //
-//  Created by New User on 18/11/20.
+//  Created by New User on 21/11/20.
 //
 //
 
@@ -19,6 +19,7 @@ extension Record {
     @NSManaged public var firstname: String
     @NSManaged public var lastname: String
     @NSManaged public var phone: String
+    @NSManaged public var cardImage: Data
 
 }
 

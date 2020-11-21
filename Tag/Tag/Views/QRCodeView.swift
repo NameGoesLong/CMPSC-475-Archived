@@ -16,11 +16,26 @@ struct QRCodeView : View {
     let filter = CIFilter.qrCodeGenerator()
     
     var body: some View{
-        Image(uiImage: generateQRCode(from: generateVCard(from: record)))
-            .resizable()
-            .interpolation(.none)
-            .scaledToFit()
-            .frame(width: 300, height: 300)
+        VStack{
+            Text("Scan this to add to Contact list")
+                .font(.subheadline)
+                .padding()
+            Text("Tag for \(record.firstname) \(record.lastname)")
+                .font(.subheadline)
+                .padding()
+            
+            Image(uiImage: generateQRCode(from: generateVCard(from: record)))
+                .resizable()
+                .interpolation(.none)
+                .scaledToFit()
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 5)
+                        .fill(Color.gray)
+                        .opacity(0.2)
+                )
+                .frame(width: 300, height: 300)
+        }
     }
     
     func generateQRCode(from data: Data?) -> UIImage {

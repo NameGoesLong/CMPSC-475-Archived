@@ -14,9 +14,10 @@ struct ScanDocumentView : UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentationMode
     @Binding var recognizedText: [String]
     @Binding var scanSuccess : Bool
+    @Binding var scannedPicture : CGImage?
         
     func makeCoordinator() -> Coordinator {
-        Coordinator(recognizedText: $recognizedText, scanSuccess: $scanSuccess, parent: self)
+        Coordinator(recognizedText: $recognizedText, scanSuccess: $scanSuccess, parent: self, scannedPicture: $scannedPicture)
     }
     
     func makeUIViewController(context: Context) -> VNDocumentCameraViewController {
@@ -36,18 +37,21 @@ class Coordinator: NSObject, VNDocumentCameraViewControllerDelegate {
     
     var recognizedText: Binding<[String]>
     var scanSuccess: Binding<Bool>
+    var scannedPicture: Binding<CGImage?>
     var parent: ScanDocumentView
     
-    init(recognizedText: Binding<[String]>, scanSuccess: Binding<Bool>, parent: ScanDocumentView) {
+    init(recognizedText: Binding<[String]>, scanSuccess: Binding<Bool>, parent: ScanDocumentView, scannedPicture: Binding<CGImage?>) {
         self.recognizedText = recognizedText
         self.scanSuccess = scanSuccess
         self.parent = parent
+        self.scannedPicture = scannedPicture
     }
     
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
         // do the processing of the scan
         let extractedImages = extractImages(from: scan)
         let processedText = recognizeText(from: extractedImages)
+        scannedPicture.wrappedValue = extractedImages[0]
         recognizedText.wrappedValue = processedText
         scanSuccess.wrappedValue = true
         
