@@ -13,10 +13,12 @@ struct ContactListView : View {
     var fetchRequest: FetchRequest<Record>
     private var records: FetchedResults<Record> {fetchRequest.wrappedValue}
     
-    init(){
+    init(searchPredicate: NSCompoundPredicate?){
+        //notice the oredicate could be nil
         fetchRequest = FetchRequest<Record>(
             entity: Record.entity(),
             sortDescriptors: [NSSortDescriptor(keyPath: \Record.lastname, ascending: true)],
+            predicate: searchPredicate,
             animation: .default
         )
     }
@@ -35,6 +37,27 @@ struct ContactListView : View {
                     ContactListRow(record: record)
                 }
                 }
+            .onDelete(perform: delete)
         }.listStyle(PlainListStyle())
+        
     }
+    
+    func delete(at offsets: IndexSet) {
+        for index in offsets {
+            let record = records[index]
+            self.viewContext.delete(record)
+        }
+    }
+    
+    //    let words = searchText.components(separatedBy: " ")
+    //
+    //            var predicateArr = [NSPredicate]()
+    //            for word in words! {
+    //                let predicate = NSPredicate(format: "(hotelName contains [c]) OR (cityName contains [c])", word, word)
+    //                predicateArr.append(predicate)
+    //            }
+    //
+    //
+    //            let compound = NSCompoundPredicate(orPredicateWithSubpredicates: predicateArr)
+    //            let output = array.filtered(using: compound)
 }

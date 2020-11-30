@@ -118,7 +118,7 @@ struct ProcessItemView : View {
             }else{
                 Button(action: {
                     // start scanning
-                    addRecord(name: record.name, phone: record.phone)
+                    addRecord(name: record.name, phone: record.phone, cardImage: scannedPicture)
                     print("record added")
                     //MARK: Exit the view here
                     self.presentationMode.wrappedValue.dismiss()
@@ -140,12 +140,18 @@ struct ProcessItemView : View {
         }
     }
     
-    func addRecord(name: String, phone: String){
+    func addRecord(name: String, phone: String, cardImage: CGImage?){
         let newRecord = Record(context: viewContext)
         newRecord.phone = phone
         let nameSet = name.components(separatedBy: " ")
         newRecord.firstname = nameSet[0]
         newRecord.lastname = nameSet[1]
+        if cardImage != nil {
+            let image = UIImage(cgImage: cardImage!)
+            if let data = image.pngData() {
+                newRecord.cardImage = data
+            }
+        }
     }
 }
 

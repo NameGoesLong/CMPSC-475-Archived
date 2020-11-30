@@ -36,7 +36,7 @@ struct MainView : View{
                     .foregroundColor(.white)
                     .background(Capsule().fill(Color.red))
                     Spacer()
-                    NavigationLink(destination: ContactListView().environment(\.managedObjectContext, viewContext)) {
+                    NavigationLink(destination: ContactMainView().environment(\.managedObjectContext, viewContext)) {
                         Text("Card List")
                     }
                     .padding()

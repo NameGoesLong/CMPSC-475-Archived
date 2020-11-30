@@ -15,8 +15,8 @@ struct ContactDetailView: View {
     @State private var showingAlert = false
     @State private var showingQRCode = false
     @Environment(\.managedObjectContext) private var viewContext
-
-
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View{
         VStack{
             List{
@@ -34,6 +34,21 @@ struct ContactDetailView: View {
                         .frame( maxHeight: 160)
                     Spacer()
                 }
+                    HStack{
+                        Spacer()
+                        // Be aware of the empty image storage
+                        Image(uiImage: UIImage(data: record.cardImage)!)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .padding(5.0)
+                            .background(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .fill(Color.gray)
+                                    .opacity(0.1)
+                            )
+                            .frame( maxHeight: 160)
+                        Spacer()
+                    }
                 
                 VStack(alignment:.leading){
                     Text("First Name: \(record.firstname)")
@@ -45,7 +60,9 @@ struct ContactDetailView: View {
                 }.font(.subheadline)
             }
             buttonGroupView
-        }.sheet(isPresented: $showingQRCode) {
+        }
+        .navigationBarItems(trailing: deleteButton)
+        .sheet(isPresented: $showingQRCode) {
             QRCodeView(record: record)
         }
         
@@ -74,6 +91,18 @@ struct ContactDetailView: View {
                 .opacity(0.7)
             }
         }.padding(10.0)
+    }
+    
+    private var deleteButton : some View {
+        Button(action: {
+            //MARK: Exit the view here
+            self.presentationMode.wrappedValue.dismiss()
+            self.viewContext.delete(record)
+        })
+        {
+            Image(systemName: "trash")
+            
+        }
     }
     
     func SaveToContacts(record : Record){
