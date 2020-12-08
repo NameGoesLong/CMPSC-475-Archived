@@ -11,12 +11,20 @@ struct ContactListRow : View {
     @ObservedObject var record :Record
     var body: some View{
         HStack{
-            Image("avator")
+            Image(uiImage: UIImage(data: record.cardImage)!)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .padding()
-                .frame(height: 40, alignment: .center)
-            Text(record.firstname + " " + record.lastname)
+                .frame(width: 80, height: 60, alignment: .center)
+            VStack(alignment:.leading){
+                Text(record.firstname + " " + record.lastname)
+                Text("Position")
+                    .italic()
+                    .font(.subheadline)
+                    .foregroundColor(.blue)
+                Text("Company")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+            }
             
         }
     }

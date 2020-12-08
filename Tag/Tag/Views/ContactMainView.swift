@@ -9,16 +9,29 @@ import SwiftUI
 
 struct ContactMainView : View{
     @State var searchText = ""
+    @State var filteringRequirement = "first"
     
     @Environment(\.managedObjectContext) private var viewContext
     
     var body: some View{
+        NavigationView {
             VStack{
-                SearchBar(text: $searchText)
-                ContactListView(searchPredicate: searchFilter()).environment(\.managedObjectContext, viewContext)
+                VStack{
+                    SearchBar(text: $searchText, filteringRequirement: $filteringRequirement)
+                    ContactListView(searchPredicate: searchFilter()).environment(\.managedObjectContext, viewContext)
+                }
+                .environment(\.managedObjectContext, viewContext)
+                .padding()
             }
-//            .navigationBarItems(leading: Preferences(typeIndex: $selectionMode),trailing: preferenceButton)
-            
+            .navigationBarTitle("TAG", displayMode: .inline)
+            .navigationBarItems(trailing:
+                                    NavigationLink(
+                                        destination: ProcessItemView().environment(\.managedObjectContext, viewContext)
+                                    ) {
+                                        Image(systemName: "camera.fill")
+                                    }
+            )
+        }
     }
     
     func searchFilter() ->  (NSCompoundPredicate?){

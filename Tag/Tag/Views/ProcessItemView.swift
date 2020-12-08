@@ -11,7 +11,7 @@ import SwiftUI
 struct ProcessItemView : View {
     
     @State private var recognizedText : [String] = []
-    @State private var showingScanningView = false
+    @State private var showingScanningView = true
     @State private var afterScan = false
     @State private var scannedPicture : CGImage? = nil
     @ObservedObject private var record = RecordChecker()
@@ -92,15 +92,13 @@ struct ProcessItemView : View {
                             }
                         }
                     }
-                    
-                //}
-                
                 Spacer()
                 buttonGroup
             }
         }.sheet(isPresented: $showingScanningView) {
             ScanDocumentView(recognizedText: self.$recognizedText, scanSuccess: self.$afterScan, scannedPicture: $scannedPicture)
         }
+        
     }
     
     var buttonGroup: some View {

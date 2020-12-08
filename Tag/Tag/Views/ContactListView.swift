@@ -8,6 +8,10 @@
 import SwiftUI
 import Contacts
 
+enum SectionStyle: String, CaseIterable {
+    case none, byFirstName, byLastName
+}
+
 struct ContactListView : View {
     @Environment(\.managedObjectContext) private var viewContext
     var fetchRequest: FetchRequest<Record>
@@ -46,6 +50,31 @@ struct ContactListView : View {
         for index in offsets {
             let record = records[index]
             self.viewContext.delete(record)
+        }
+    }
+    
+    // generate array of section titles based on section style
+//    func sectionTitles(for sectionStyle:SectionStyle) -> [String] {
+//        switch sectionStyle {
+//        case .byFirstName:
+//            return locationsManager.campusBuildings.buildingTitles(using: {$0.name.firstLetter!})
+//        case .byLastName:
+//            return {$0.lastname.firstLetter! == sectionTitle}
+//        default:
+//            assert(false, "No section titles for .none option")
+//        }
+//    }
+    
+    // generate a filter (predicate function) that tests whether a state belongs in the section with title sectionTitle using sectionStyle (by Name or by Decade)
+    
+    func sectionFilter(for sectionStyle:SectionStyle, sectionTitle:String) ->  ((Record) -> Bool) {
+        switch sectionStyle {
+        case .byFirstName:
+            return {$0.firstname.firstLetter! == sectionTitle}
+        case .byLastName:
+            return {$0.lastname.firstLetter! == sectionTitle}
+        default:
+            assert(false, "No section filtering for .none option")
         }
     }
     

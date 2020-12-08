@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B21102F1257FD9B100648FC1 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21102F0257FD9B100648FC1 /* SplashScreen.swift */; };
+		B21102FA257FE4F000648FC1 /* String+FirstLetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21102F9257FE4F000648FC1 /* String+FirstLetter.swift */; };
 		B21D8913256402C000293E11 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D8912256402C000293E11 /* ContactListView.swift */; };
 		B21D891E256496E500293E11 /* ProcessItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D891D256496E500293E11 /* ProcessItemView.swift */; };
 		B21D89232564B47900293E11 /* ContactRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D89222564B47900293E11 /* ContactRecordModel.swift */; };
-		B21D89282564C00500293E11 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D89272564C00500293E11 /* SelectionView.swift */; };
 		B21D892D2564E74700293E11 /* NSRegularExpression+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D892C2564E74700293E11 /* NSRegularExpression+init.swift */; };
 		B21D894225660A3600293E11 /* Record+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D894025660A3600293E11 /* Record+CoreDataClass.swift */; };
 		B21D894325660A3600293E11 /* Record+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D894125660A3600293E11 /* Record+CoreDataProperties.swift */; };
@@ -30,6 +31,7 @@
 		B2852A102575A97B00242C78 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2852A0F2575A97B00242C78 /* SearchView.swift */; };
 		B2852A152575AA6B00242C78 /* View+dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2852A142575AA6B00242C78 /* View+dismissKeyboard.swift */; };
 		B2852A1A2575AAEA00242C78 /* ContactMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2852A192575AAEA00242C78 /* ContactMainView.swift */; };
+		B2852A20257F117800242C78 /* TransitionLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2852A1F257F117800242C78 /* TransitionLink.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,10 +52,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B21102F0257FD9B100648FC1 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		B21102F9257FE4F000648FC1 /* String+FirstLetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FirstLetter.swift"; sourceTree = "<group>"; };
 		B21D8912256402C000293E11 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 		B21D891D256496E500293E11 /* ProcessItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessItemView.swift; sourceTree = "<group>"; };
 		B21D89222564B47900293E11 /* ContactRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactRecordModel.swift; sourceTree = "<group>"; };
-		B21D89272564C00500293E11 /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
 		B21D892C2564E74700293E11 /* NSRegularExpression+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+init.swift"; sourceTree = "<group>"; };
 		B21D894025660A3600293E11 /* Record+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Record+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B21D894125660A3600293E11 /* Record+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Record+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -79,6 +82,7 @@
 		B2852A0F2575A97B00242C78 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		B2852A142575AA6B00242C78 /* View+dismissKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+dismissKeyboard.swift"; sourceTree = "<group>"; };
 		B2852A192575AAEA00242C78 /* ContactMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMainView.swift; sourceTree = "<group>"; };
+		B2852A1F257F117800242C78 /* TransitionLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionLink.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,9 +185,11 @@
 		B24DED0225635A4100947763 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B21102F9257FE4F000648FC1 /* String+FirstLetter.swift */,
 				B2852A142575AA6B00242C78 /* View+dismissKeyboard.swift */,
 				B21D89222564B47900293E11 /* ContactRecordModel.swift */,
 				B21D892C2564E74700293E11 /* NSRegularExpression+init.swift */,
+				B2852A1F257F117800242C78 /* TransitionLink.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -193,14 +199,14 @@
 			children = (
 				B2852A0F2575A97B00242C78 /* SearchView.swift */,
 				B24DED0825635ACB00947763 /* MainView.swift */,
+				B2852A192575AAEA00242C78 /* ContactMainView.swift */,
 				B24DED0E25636BF200947763 /* ScanDocumentView.swift */,
 				B21D8912256402C000293E11 /* ContactListView.swift */,
 				B21D891D256496E500293E11 /* ProcessItemView.swift */,
-				B21D89272564C00500293E11 /* SelectionView.swift */,
 				B21D89532566113900293E11 /* ContactDetailView.swift */,
 				B21D89582566116400293E11 /* ContactListRow.swift */,
 				B21D89652566F51000293E11 /* QRCodeView.swift */,
-				B2852A192575AAEA00242C78 /* ContactMainView.swift */,
+				B21102F0257FD9B100648FC1 /* SplashScreen.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -342,10 +348,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B21102F1257FD9B100648FC1 /* SplashScreen.swift in Sources */,
 				B24DECDC25635A1100947763 /* Tag.xcdatamodeld in Sources */,
 				B24DED0925635ACB00947763 /* MainView.swift in Sources */,
 				B21D891E256496E500293E11 /* ProcessItemView.swift in Sources */,
 				B24DECD925635A1100947763 /* Persistence.swift in Sources */,
+				B2852A20257F117800242C78 /* TransitionLink.swift in Sources */,
 				B2852A152575AA6B00242C78 /* View+dismissKeyboard.swift in Sources */,
 				B21D89662566F51000293E11 /* QRCodeView.swift in Sources */,
 				B21D895E2566173100293E11 /* DefaultButtonStyle.swift in Sources */,
@@ -356,9 +364,9 @@
 				B21D8913256402C000293E11 /* ContactListView.swift in Sources */,
 				B21D894225660A3600293E11 /* Record+CoreDataClass.swift in Sources */,
 				B21D892D2564E74700293E11 /* NSRegularExpression+init.swift in Sources */,
-				B21D89282564C00500293E11 /* SelectionView.swift in Sources */,
 				B24DED0F25636BF200947763 /* ScanDocumentView.swift in Sources */,
 				B24DECD025635A1000947763 /* TagApp.swift in Sources */,
+				B21102FA257FE4F000648FC1 /* String+FirstLetter.swift in Sources */,
 				B21D89232564B47900293E11 /* ContactRecordModel.swift in Sources */,
 				B21D89592566116400293E11 /* ContactListRow.swift in Sources */,
 			);

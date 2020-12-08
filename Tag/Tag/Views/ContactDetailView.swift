@@ -9,11 +9,21 @@ import SwiftUI
 import UIKit
 import Contacts
 
+enum ActiveSheet: Identifiable {
+    case first, second
+    
+    var id: Int {
+        hashValue
+    }
+}
+
 
 struct ContactDetailView: View {
     @ObservedObject var record : Record
     @State private var showingAlert = false
     @State private var showingQRCode = false
+    @State var activeSheet: ActiveSheet?
+    @State private var isPresented = false
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
     
@@ -59,13 +69,54 @@ struct ContactDetailView: View {
                         .padding(1)
                 }.font(.subheadline)
             }
-            buttonGroupView
         }
-        .navigationBarItems(trailing: deleteButton)
-        .sheet(isPresented: $showingQRCode) {
-            QRCodeView(record: record)
+        .toolbar{
+            ToolbarItem(placement: .bottomBar) {
+                Button(action: {
+                    SaveToContacts(record: record)
+                    showingAlert = true
+                }){
+                    Image(systemName: "square.and.arrow.up.on.square")
+                }
+                
+            }
+            ToolbarItem(placement: .bottomBar) {
+                Spacer()
+            }
+            ToolbarItem(placement: .bottomBar) {
+                Button(action: {
+                    self.activeSheet = .second
+                    print("Change")
+                }){
+                    Image(systemName: "square.and.pencil")
+                }
+            }
+            ToolbarItem(placement: .bottomBar) {
+                Spacer()
+            }
+            ToolbarItem(placement: .bottomBar) {
+                Button(action: {
+                    self.activeSheet = .first
+                }){
+                    Image(systemName: "qrcode")
+                }
+            }
+            ToolbarItem(placement: .bottomBar) {
+                Spacer()
+            }
+            ToolbarItem(placement: .bottomBar) {
+                deleteButton
+            }
         }
-        
+        //.navigationBarItems(trailing: deleteButton)
+        .sheet(item: $activeSheet) {item in
+            switch item {
+            case .first:
+                QRCodeView(record: record)
+            case .second:
+                Text("Change item")
+            }
+        }
     }
     
     var buttonGroupView : some View{
@@ -92,6 +143,17 @@ struct ContactDetailView: View {
             }
         }.padding(10.0)
     }
+    
+//    private var closeButton: some View {
+//        Button(action: {
+//            withAnimation {
+//                self.isPresented.toggle()
+//            }
+//        }) {
+//            Image(systemName: "xmark")
+//                .padding(8)
+//        }
+//    }
     
     private var deleteButton : some View {
         Button(action: {
