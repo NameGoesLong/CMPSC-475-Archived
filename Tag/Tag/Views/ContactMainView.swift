@@ -10,8 +10,10 @@ import SwiftUI
 struct ContactMainView : View{
     @State var searchText = ""
     @State var filteringRequirement = "first"
+    @State var openScanView : Int? = 0
     
     @Environment(\.managedObjectContext) private var viewContext
+    let fuberBlue = Color("Fuber blue")
     
     var body: some View{
         NavigationView {
@@ -19,19 +21,31 @@ struct ContactMainView : View{
                 VStack{
                     SearchBar(text: $searchText, filteringRequirement: $filteringRequirement)
                     ContactListView(searchPredicate: searchFilter()).environment(\.managedObjectContext, viewContext)
+                        .overlay(scanButton,alignment: .bottomTrailing)
                 }
                 .environment(\.managedObjectContext, viewContext)
                 .padding()
+                NavigationLink(
+                    destination: ProcessItemView().environment(\.managedObjectContext, viewContext)
+                    ,tag:1, selection:$openScanView) {
+                    EmptyView()
+                }
             }
             .navigationBarTitle("TAG", displayMode: .inline)
-            .navigationBarItems(trailing:
-                                    NavigationLink(
-                                        destination: ProcessItemView().environment(\.managedObjectContext, viewContext)
-                                    ) {
-                                        Image(systemName: "camera.fill")
-                                    }
-            )
+            .navigationBarColor(UIColor(fuberBlue))
         }
+    }
+    
+    var scanButton : some View{
+        Button(action: {
+                print("clicked")
+            self.openScanView = 1
+        }) {
+            Image(systemName: "camera.circle.fill").resizable()
+                .frame(width: 50.0, height: 50.0)
+                .foregroundColor(fuberBlue)
+        }.padding(.horizontal, 20.0)
+        .background(Circle().fill(Color.white))
     }
     
     func searchFilter() ->  (NSCompoundPredicate?){

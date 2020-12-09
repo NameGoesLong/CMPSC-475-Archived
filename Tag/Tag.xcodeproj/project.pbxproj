@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B21102F1257FD9B100648FC1 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21102F0257FD9B100648FC1 /* SplashScreen.swift */; };
 		B21102FA257FE4F000648FC1 /* String+FirstLetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21102F9257FE4F000648FC1 /* String+FirstLetter.swift */; };
+		B2110307258013DB00648FC1 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2110306258013DB00648FC1 /* NavigationBarModifier.swift */; };
+		B211030C258064DC00648FC1 /* ContactDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B211030B258064DC00648FC1 /* ContactDetailInfoView.swift */; };
 		B21D8913256402C000293E11 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D8912256402C000293E11 /* ContactListView.swift */; };
 		B21D891E256496E500293E11 /* ProcessItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D891D256496E500293E11 /* ProcessItemView.swift */; };
 		B21D89232564B47900293E11 /* ContactRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D89222564B47900293E11 /* ContactRecordModel.swift */; };
@@ -54,6 +56,8 @@
 /* Begin PBXFileReference section */
 		B21102F0257FD9B100648FC1 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		B21102F9257FE4F000648FC1 /* String+FirstLetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FirstLetter.swift"; sourceTree = "<group>"; };
+		B2110306258013DB00648FC1 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
+		B211030B258064DC00648FC1 /* ContactDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailInfoView.swift; sourceTree = "<group>"; };
 		B21D8912256402C000293E11 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 		B21D891D256496E500293E11 /* ProcessItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessItemView.swift; sourceTree = "<group>"; };
 		B21D89222564B47900293E11 /* ContactRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactRecordModel.swift; sourceTree = "<group>"; };
@@ -190,6 +194,7 @@
 				B21D89222564B47900293E11 /* ContactRecordModel.swift */,
 				B21D892C2564E74700293E11 /* NSRegularExpression+init.swift */,
 				B2852A1F257F117800242C78 /* TransitionLink.swift */,
+				B2110306258013DB00648FC1 /* NavigationBarModifier.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -197,16 +202,17 @@
 		B24DED0325635A4E00947763 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B2852A0F2575A97B00242C78 /* SearchView.swift */,
 				B24DED0825635ACB00947763 /* MainView.swift */,
 				B2852A192575AAEA00242C78 /* ContactMainView.swift */,
 				B24DED0E25636BF200947763 /* ScanDocumentView.swift */,
 				B21D8912256402C000293E11 /* ContactListView.swift */,
 				B21D891D256496E500293E11 /* ProcessItemView.swift */,
 				B21D89532566113900293E11 /* ContactDetailView.swift */,
+				B211030B258064DC00648FC1 /* ContactDetailInfoView.swift */,
 				B21D89582566116400293E11 /* ContactListRow.swift */,
 				B21D89652566F51000293E11 /* QRCodeView.swift */,
 				B21102F0257FD9B100648FC1 /* SplashScreen.swift */,
+				B2852A0F2575A97B00242C78 /* SearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -348,6 +354,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2110307258013DB00648FC1 /* NavigationBarModifier.swift in Sources */,
+				B211030C258064DC00648FC1 /* ContactDetailInfoView.swift in Sources */,
 				B21102F1257FD9B100648FC1 /* SplashScreen.swift in Sources */,
 				B24DECDC25635A1100947763 /* Tag.xcdatamodeld in Sources */,
 				B24DED0925635ACB00947763 /* MainView.swift in Sources */,

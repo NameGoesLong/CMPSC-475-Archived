@@ -18,7 +18,9 @@ struct ProcessItemView : View {
     
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
-
+    
+    let fuberBlue = Color("Fuber blue")
+    
     var fetchRequest: FetchRequest<Record>
     private var records: FetchedResults<Record> {fetchRequest.wrappedValue}
     
@@ -33,69 +35,70 @@ struct ProcessItemView : View {
     var body: some View{
         Group{
             VStack {
-                //Group{
-                    if !recognizedText.isEmpty{
-                        Image(decorative: scannedPicture!, scale: 1.0)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .padding(5.0)
-                            .background(
-                                RoundedRectangle(cornerRadius: 5)
-                                    .fill(Color.gray)
-                                    .opacity(0.1)
-                            )
-                            .frame( maxHeight: 160)
-                        Form{
-                            Section(header:Text("Step 1: Choose the data from Scanned text")){
-                                Picker(selection: $record.name, label: Text("Choose data for Name")) {
-                                    Text("-- PLEASE CHOOSE FROM INPUTS--").tag("")
-                                    ForEach(recognizedText,id:\.self){ element in
-                                        Text(element)
-                                    }
-                                }.pickerStyle(DefaultPickerStyle())
-                                Picker(selection: $record.phone, label: Text("Choose data for Phone")) {
-                                    Text("-- PLEASE CHOOSE FROM INPUTS--").tag("")
-                                    ForEach(recognizedText,id:\.self){ element in
-                                        Text(element)
-                                    }
-                                }.pickerStyle(DefaultPickerStyle())
+                if !recognizedText.isEmpty{
+                    Image(decorative: scannedPicture!, scale: 1.0)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(5.0)
+                        .background(
+                            RoundedRectangle(cornerRadius: 5)
+                                .fill(Color.gray)
+                                .opacity(0.1)
+                        )
+                        .frame( maxHeight: 160)
+                    Form{
+                        Section(header:Text("Step 1: Choose the data from Scanned text")){
+                            Picker(selection: $record.name, label: Text("Choose data for Name")) {
+                                Text("-- PLEASE CHOOSE FROM INPUTS--").tag("")
+                                ForEach(recognizedText,id:\.self){ element in
+                                    Text(element)
+                                }
+                            }.pickerStyle(DefaultPickerStyle())
+                            Picker(selection: $record.phone, label: Text("Choose data for Phone")) {
+                                Text("-- PLEASE CHOOSE FROM INPUTS--").tag("")
+                                ForEach(recognizedText,id:\.self){ element in
+                                    Text(element)
+                                }
+                            }.pickerStyle(DefaultPickerStyle())
+                        }
+                        Section(header:Text("Step 2: Fix minor issues in the data")){
+                            VStack{
+                                TextField("Name", text:$record.name).disabled(record.name=="")
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .keyboardType(.namePhonePad)
+                                Validator(icon: record.isNameValid ?
+                                            "checkmark.rectangle.fill"
+                                            : "xmark.square",
+                                          color: record.isNameValid ?
+                                            Color.green
+                                            : Color.red,
+                                          message: record.isNameValid ?
+                                            "Valid name"
+                                            : "Invalid name. Correct format: \"<Firstname> <LastName>\"")
                             }
-                            Section(header:Text("Step 2: Fix minor issues in the data")){
-                                VStack{
-                                    TextField("Name", text:$record.name).disabled(record.name=="")
-                                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                                        .keyboardType(.namePhonePad)
-                                    Validator(icon: record.isNameValid ?
-                                                "checkmark.rectangle.fill"
-                                                : "xmark.square",
-                                              color: record.isNameValid ?
-                                                Color.green
-                                                : Color.red,
-                                              message: record.isNameValid ?
-                                              "Valid name"
-                                              : "Invalid name. Correct format: \"<Firstname> <LastName>\"")
-                                }
-                                VStack{
-                                    TextField("Phone", text:$record.phone).disabled(record.phone=="")
-                                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                                        .keyboardType(.phonePad)
-                                    Validator(icon: record.isPhoneValid ?
-                                                "checkmark.rectangle.fill"
-                                                : "xmark.square",
-                                              color: record.isPhoneValid ?
-                                                Color.green
-                                                : Color.red,
-                                              message: record.isPhoneValid ?
-                                              "Valid name"
-                                              : "Invalid phone.")
-                                }
+                            VStack{
+                                TextField("Phone", text:$record.phone).disabled(record.phone=="")
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .keyboardType(.phonePad)
+                                Validator(icon: record.isPhoneValid ?
+                                            "checkmark.rectangle.fill"
+                                            : "xmark.square",
+                                          color: record.isPhoneValid ?
+                                            Color.green
+                                            : Color.red,
+                                          message: record.isPhoneValid ?
+                                            "Valid name"
+                                            : "Invalid phone.")
                             }
                         }
                     }
+                }
                 Spacer()
                 buttonGroup
             }
-        }.sheet(isPresented: $showingScanningView) {
+        }
+        .navigationBarColor(UIColor(fuberBlue))
+        .sheet(isPresented: $showingScanningView) {
             ScanDocumentView(recognizedText: self.$recognizedText, scanSuccess: self.$afterScan, scannedPicture: $scannedPicture)
         }
         

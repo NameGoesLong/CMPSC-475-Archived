@@ -42,15 +42,15 @@ struct SearchBar: View {
                         }
                     }
                 )
-                .padding(.horizontal, 10)
+                //.padding(.horizontal, 3)
                 .onTapGesture {
                     self.isEditing = true
                 }
                 .autocapitalization(.none)
-            Picker("selection", selection: $filteringRequirement/*@START_MENU_TOKEN@*//*@END_MENU_TOKEN@*/){
-                Text("First Name").tag("first")
-                Text("Last Name").tag("last")
-            }.padding(.horizontal).pickerStyle(SegmentedPickerStyle())
+//            Picker("selection", selection: $filteringRequirement/*@START_MENU_TOKEN@*//*@END_MENU_TOKEN@*/){
+//                Text("First Name").tag("first")
+//                Text("Last Name").tag("last")
+//            }.padding(.horizontal).pickerStyle(SegmentedPickerStyle())
             
         }
     }
