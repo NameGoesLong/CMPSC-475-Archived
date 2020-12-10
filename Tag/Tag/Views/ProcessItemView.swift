@@ -48,7 +48,7 @@ struct ProcessItemView : View {
                         .frame( maxHeight: 160)
                     Form{
                         Section(header:
-                                    Text("Step 1: Choose the data from Scanned text"),
+                                    Text("Mandatory information: name"),
                                 footer:
                                     Validator(icon: record.isNameValid ?
                                                 "checkmark.rectangle.fill"
@@ -60,23 +60,27 @@ struct ProcessItemView : View {
                                                 "Valid name"
                                                 : "Invalid name. Correct format: \"<Firstname> <LastName>\"")
                         ){
-                            VStack{
-                                Picker(selection: $record.name, label: Text("Choose data for Name")) {
-                                    Text("-- PLEASE CHOOSE FROM INPUTS--").tag("")
-                                    ForEach(recognizedText,id:\.self){ element in
-                                        Text(element)
-                                    }
-                                }.pickerStyle(DefaultPickerStyle())
+                            if record.name == ""{
+                                VStack{
+                                    Picker(selection: $record.name, label: Text("Choose data for Name")) {
+                                        Text("-- PLEASE CHOOSE FROM INPUTS--").tag("")
+                                        ForEach(recognizedText,id:\.self){ element in
+                                            Text(element)
+                                        }
+                                    }.pickerStyle(DefaultPickerStyle())
+                                }
+                            }else{
+                                HStack{
+                                    Text("Name").padding(.trailing)
+                                    TextField("Name", text:$record.name).disabled(record.name=="")
+                                        //.textFieldStyle(RoundedBorderTextFieldStyle())
+                                        .keyboardType(.namePhonePad)
+                                }
                             }
-                            HStack{
-                                Text("Name").padding(.trailing)
-                                TextField("Name", text:$record.name).disabled(record.name=="")
-                                    //.textFieldStyle(RoundedBorderTextFieldStyle())
-                                    .keyboardType(.namePhonePad)
-                            }
+
                             
                         }
-                        Section(header:Text("Step 2: Fix minor issues in the data"),
+                        Section(header:Text("Mandatory information: phone"),
                                 footer:
                                     Validator(icon: record.isPhoneValid ?
                                                 "checkmark.rectangle.fill"
@@ -85,22 +89,79 @@ struct ProcessItemView : View {
                                                 Color.green
                                                 : Color.red,
                                               message: record.isPhoneValid ?
-                                                "Valid name"
+                                                "Valid phone"
                                                 : "Invalid phone.")
                         ){
-                            VStack{
-                                Picker(selection: $record.phone, label: Text("Choose data for Phone")) {
-                                    Text("-- PLEASE CHOOSE FROM INPUTS--").tag("")
-                                    ForEach(recognizedText,id:\.self){ element in
-                                        Text(element)
-                                    }
-                                }.pickerStyle(DefaultPickerStyle())
+                            if record.phone == ""{
+                                VStack{
+                                    Picker(selection: $record.phone, label: Text("Choose data for Phone")) {
+                                        Text("-- PLEASE CHOOSE FROM INPUTS--").tag("")
+                                        ForEach(recognizedText,id:\.self){ element in
+                                            Text(element)
+                                        }
+                                    }.pickerStyle(DefaultPickerStyle())
+                                }
+                            }else{
+                                HStack{
+                                    Text("Phone").padding(.trailing)
+                                    TextField("Phone", text:$record.phone).disabled(record.phone=="")
+                                        .keyboardType(.phonePad)
+                                }
                             }
-                            HStack{
-                                Text("Phone").padding(.trailing)
-                                TextField("Phone", text:$record.phone).disabled(record.phone=="")
-                                    //.textFieldStyle(RoundedBorderTextFieldStyle())
-                                    .keyboardType(.phonePad)
+                        }
+                        Section(header:Text("Optional information: email")
+                        ){
+                            if record.email == ""{
+                                VStack{
+                                    Picker(selection: $record.email, label: Text("Choose data for Email")) {
+                                        Text("-- PLEASE CHOOSE FROM INPUTS--").tag("")
+                                        ForEach(recognizedText,id:\.self){ element in
+                                            Text(element)
+                                        }
+                                    }.pickerStyle(DefaultPickerStyle())
+                                }
+                            }else{
+                                HStack{
+                                    Text("Email").padding(.trailing)
+                                    TextField("Email", text:$record.email).disabled(record.email=="")
+                                        .keyboardType(.emailAddress)
+                                }
+                            }
+                        }
+                        
+                        Section(header:Text("Optional information: company")){
+                            if record.company == ""{
+                                VStack{
+                                    Picker(selection: $record.company, label: Text("Choose data for Company")) {
+                                        Text("-- PLEASE CHOOSE FROM INPUTS--").tag("")
+                                        ForEach(recognizedText,id:\.self){ element in
+                                            Text(element)
+                                        }
+                                    }.pickerStyle(DefaultPickerStyle())
+                                }
+                            }else{
+                                HStack{
+                                    Text("Company").padding(.trailing)
+                                    TextField("Company", text:$record.company).disabled(record.company=="")
+                                }
+                            }
+                        }
+                        
+                        Section(header:Text("Optional information: position")){
+                            if record.position == ""{
+                                VStack{
+                                    Picker(selection: $record.position, label: Text("Choose data for Position")) {
+                                        Text("-- PLEASE CHOOSE FROM INPUTS--").tag("")
+                                        ForEach(recognizedText,id:\.self){ element in
+                                            Text(element)
+                                        }
+                                    }.pickerStyle(DefaultPickerStyle())
+                                }
+                            }else{
+                                HStack{
+                                    Text("Position").padding(.trailing)
+                                    TextField("Position", text:$record.position).disabled(record.position=="")
+                                }
                             }
                         }
                     }
@@ -131,7 +192,7 @@ struct ProcessItemView : View {
             }else{
                 Button(action: {
                     // start scanning
-                    addRecord(name: record.name, phone: record.phone, cardImage: scannedPicture)
+                    addRecord(cardImage: scannedPicture, name: record.name, phone: record.phone, email: record.email, company: record.company, position: record.position)
                     print("record added")
                     //MARK: Exit the view here
                     self.presentationMode.wrappedValue.dismiss()
@@ -153,18 +214,21 @@ struct ProcessItemView : View {
         }
     }
     
-    func addRecord(name: String, phone: String, cardImage: CGImage?){
+    func addRecord(cardImage: CGImage?, name: String, phone: String, email: String, company: String, position: String){
         let newRecord = Record(context: viewContext)
-        newRecord.phone = phone
-        let nameSet = name.components(separatedBy: " ")
-        newRecord.firstname = nameSet[0]
-        newRecord.lastname = nameSet[1]
         if cardImage != nil {
             let image = UIImage(cgImage: cardImage!)
             if let data = image.pngData() {
                 newRecord.cardImage = data
             }
         }
+        newRecord.phone = phone
+        let nameSet = name.components(separatedBy: " ")
+        newRecord.firstname = nameSet[0]
+        newRecord.lastname = nameSet[1]
+        newRecord.email = email
+        newRecord.company = company
+        newRecord.position = position
     }
 }
 

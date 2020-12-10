@@ -12,6 +12,9 @@ import Combine
 class RecordChecker : ObservableObject{
     @Published var name = ""
     @Published var phone = ""
+    @Published var email = ""
+    @Published var position = ""
+    @Published var company = ""
     
     @Published var isNameValid = false
     @Published var isPhoneValid = false

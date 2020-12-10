@@ -30,16 +30,19 @@ struct ContactDetailModifyView : View {
                         Text("First name")
                             .padding(.trailing)
                         TextField("First name", text: $firstname)
+                            .keyboardType(.namePhonePad)
                     }
                     HStack{
                         Text("Last name")
                             .padding(.trailing)
                         TextField("Last name", text: $lastname)
+                            .keyboardType(.namePhonePad)
                     }
                     HStack{
                         Text("Phone number")
                             .padding(.trailing)
                         TextField("Phone number", text: $phone)
+                            .keyboardType(.phonePad)
                     }
                 }
                 Section(header: Text("Additional information")){
@@ -47,6 +50,7 @@ struct ContactDetailModifyView : View {
                         Text("Email")
                             .padding(.trailing)
                         TextField("Email address", text: $email)
+                            .keyboardType(.emailAddress)
                     }
                     HStack{
                         Text("Company")
