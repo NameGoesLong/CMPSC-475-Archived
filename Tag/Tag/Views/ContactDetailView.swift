@@ -29,6 +29,7 @@ struct ContactDetailView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
     
+    private var QRcodeHelper = QRCode()
     let fuberBlue = Color("Fuber blue")
 
     
@@ -55,15 +56,35 @@ struct ContactDetailView: View {
                     .padding(.horizontal)
                 VStack(alignment:.leading){
                     Text(record.firstname + " " + record.lastname)
-                    Text("Position")
+                    Text(record.position == "" ? "Position": record.position)
                         .italic()
                         .font(.subheadline)
                         .foregroundColor(.blue)
-                    Text("Company")
+                    Text(record.company == "" ? "Company": record.company)
                         .font(.subheadline)
                         .foregroundColor(.gray)
                 }.padding()
                 Spacer()
+                Button(action: {
+                    print("alert")
+                    self.showingAlert = true
+                }){
+                    Image(systemName: "square.and.arrow.down.on.square")
+                    
+                }.padding()
+                .alert(isPresented: $showingAlert) {
+                    Alert(title: Text("Do you want to export this TAG to the Contact app?"),
+                          message: Text("The TAG of \(record.firstname) \(record.lastname) will be added to your Contact app after confirmation."),
+                          primaryButton: .default(Text("Confirm")) {
+                            print("Adding to Contact...")
+                            SaveToContacts(record: record)
+                            self.showingAlert = false
+                          },
+                          secondaryButton: .cancel(){
+                            self.showingAlert = false
+                          }
+                    )
+                }
             }
             VStack{
                 Picker("selection", selection: $infoSection/*@START_MENU_TOKEN@*//*@END_MENU_TOKEN@*/){
@@ -75,9 +96,6 @@ struct ContactDetailView: View {
             Group{
                 ContactDetailInfoView(record: record, infoSection: $infoSection)
             }
-            .alert(isPresented: $showingAlert) {
-                Alert(title: Text("Important message"), message: Text("Successfully stored into the Contacts."), dismissButton: .default(Text("Got it!")))
-            }
         }
         .toolbar{
             ToolbarItemGroup(placement: .bottomBar){
@@ -85,7 +103,7 @@ struct ContactDetailView: View {
                     print("Added")
                     shareButton()
                     //SaveToContacts(record: record)
-                    showingAlert = true
+                    //showingAlert = true
                 }){
                     Image(systemName: "square.and.arrow.up.on.square")
                     
@@ -115,35 +133,11 @@ struct ContactDetailView: View {
             case .first:
                 QRCodeView(record: record)
             case .second:
-                Text("Change item")
+                ContactDetailModifyView(record: record, activeSheet: $activeSheet)
             }
         }
     }
     
-//    var buttonGroupView : some View{
-//        VStack{
-//            HStack{
-//                Spacer()
-//                Button(action: {
-//                    SaveToContacts(record: record)
-//                    showingAlert = true
-//                }){
-//                    Text("Export to Contacts")
-//                }.buttonStyle(ResultButtonStyle())
-//                .opacity(0.7)
-//                .alert(isPresented: $showingAlert) {
-//                            Alert(title: Text("Important message"), message: Text("Successfully stored into the Contacts."), dismissButton: .default(Text("Got it!")))
-//                        }
-//                Spacer()
-//                Button(action: {
-//                    showingQRCode = true
-//                }){
-//                    Text("Generate QR Code")
-//                }.buttonStyle(ResultButtonStyle())
-//                .opacity(0.7)
-//            }
-//        }.padding(10.0)
-//    }
     
     
     private var deleteButton : some View {
@@ -160,11 +154,28 @@ struct ContactDetailView: View {
     
     func shareButton(){
         isShareSheetShowing.toggle()
-        
-        let url = URL(string: "https://apple.com")
-        let av = UIActivityViewController(activityItems: [url!], applicationActivities: nil)
+        let description = "Hey, someone has shared the tag of \(record.firstname) \(record.lastname) to you. Scan the QR code to store in the the contact."
+        let qrcode = QRcodeHelper.generateQRCode(from: generateVCard(from: record))
+        let av = UIActivityViewController(activityItems: [qrcode, description], applicationActivities: nil)
         
         UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
+    }
+    
+    func generateVCard(from record: Record) -> Data?{
+        let contactItem = CNMutableContact()
+        var result : Data? = nil
+        contactItem.givenName = record.firstname
+        contactItem.familyName = record.lastname
+        contactItem.phoneNumbers = [CNLabeledValue(
+                                        label: CNLabelPhoneNumberiPhone,
+                                        value: CNPhoneNumber(stringValue: record.phone))]
+        do {
+            try result = CNContactVCardSerialization.data(with: [contactItem])
+        } catch {
+            print("Unexpected error: \(error).")
+        }
+        
+        return result
     }
     
     func SaveToContacts(record : Record){

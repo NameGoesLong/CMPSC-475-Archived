@@ -17,11 +17,11 @@ struct ContactListRow : View {
                 .frame(width: 80, height: 60, alignment: .center)
             VStack(alignment:.leading){
                 Text(record.firstname + " " + record.lastname)
-                Text("Position")
+                Text(record.position == "" ? "Position": record.position)
                     .italic()
                     .font(.subheadline)
                     .foregroundColor(.blue)
-                Text("Company")
+                Text(record.company == "" ? "Company": record.company)
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }

@@ -2,11 +2,14 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Record" representedClassName="Record" syncable="YES">
         <attribute name="cardImage" optional="YES" attributeType="Binary"/>
+        <attribute name="company" optional="YES" attributeType="String"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="firstname" optional="YES" attributeType="String"/>
         <attribute name="lastname" optional="YES" attributeType="String"/>
         <attribute name="phone" optional="YES" attributeType="String"/>
+        <attribute name="position" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Record" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="Record" positionX="-63" positionY="-18" width="128" height="148"/>
     </elements>
 </model>

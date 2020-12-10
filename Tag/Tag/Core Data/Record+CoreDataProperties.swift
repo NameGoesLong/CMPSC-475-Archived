@@ -16,10 +16,14 @@ extension Record {
         return NSFetchRequest<Record>(entityName: "Record")
     }
 
+    @NSManaged public var cardImage: Data
     @NSManaged public var firstname: String
     @NSManaged public var lastname: String
     @NSManaged public var phone: String
-    @NSManaged public var cardImage: Data
+    @NSManaged public var company: String
+    @NSManaged public var position: String
+    @NSManaged public var email: String
+    
 
 }
 

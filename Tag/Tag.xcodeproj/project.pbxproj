@@ -11,6 +11,8 @@
 		B21102FA257FE4F000648FC1 /* String+FirstLetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21102F9257FE4F000648FC1 /* String+FirstLetter.swift */; };
 		B2110307258013DB00648FC1 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2110306258013DB00648FC1 /* NavigationBarModifier.swift */; };
 		B211030C258064DC00648FC1 /* ContactDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B211030B258064DC00648FC1 /* ContactDetailInfoView.swift */; };
+		B2110317258152A100648FC1 /* QRcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2110316258152A100648FC1 /* QRcode.swift */; };
+		B21103262581990500648FC1 /* ContactDetailModifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21103252581990500648FC1 /* ContactDetailModifyView.swift */; };
 		B21D8913256402C000293E11 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D8912256402C000293E11 /* ContactListView.swift */; };
 		B21D891E256496E500293E11 /* ProcessItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D891D256496E500293E11 /* ProcessItemView.swift */; };
 		B21D89232564B47900293E11 /* ContactRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D89222564B47900293E11 /* ContactRecordModel.swift */; };
@@ -33,7 +35,6 @@
 		B2852A102575A97B00242C78 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2852A0F2575A97B00242C78 /* SearchView.swift */; };
 		B2852A152575AA6B00242C78 /* View+dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2852A142575AA6B00242C78 /* View+dismissKeyboard.swift */; };
 		B2852A1A2575AAEA00242C78 /* ContactMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2852A192575AAEA00242C78 /* ContactMainView.swift */; };
-		B2852A20257F117800242C78 /* TransitionLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2852A1F257F117800242C78 /* TransitionLink.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		B21102F9257FE4F000648FC1 /* String+FirstLetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FirstLetter.swift"; sourceTree = "<group>"; };
 		B2110306258013DB00648FC1 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		B211030B258064DC00648FC1 /* ContactDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailInfoView.swift; sourceTree = "<group>"; };
+		B2110316258152A100648FC1 /* QRcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRcode.swift; sourceTree = "<group>"; };
+		B21103252581990500648FC1 /* ContactDetailModifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailModifyView.swift; sourceTree = "<group>"; };
 		B21D8912256402C000293E11 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 		B21D891D256496E500293E11 /* ProcessItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessItemView.swift; sourceTree = "<group>"; };
 		B21D89222564B47900293E11 /* ContactRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactRecordModel.swift; sourceTree = "<group>"; };
@@ -86,7 +89,6 @@
 		B2852A0F2575A97B00242C78 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		B2852A142575AA6B00242C78 /* View+dismissKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+dismissKeyboard.swift"; sourceTree = "<group>"; };
 		B2852A192575AAEA00242C78 /* ContactMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMainView.swift; sourceTree = "<group>"; };
-		B2852A1F257F117800242C78 /* TransitionLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionLink.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,8 +195,8 @@
 				B2852A142575AA6B00242C78 /* View+dismissKeyboard.swift */,
 				B21D89222564B47900293E11 /* ContactRecordModel.swift */,
 				B21D892C2564E74700293E11 /* NSRegularExpression+init.swift */,
-				B2852A1F257F117800242C78 /* TransitionLink.swift */,
 				B2110306258013DB00648FC1 /* NavigationBarModifier.swift */,
+				B2110316258152A100648FC1 /* QRcode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -209,6 +211,7 @@
 				B21D891D256496E500293E11 /* ProcessItemView.swift */,
 				B21D89532566113900293E11 /* ContactDetailView.swift */,
 				B211030B258064DC00648FC1 /* ContactDetailInfoView.swift */,
+				B21103252581990500648FC1 /* ContactDetailModifyView.swift */,
 				B21D89582566116400293E11 /* ContactListRow.swift */,
 				B21D89652566F51000293E11 /* QRCodeView.swift */,
 				B21102F0257FD9B100648FC1 /* SplashScreen.swift */,
@@ -361,12 +364,12 @@
 				B24DED0925635ACB00947763 /* MainView.swift in Sources */,
 				B21D891E256496E500293E11 /* ProcessItemView.swift in Sources */,
 				B24DECD925635A1100947763 /* Persistence.swift in Sources */,
-				B2852A20257F117800242C78 /* TransitionLink.swift in Sources */,
 				B2852A152575AA6B00242C78 /* View+dismissKeyboard.swift in Sources */,
 				B21D89662566F51000293E11 /* QRCodeView.swift in Sources */,
 				B21D895E2566173100293E11 /* DefaultButtonStyle.swift in Sources */,
 				B2852A102575A97B00242C78 /* SearchView.swift in Sources */,
 				B21D894325660A3600293E11 /* Record+CoreDataProperties.swift in Sources */,
+				B2110317258152A100648FC1 /* QRcode.swift in Sources */,
 				B2852A1A2575AAEA00242C78 /* ContactMainView.swift in Sources */,
 				B21D89542566113900293E11 /* ContactDetailView.swift in Sources */,
 				B21D8913256402C000293E11 /* ContactListView.swift in Sources */,
@@ -377,6 +380,7 @@
 				B21102FA257FE4F000648FC1 /* String+FirstLetter.swift in Sources */,
 				B21D89232564B47900293E11 /* ContactRecordModel.swift in Sources */,
 				B21D89592566116400293E11 /* ContactListRow.swift in Sources */,
+				B21103262581990500648FC1 /* ContactDetailModifyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

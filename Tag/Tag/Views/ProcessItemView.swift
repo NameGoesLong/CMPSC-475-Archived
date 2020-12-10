@@ -47,48 +47,60 @@ struct ProcessItemView : View {
                         )
                         .frame( maxHeight: 160)
                     Form{
-                        Section(header:Text("Step 1: Choose the data from Scanned text")){
-                            Picker(selection: $record.name, label: Text("Choose data for Name")) {
-                                Text("-- PLEASE CHOOSE FROM INPUTS--").tag("")
-                                ForEach(recognizedText,id:\.self){ element in
-                                    Text(element)
-                                }
-                            }.pickerStyle(DefaultPickerStyle())
-                            Picker(selection: $record.phone, label: Text("Choose data for Phone")) {
-                                Text("-- PLEASE CHOOSE FROM INPUTS--").tag("")
-                                ForEach(recognizedText,id:\.self){ element in
-                                    Text(element)
-                                }
-                            }.pickerStyle(DefaultPickerStyle())
-                        }
-                        Section(header:Text("Step 2: Fix minor issues in the data")){
+                        Section(header:
+                                    Text("Step 1: Choose the data from Scanned text"),
+                                footer:
+                                    Validator(icon: record.isNameValid ?
+                                                "checkmark.rectangle.fill"
+                                                : "xmark.square",
+                                              color: record.isNameValid ?
+                                                Color.green
+                                                : Color.red,
+                                              message: record.isNameValid ?
+                                                "Valid name"
+                                                : "Invalid name. Correct format: \"<Firstname> <LastName>\"")
+                        ){
                             VStack{
-                                TextField("Name", text:$record.name).disabled(record.name=="")
-                                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                                    .keyboardType(.namePhonePad)
-                                Validator(icon: record.isNameValid ?
-                                            "checkmark.rectangle.fill"
-                                            : "xmark.square",
-                                          color: record.isNameValid ?
-                                            Color.green
-                                            : Color.red,
-                                          message: record.isNameValid ?
-                                            "Valid name"
-                                            : "Invalid name. Correct format: \"<Firstname> <LastName>\"")
+                                Picker(selection: $record.name, label: Text("Choose data for Name")) {
+                                    Text("-- PLEASE CHOOSE FROM INPUTS--").tag("")
+                                    ForEach(recognizedText,id:\.self){ element in
+                                        Text(element)
+                                    }
+                                }.pickerStyle(DefaultPickerStyle())
                             }
+                            HStack{
+                                Text("Name").padding(.trailing)
+                                TextField("Name", text:$record.name).disabled(record.name=="")
+                                    //.textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .keyboardType(.namePhonePad)
+                            }
+                            
+                        }
+                        Section(header:Text("Step 2: Fix minor issues in the data"),
+                                footer:
+                                    Validator(icon: record.isPhoneValid ?
+                                                "checkmark.rectangle.fill"
+                                                : "xmark.square",
+                                              color: record.isPhoneValid ?
+                                                Color.green
+                                                : Color.red,
+                                              message: record.isPhoneValid ?
+                                                "Valid name"
+                                                : "Invalid phone.")
+                        ){
                             VStack{
+                                Picker(selection: $record.phone, label: Text("Choose data for Phone")) {
+                                    Text("-- PLEASE CHOOSE FROM INPUTS--").tag("")
+                                    ForEach(recognizedText,id:\.self){ element in
+                                        Text(element)
+                                    }
+                                }.pickerStyle(DefaultPickerStyle())
+                            }
+                            HStack{
+                                Text("Phone").padding(.trailing)
                                 TextField("Phone", text:$record.phone).disabled(record.phone=="")
-                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    //.textFieldStyle(RoundedBorderTextFieldStyle())
                                     .keyboardType(.phonePad)
-                                Validator(icon: record.isPhoneValid ?
-                                            "checkmark.rectangle.fill"
-                                            : "xmark.square",
-                                          color: record.isPhoneValid ?
-                                            Color.green
-                                            : Color.red,
-                                          message: record.isPhoneValid ?
-                                            "Valid name"
-                                            : "Invalid phone.")
                             }
                         }
                     }

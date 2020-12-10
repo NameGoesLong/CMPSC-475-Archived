@@ -19,7 +19,7 @@ struct SplashScreen: View {
                     .resizable()
                     .interpolation(.none)
                     .aspectRatio(contentMode: .fit)
-                    .frame(height: 160)
+                    .frame(height: 150)
                     .offset(y:offset)
                     .onAppear(){
                         let baseAnimation = Animation
