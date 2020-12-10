@@ -11,7 +11,7 @@
 		B21102FA257FE4F000648FC1 /* String+FirstLetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21102F9257FE4F000648FC1 /* String+FirstLetter.swift */; };
 		B2110307258013DB00648FC1 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2110306258013DB00648FC1 /* NavigationBarModifier.swift */; };
 		B211030C258064DC00648FC1 /* ContactDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B211030B258064DC00648FC1 /* ContactDetailInfoView.swift */; };
-		B2110317258152A100648FC1 /* QRcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2110316258152A100648FC1 /* QRcode.swift */; };
+		B2110317258152A100648FC1 /* ExportHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2110316258152A100648FC1 /* ExportHelper.swift */; };
 		B21103262581990500648FC1 /* ContactDetailModifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21103252581990500648FC1 /* ContactDetailModifyView.swift */; };
 		B21D8913256402C000293E11 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D8912256402C000293E11 /* ContactListView.swift */; };
 		B21D891E256496E500293E11 /* ProcessItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D891D256496E500293E11 /* ProcessItemView.swift */; };
@@ -59,7 +59,7 @@
 		B21102F9257FE4F000648FC1 /* String+FirstLetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FirstLetter.swift"; sourceTree = "<group>"; };
 		B2110306258013DB00648FC1 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		B211030B258064DC00648FC1 /* ContactDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailInfoView.swift; sourceTree = "<group>"; };
-		B2110316258152A100648FC1 /* QRcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRcode.swift; sourceTree = "<group>"; };
+		B2110316258152A100648FC1 /* ExportHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportHelper.swift; sourceTree = "<group>"; };
 		B21103252581990500648FC1 /* ContactDetailModifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailModifyView.swift; sourceTree = "<group>"; };
 		B21D8912256402C000293E11 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 		B21D891D256496E500293E11 /* ProcessItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessItemView.swift; sourceTree = "<group>"; };
@@ -196,7 +196,7 @@
 				B21D89222564B47900293E11 /* ContactRecordModel.swift */,
 				B21D892C2564E74700293E11 /* NSRegularExpression+init.swift */,
 				B2110306258013DB00648FC1 /* NavigationBarModifier.swift */,
-				B2110316258152A100648FC1 /* QRcode.swift */,
+				B2110316258152A100648FC1 /* ExportHelper.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -369,7 +369,7 @@
 				B21D895E2566173100293E11 /* DefaultButtonStyle.swift in Sources */,
 				B2852A102575A97B00242C78 /* SearchView.swift in Sources */,
 				B21D894325660A3600293E11 /* Record+CoreDataProperties.swift in Sources */,
-				B2110317258152A100648FC1 /* QRcode.swift in Sources */,
+				B2110317258152A100648FC1 /* ExportHelper.swift in Sources */,
 				B2852A1A2575AAEA00242C78 /* ContactMainView.swift in Sources */,
 				B21D89542566113900293E11 /* ContactDetailView.swift in Sources */,
 				B21D8913256402C000293E11 /* ContactListView.swift in Sources */,

@@ -18,6 +18,7 @@ struct ContactDetailInfoView : View {
     @ObservedObject var record : Record
     @Binding var infoSection : InfoPage
     
+    
     @State var username: String = ""
         
         var body: some View {
@@ -26,13 +27,6 @@ struct ContactDetailInfoView : View {
             }.listStyle(PlainListStyle())
         }
     
-//    var body: some View{
-//        VStack{
-//            showCorrespondingView ()
-//                .transition(.slide)
-//        }
-//    }
-    
     var infoPage : some View{
         Group{
             Section(header: Text("Telephone")) {
@@ -40,24 +34,20 @@ struct ContactDetailInfoView : View {
                     Text("Mobile").bold()
                         .padding(.horizontal)
                     Spacer()
-                    Text(record.phone)
+                    // Use link to initiate the apps -- https://stackoverflow.com/a/63716406
+                    Link(record.phone, destination: URL(string: "tel:\(record.phone)")!)
                 }
             }
-            Section(header: Text("Email")) {
-                HStack{
-                    Text("Work").bold()
-                        .padding(.horizontal)
-                    Spacer()
-                    Text(record.phone)
+            if record.email != ""{
+                Section(header: Text("Email")) {
+                    HStack{
+                        Text("Work").bold()
+                            .padding(.horizontal)
+                        Spacer()
+                        Link(record.email, destination: URL(string: "mailto:\(record.email)")!)
+                    }
                 }
             }
-//            Section(header: Text("Address")) {
-//                HStack{
-//                    Spacer()
-//                    Text(record.phone)
-//                    Spacer()
-//                }
-//            }
         }
     }
     

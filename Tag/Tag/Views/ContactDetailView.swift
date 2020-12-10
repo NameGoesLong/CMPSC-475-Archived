@@ -21,15 +21,13 @@ enum ActiveSheet: Identifiable {
 struct ContactDetailView: View {
     @ObservedObject var record : Record
     @State private var showingAlert = false
-    //@State private var showingQRCode = false
     @State var activeSheet: ActiveSheet?
-    //@State private var isPresented = false
     @State var isShareSheetShowing = false
     @State var infoSection : InfoPage = .info
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
     
-    private var QRcodeHelper = QRCode()
+    private var exportHelper = ExportHelper()
     let fuberBlue = Color("Fuber blue")
 
     
@@ -102,8 +100,6 @@ struct ContactDetailView: View {
                 Button(action: {
                     print("Added")
                     shareButton()
-                    //SaveToContacts(record: record)
-                    //showingAlert = true
                 }){
                     Image(systemName: "square.and.arrow.up.on.square")
                     
@@ -154,62 +150,36 @@ struct ContactDetailView: View {
     
     func shareButton(){
         isShareSheetShowing.toggle()
-        let description = "Hey, someone has shared the tag of \(record.firstname) \(record.lastname) to you. Scan the QR code to store in the the contact."
-        let qrcode = QRcodeHelper.generateQRCode(from: generateVCard(from: record))
-        let av = UIActivityViewController(activityItems: [qrcode, description], applicationActivities: nil)
+        //let description = "Scan the QR code to store the tag of \(record.firstname) \(record.lastname) in the the contact."
+        //let qrcode = exportHelper.generateQRCode(from: exportHelper.generateVCard(from: record))
+        
+        // Get idea from: https://stackoverflow.com/a/38338768
+        guard let directoryURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else {
+            return
+        }
+        
+        let filename = "\(record.firstname)_\(record.lastname)"
+        
+        let fileURL = directoryURL
+            .appendingPathComponent(filename)
+            .appendingPathExtension("vcf")
+        
+        let vcard = exportHelper.generateVCard(from: record)
+        
+        do {
+            let _: () = try vcard!.write(to: fileURL, options: [.atomicWrite])
+        } catch {
+            print("The file could not be loaded")
+        }
+        
+        let av = UIActivityViewController(activityItems: [fileURL], applicationActivities: nil)
         
         UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
     }
-    
-    func generateVCard(from record: Record) -> Data?{
-        let contactItem = CNMutableContact()
-        var result : Data? = nil
-        contactItem.givenName = record.firstname
-        contactItem.familyName = record.lastname
-        contactItem.phoneNumbers = [CNLabeledValue(
-                                        label: CNLabelPhoneNumberiPhone,
-                                        value: CNPhoneNumber(stringValue: record.phone))]
-        do {
-            try result = CNContactVCardSerialization.data(with: [contactItem])
-        } catch {
-            print("Unexpected error: \(error).")
-        }
-        
-        return result
-    }
+
     
     func SaveToContacts(record : Record){
-        // Create a mutable object to add to the contact
-        let contact = CNMutableContact()
-        
-        // Store the profile picture as data
-        let image = UIImage(systemName: "avator")
-        contact.imageData = image?.jpegData(compressionQuality: 1.0)
-        
-        contact.givenName = record.firstname
-        contact.familyName = record.lastname
-        
-        //        let homeEmail = CNLabeledValue(label: CNLabelHome, value: "john@example.com" as NSString)
-        //        let workEmail = CNLabeledValue(label: CNLabelWork, value: "j.appleseed@icloud.com" as NSString)
-        //        contact.emailAddresses = [homeEmail, workEmail]
-        
-        contact.phoneNumbers = [CNLabeledValue(
-                                    label: CNLabelPhoneNumberiPhone,
-                                    value: CNPhoneNumber(stringValue: record.phone))]
-        
-//        let homeAddress = CNMutablePostalAddress()
-//        homeAddress.street = "One Apple Park Way"
-//        homeAddress.city = "Cupertino"
-//        homeAddress.state = "CA"
-//        homeAddress.postalCode = "95014"
-//        contact.postalAddresses = [CNLabeledValue(label: CNLabelHome, value: homeAddress)]
-        
-//        var birthday = DateComponents()
-//        birthday.day = 1
-//        birthday.month = 4
-//        birthday.year = 1988  // (Optional) Omit the year value for a yearless birthday
-//        contact.birthday = birthday
-        
+        let contact = exportHelper.constructMutableContact(record: record)
         // Save the newly created contact
         let store = CNContactStore()
         let saveRequest = CNSaveRequest()
