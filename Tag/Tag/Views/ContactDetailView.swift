@@ -39,6 +39,7 @@ struct ContactDetailView: View {
         
     var body: some View{
         VStack{
+            // NameTag view for the record
             HStack{
                 Image("avator")
                     .resizable()
@@ -71,6 +72,7 @@ struct ContactDetailView: View {
                     
                 }.padding()
                 .alert(isPresented: $showingAlert) {
+                    // The alert for storing record to Contacts
                     Alert(title: Text("Do you want to export this TAG to the Contact app?"),
                           message: Text("The TAG of \(record.firstname) \(record.lastname) will be added to your Contact app after confirmation."),
                           primaryButton: .default(Text("Confirm")) {
@@ -148,10 +150,9 @@ struct ContactDetailView: View {
         }
     }
     
+    // Store the record as vcf(vcard) to cache file system and share the url to others
     func shareButton(){
         isShareSheetShowing.toggle()
-        //let description = "Scan the QR code to store the tag of \(record.firstname) \(record.lastname) in the the contact."
-        //let qrcode = exportHelper.generateQRCode(from: exportHelper.generateVCard(from: record))
         
         // Get idea from: https://stackoverflow.com/a/38338768
         guard let directoryURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else {

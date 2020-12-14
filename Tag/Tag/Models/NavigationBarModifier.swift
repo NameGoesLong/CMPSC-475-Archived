@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 import UIKit
 
+
+// This is a modifier to change the color for navigation bars
 struct NavigationBarModifier: ViewModifier {
         
     var backgroundColor: UIColor?

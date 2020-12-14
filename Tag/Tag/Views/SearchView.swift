@@ -47,6 +47,7 @@ struct SearchBar: View {
                     self.isEditing = true
                 }
                 .autocapitalization(.none)
+            // Reserved for the future iteration
 //            Picker("selection", selection: $filteringRequirement/*@START_MENU_TOKEN@*//*@END_MENU_TOKEN@*/){
 //                Text("First Name").tag("first")
 //                Text("Last Name").tag("last")

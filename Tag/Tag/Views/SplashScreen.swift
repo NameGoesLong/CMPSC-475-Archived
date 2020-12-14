@@ -15,6 +15,7 @@ struct SplashScreen: View {
     var body: some View {
         ZStack {
             VStack{
+                // The icon would be dropped from the top when the splash screen initiated
                 Image("mainIcon")
                     .resizable()
                     .interpolation(.none)

@@ -35,7 +35,9 @@ struct ProcessItemView : View {
     var body: some View{
         Group{
             VStack {
+                // show only when there is a picture being processed
                 if !recognizedText.isEmpty{
+                    // Scanned card
                     Image(decorative: scannedPicture!, scale: 1.0)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -46,10 +48,12 @@ struct ProcessItemView : View {
                                 .opacity(0.1)
                         )
                         .frame( maxHeight: 160)
+                    // Section for name. Show the picker View before selection(empty entry), show the text view after selection
                     Form{
                         Section(header:
                                     Text("Mandatory information: name"),
                                 footer:
+                                    //The validator for name
                                     Validator(icon: record.isNameValid ?
                                                 "checkmark.rectangle.fill"
                                                 : "xmark.square",
@@ -62,6 +66,7 @@ struct ProcessItemView : View {
                         ){
                             if record.name == ""{
                                 VStack{
+                                    // List of data for picking
                                     Picker(selection: $record.name, label: Text("Choose data for Name")) {
                                         Text("-- PLEASE CHOOSE FROM INPUTS--").tag("")
                                         ForEach(recognizedText,id:\.self){ element in
@@ -70,6 +75,7 @@ struct ProcessItemView : View {
                                     }.pickerStyle(DefaultPickerStyle())
                                 }
                             }else{
+                                // textbox for correction
                                 HStack{
                                     Text("Name").padding(.trailing)
                                     TextField("Name", text:$record.name).disabled(record.name=="")
@@ -80,6 +86,7 @@ struct ProcessItemView : View {
 
                             
                         }
+                        // Section for phone. Show the picker View before selection(empty entry), show the text view after selection
                         Section(header:Text("Mandatory information: phone"),
                                 footer:
                                     Validator(icon: record.isPhoneValid ?
@@ -94,6 +101,7 @@ struct ProcessItemView : View {
                         ){
                             if record.phone == ""{
                                 VStack{
+                                    //The validator for name
                                     Picker(selection: $record.phone, label: Text("Choose data for Phone")) {
                                         Text("-- PLEASE CHOOSE FROM INPUTS--").tag("")
                                         ForEach(recognizedText,id:\.self){ element in
@@ -102,6 +110,7 @@ struct ProcessItemView : View {
                                     }.pickerStyle(DefaultPickerStyle())
                                 }
                             }else{
+                                // textbox for correction
                                 HStack{
                                     Text("Phone").padding(.trailing)
                                     TextField("Phone", text:$record.phone).disabled(record.phone=="")
@@ -191,7 +200,7 @@ struct ProcessItemView : View {
                 .background(Capsule().fill(Color.blue))
             }else{
                 Button(action: {
-                    // start scanning
+                    // add the record to the Core Data
                     addRecord(cardImage: scannedPicture, name: record.name, phone: record.phone, email: record.email, company: record.company, position: record.position)
                     print("record added")
                     //MARK: Exit the view here

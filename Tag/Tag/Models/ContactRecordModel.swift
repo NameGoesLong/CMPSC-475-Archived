@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 
+// The class handles the verification for record data. We only check for the correctness for name and phone number
 class RecordChecker : ObservableObject{
     @Published var name = ""
     @Published var phone = ""

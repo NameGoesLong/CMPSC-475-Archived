@@ -23,6 +23,7 @@ struct ContactDetailModifyView : View {
     let fuberBlue = Color("Fuber blue")
 
     var body: some View{
+        // The form to enable users to change the data for a record
         NavigationView{
             Form{
                 Section(header: Text("Basic information")){

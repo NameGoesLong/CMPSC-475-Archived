@@ -17,6 +17,7 @@ struct MainView : View{
             if self.isActive{
                 ContactMainView()
             }else{
+                // provide a splash screen when user start-up
                 SplashScreen()
             }
         }.onAppear {

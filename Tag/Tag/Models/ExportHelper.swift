@@ -10,6 +10,9 @@ import UIKit
 import Contacts
 import CoreImage.CIFilterBuiltins
 
+
+// This part handles all the actions for exporting.
+// Including showing QRcode, saving file to Contacts, and sharing the information to other users
 struct ExportHelper{
     let context = CIContext()
     let filter = CIFilter.qrCodeGenerator()

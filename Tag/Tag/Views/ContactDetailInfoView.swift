@@ -69,6 +69,7 @@ struct ContactDetailInfoView : View {
         }
     }
     
+    // placeholder for future deployment
     var otherPage : some View{
         VStack{
             Text("other page")
